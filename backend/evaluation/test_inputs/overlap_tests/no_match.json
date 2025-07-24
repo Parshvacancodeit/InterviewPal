@@ -1,0 +1,9 @@
+{
+  "user_answer": "Loops keep running until a stop condition is met.",
+  "reference_answer": "Recursion needs a function and a base case.",
+  "keywords": [
+    "recursion",
+    "stack",
+    "function"
+  ]
+}

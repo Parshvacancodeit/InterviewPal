@@ -1,0 +1,8 @@
+{
+  "user_answer": "The FUNCTION calls itself recursively with a BASE CASE in mind.",
+  "reference_answer": "Recursion is when a function calls itself with a base case.",
+  "keywords": [
+    "function",
+    "base case"
+  ]
+}

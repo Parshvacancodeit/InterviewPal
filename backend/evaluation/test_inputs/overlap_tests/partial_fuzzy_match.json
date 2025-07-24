@@ -1,0 +1,9 @@
+{
+  "user_answer": "Recursion repeats the process until a condition ends the loop.",
+  "reference_answer": "Recursion includes a base case and a function that calls itself.",
+  "keywords": [
+    "recursion",
+    "base case",
+    "termination"
+  ]
+}

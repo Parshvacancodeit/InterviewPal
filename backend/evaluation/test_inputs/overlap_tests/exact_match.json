@@ -1,0 +1,9 @@
+{
+  "user_answer": "Recursion uses a function that calls itself and reaches a base case.",
+  "reference_answer": "Recursion involves a function calling itself until a base case.",
+  "keywords": [
+    "recursion",
+    "function",
+    "base case"
+  ]
+}

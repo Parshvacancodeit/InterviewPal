@@ -1,0 +1,9 @@
+{
+  "user_answer": "The recursive call terminates when the base condition is true.",
+  "reference_answer": "Recursion works when a base case is met, stopping the function.",
+  "keywords": [
+    "recursion",
+    "termination",
+    "base case"
+  ]
+}
