@@ -1,0 +1,4 @@
+{
+  "reference_answer": "A linked list is a linear data structure where each element points to the next, forming a chain. It allows dynamic memory allocation and efficient insertions or deletions.",
+  "user_answer": "Linked list is a data structure where nodes point to next. It is good for dynamic memory and helps inserting and deleting."
+}
