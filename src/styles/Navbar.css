@@ -1,0 +1,49 @@
+/* Navbar.css */
+
+.navbar {
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: #fdfcfb; /* neutral off-white */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+  font-family: 'Inter', system-ui, sans-serif;
+  box-sizing: border-box;
+}
+
+.navbar-logo {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.navbar-login-btn {
+  padding: 0.4rem 1rem;
+  background: #e0e0dc; /* soft muted tone */
+  color: #111;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.navbar-login-btn:hover {
+  background: #d2d2cd;
+}
+
+.navbar-profile-wrapper {
+  position: relative;
+}
+
+.profile-toggle-btn {
+  background: transparent;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: #333;
+}

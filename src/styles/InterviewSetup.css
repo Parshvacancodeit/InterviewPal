@@ -1,0 +1,148 @@
+/* src/styles/InterviewSetup.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap');
+
+:root {
+  --primary: #FF7601;
+  --background: rgba(255, 255, 255, 0.9);
+  --blurred: rgba(255, 255, 255, 0.25);
+  --text: #1a1a1a;
+  --accent: #ffcfa3;
+}
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+.blurred-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.interview-modal {
+  width: 60vw;
+  max-width: 900px;
+  aspect-ratio: 16 / 9;
+  background: var(--background);
+  border-radius: 20px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.interview-modal p{
+    text-align: center;
+}
+
+.form-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--primary);
+}
+
+.step-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.step-circle {
+  width: 42px;
+  height: 42px;
+  background-color: var(--accent);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.step-circle.active {
+  background-color: var(--primary);
+}
+
+.step-description {
+  text-align: center;
+  margin-top: -0.5rem;
+  font-size: 1rem;
+  color: #444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.step-description svg {
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+.form-step input,
+.form-step select {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.difficulty-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.difficulty-options button {
+  flex: 1;
+  padding: 1rem;
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  background-color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.difficulty-options button.active {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.step-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.step-buttons button {
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary);
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.step-buttons button:hover {
+  background-color: #e66200;
+}
