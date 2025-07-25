@@ -4,6 +4,8 @@ import { FaMicrophone, FaPause, FaStop } from "react-icons/fa";
 import "../styles/InterviewPage.css";
 import axios from "axios";
 
+
+
 function InterviewPage() {
   const location = useLocation();
   const navigate = useNavigate();

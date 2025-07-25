@@ -20,13 +20,15 @@ if (!process.env.MONGO_URI) {
   process.exit(1);
 }
 
-// MongoDB connection
 mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => console.log("✅ MongoDB connected"))
-  .catch((err) => console.error("❌ MongoDB connection failed:", err));
+  serverSelectionTimeoutMS: 5000
+}).then(() => {
+  console.log('✅ MongoDB connected');
+}).catch(err => {
+  console.error('❌ MongoDB connection failed:', err);
+});
+
+
 
 // Middlewares
 app.use(cors({
@@ -93,6 +95,7 @@ app.post("/register", async (req, res) => {
   res.json({ msg: "Registered successfully" });
 });
 
+
 // 🔐 Login
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
@@ -133,6 +136,26 @@ app.get("/session", (req, res) => {
   } else {
     res.status(401).json({ msg: "Not logged in" });
   }
+});
+
+app.post("/start", async (req, res) => {
+  const { tech, difficulty } = req.body;
+
+  console.log(`🎯 Interview start request for tech: ${tech}, difficulty: ${difficulty}`);
+
+  // Dummy questions for now (you can improve this later)
+  const questions = [
+    {
+      question: `Explain ${difficulty} level concept in ${tech}.`,
+      id: 1
+    },
+    {
+      question: `What are key challenges in ${tech}?`,
+      id: 2
+    }
+  ];
+
+  res.json({ questions });
 });
 
 // ✅ Routes

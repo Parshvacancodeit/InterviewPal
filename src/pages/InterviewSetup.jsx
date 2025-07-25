@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/InterviewSetup.css";
 import { FaUser, FaCode, FaTachometerAlt } from "react-icons/fa";
+import api from "../api/axios";
 
 function InterviewSetup() {
   const navigate = useNavigate();
@@ -73,13 +74,31 @@ function InterviewSetup() {
     }
   };
 
-  const handleNext = () => {
-    if (currentStep < steps.length - 1) {
-      setCurrentStep((prev) => prev + 1);
-    } else {
-      navigate("/interview", { state: formData });
+  const handleNext = async () => {
+  if (currentStep < steps.length - 1) {
+    setCurrentStep((prev) => prev + 1);
+  } else {
+    try {
+      const response = await api.post("/start", {
+        tech: formData.skill,
+        difficulty: formData.difficulty,
+      });
+
+      const questions = response.data.questions;
+
+      navigate("/interview", {
+        state: {
+          ...formData,
+          questions,
+        },
+      });
+    } catch (error) {
+      console.error("Failed to fetch questions:", error);
+      alert("Could not start interview. Try again.");
     }
-  };
+  }
+};
+
 
   const handleBack = () => {
     if (currentStep > 0) setCurrentStep((prev) => prev - 1);
