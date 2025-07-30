@@ -1,13 +1,17 @@
-# evaluation/evaluator.py
-
+import sys
 import json
 import time
-from .scorer import get_semantic_similarity, get_keyword_overlap, get_confidence_score, generate_feedback
+import sys
+import os
 
-def evaluate_from_file(json_path):
-    with open(json_path, 'r') as f:
-        data = json.load(f)
+# Dynamically add project root to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+# evaluator.py
+from evaluation.scorer import get_semantic_similarity, get_keyword_overlap, get_confidence_score, generate_feedback
 
+
+def evaluate(data):
+    print("🐍 evaluate() received:", data, file=sys.stderr)
     user = data.get("user_answer", "")
     reference = data.get("reference_answer", "")
     keywords = data.get("keywords", [])
@@ -30,12 +34,15 @@ def evaluate_from_file(json_path):
         "feedback": feedback
     }
 
-    print(json.dumps(result, indent=2))
-    print(f"\n⏱️ Took {round(time.time() - start, 2)} seconds")
+    return result
 
 if __name__ == "__main__":
-    import sys
-    if len(sys.argv) < 2:
-        print("Usage: python3 -m evaluation.evaluator test_inputs/test1.json")
-    else:
-        evaluate_from_file(sys.argv[1])
+    try:
+        input_data = json.load(sys.stdin)
+        print("🐍 JSON loaded:", input_data, file=sys.stderr)
+
+        result = evaluate(input_data)
+        print(json.dumps(result))
+    except Exception as e:
+        print("🔥 Python Exception:", str(e), file=sys.stderr)
+        sys.exit(1)

@@ -3,8 +3,9 @@
 import torch
 from sentence_transformers import SentenceTransformer, util
 from transformers import pipeline
-from .nlp_utils import tokenize_and_lemmatize, detect_negations
-from .text_preprocessor import TextPreprocessor
+from evaluation.nlp_utils import tokenize_and_lemmatize, detect_negations  # ✅
+
+from evaluation.text_preprocessor import TextPreprocessor
 
 preprocessor = TextPreprocessor()
 

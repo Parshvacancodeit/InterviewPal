@@ -9,6 +9,8 @@ const path = require("path");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
+
+
 require("dotenv").config();
 
 const app = express();
@@ -167,9 +169,11 @@ app.post("/start", async (req, res) => {
 // ✅ Routes
 const interviewRoutes = require("./routes/interviewroutes");
 const transcribeRoutes = require("./routes/transcribe");
+const evaluateRoute = require("./routes/evaluate");
 
 app.use("/api/interviews", interviewRoutes);
 app.use("/api", transcribeRoutes);
+app.use("/api/evaluate", evaluateRoute);
 
 // ✅ Root test
 app.get("/", (req, res) => {
