@@ -18,12 +18,12 @@ function InterviewPage() {
   }, [formData, navigate]);
 
   if (!formData) return null;
-  const { name, skill, difficulty } = formData;
+  const { name, skill, difficulty, question } = formData;
 
-  const [messages, setMessages] = useState([
-    { from: "ai", text: `Welcome ${name}, let's begin your ${difficulty} ${skill} interview.` },
-    { from: "ai", text: "Tell me about yourself." }
-  ]);
+const [messages, setMessages] = useState([
+  { from: "ai", text: `Welcome ${name}, let's begin your ${difficulty} ${skill} interview.` },
+  { from: "ai", text: question?.question || "Tell me about yourself." } // 👈 use question from backend
+]);
   const [transcript, setTranscript] = useState("");
   const [recording, setRecording] = useState(false);
   const [paused, setPaused] = useState(false);

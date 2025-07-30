@@ -1,4 +1,3 @@
-// src/pages/InterviewSetup.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/InterviewSetup.css";
@@ -75,30 +74,29 @@ function InterviewSetup() {
   };
 
   const handleNext = async () => {
-  if (currentStep < steps.length - 1) {
-    setCurrentStep((prev) => prev + 1);
-  } else {
-    try {
-      const response = await api.post("/start", {
-        tech: formData.skill,
-        difficulty: formData.difficulty,
-      });
+    if (currentStep < steps.length - 1) {
+      setCurrentStep((prev) => prev + 1);
+    } else {
+      try {
+        const response = await api.post("/start", {
+          tech: formData.skill,
+          difficulty: formData.difficulty,
+        });
 
-      const questions = response.data.questions;
+        const question = response.data.question;
 
-      navigate("/interview", {
-        state: {
-          ...formData,
-          questions,
-        },
-      });
-    } catch (error) {
-      console.error("Failed to fetch questions:", error);
-      alert("Could not start interview. Try again.");
+        navigate("/interview", {
+          state: {
+            ...formData,
+            question, // Pass selected question to InterviewPage
+          },
+        });
+      } catch (error) {
+        console.error("Failed to fetch question:", error);
+        alert("Could not start interview. Try again.");
+      }
     }
-  }
-};
-
+  };
 
   const handleBack = () => {
     if (currentStep > 0) setCurrentStep((prev) => prev - 1);
@@ -109,7 +107,6 @@ function InterviewSetup() {
       <div className="interview-modal">
         <h2 className="form-title">Interview Setup</h2>
         <p>Let’s get to know you better so we can tailor the interview experience to match your goals. Answer a few quick questions, and we’ll take care of the rest.</p>
-
 
         <div className="step-indicator">
           {steps.map((_, index) => (

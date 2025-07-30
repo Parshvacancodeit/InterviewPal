@@ -19,6 +19,7 @@ if (!process.env.MONGO_URI) {
   console.error("❌ MONGO_URI not found in .env!");
   process.exit(1);
 }
+const QUESTIONS_FILE = path.join(__dirname, "questions.json");
 
 mongoose.connect(process.env.MONGO_URI, {
   serverSelectionTimeoutMS: 5000
@@ -143,19 +144,24 @@ app.post("/start", async (req, res) => {
 
   console.log(`🎯 Interview start request for tech: ${tech}, difficulty: ${difficulty}`);
 
-  // Dummy questions for now (you can improve this later)
-  const questions = [
-    {
-      question: `Explain ${difficulty} level concept in ${tech}.`,
-      id: 1
-    },
-    {
-      question: `What are key challenges in ${tech}?`,
-      id: 2
-    }
-  ];
+  try {
+    const fileContent = fs.readFileSync(QUESTIONS_FILE, "utf-8");
+    const questionsData = JSON.parse(fileContent);
 
-  res.json({ questions });
+    const questions = questionsData[tech]?.[difficulty];
+    if (!questions || questions.length === 0) {
+      return res.status(404).json({ msg: "No questions found for selected tech and difficulty." });
+    }
+
+    // Pick one random question
+    const randomIndex = Math.floor(Math.random() * questions.length);
+    const selectedQuestion = questions[randomIndex];
+
+    return res.json({ question: selectedQuestion });
+  } catch (error) {
+    console.error("❌ Error loading questions:", error);
+    return res.status(500).json({ msg: "Failed to fetch questions." });
+  }
 });
 
 // ✅ Routes

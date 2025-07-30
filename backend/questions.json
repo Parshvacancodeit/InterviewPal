@@ -1,0 +1,341 @@
+{
+  "frontend": {
+    "Easy": [
+      {
+        "question": "Explain closures in JavaScript.",
+        "reference_answer": "A closure is a function that retains access to its outer scope.",
+        "keywords": [
+          "closure",
+          "function",
+          "retains",
+          "outer",
+          "access"
+        ]
+      },
+      {
+        "question": "How do forms work in HTML?",
+        "reference_answer": "HTML forms collect user input using form elements like input, select, and textarea.",
+        "keywords": [
+          "elements",
+          "textarea",
+          "html",
+          "using",
+          "collect"
+        ]
+      },
+      {
+        "question": "How do you change text color using CSS?",
+        "reference_answer": "Use the color property in CSS.",
+        "keywords": [
+          "color",
+          "property"
+        ]
+      },
+      {
+        "question": "How does prototypal inheritance work in JavaScript?",
+        "reference_answer": "Objects inherit directly from other objects via their prototype.",
+        "keywords": [
+          "inherit",
+          "from",
+          "their",
+          "prototype",
+          "other"
+        ]
+      },
+      {
+        "question": "How does reconciliation work in React?",
+        "reference_answer": "React compares virtual DOM trees and updates changed elements.",
+        "keywords": [
+          "elements",
+          "compares",
+          "changed",
+          "react",
+          "virtual"
+        ]
+      },
+      {
+        "question": "What are HTML tags?",
+        "reference_answer": "HTML tags are elements used to define content structure in a web page.",
+        "keywords": [
+          "elements",
+          "structure",
+          "define",
+          "html",
+          "tags"
+        ]
+      },
+      {
+        "question": "What is HTML?",
+        "reference_answer": "HTML stands for HyperText Markup Language. It is used to structure web pages.",
+        "keywords": [
+          "structure",
+          "html",
+          "language",
+          "markup",
+          "pages"
+        ]
+      },
+      {
+        "question": "What is JavaScript?",
+        "reference_answer": "JavaScript is a programming language used to create interactive web pages.",
+        "keywords": [
+          "pages",
+          "create",
+          "language",
+          "javascript"
+        ]
+      },
+      {
+        "question": "What is a component in React?",
+        "reference_answer": "A component is a reusable piece of the UI.",
+        "keywords": [
+          "reusable",
+          "component",
+          "piece"
+        ]
+      },
+      {
+        "question": "What is a variable in JavaScript?",
+        "reference_answer": "A variable is a container for storing data values.",
+        "keywords": [
+          "storing",
+          "data",
+          "values",
+          "variable",
+          "container"
+        ]
+      },
+      {
+        "question": "What is hoisting in JavaScript?",
+        "reference_answer": "Hoisting is JavaScript's default behavior of moving declarations to the top.",
+        "keywords": [
+          "behavior",
+          "default",
+          "hoisting",
+          "moving"
+        ]
+      },
+      {
+        "question": "What is semantic HTML?",
+        "reference_answer": "Semantic HTML uses elements that clearly describe their meaning in a human- and machine-readable way.",
+        "keywords": [
+          "elements",
+          "uses",
+          "their",
+          "semantic",
+          "html"
+        ]
+      },
+      {
+        "question": "What is specificity in CSS?",
+        "reference_answer": "Specificity determines which CSS rule applies when multiple rules match.",
+        "keywords": [
+          "rules",
+          "determines",
+          "applies",
+          "multiple",
+          "which"
+        ]
+      },
+      {
+        "question": "What is the difference between <div> and <span>?",
+        "reference_answer": "<div> is a block-level element, <span> is inline.",
+        "keywords": [
+          "<div>",
+          "<span>",
+          "element",
+          "inline"
+        ]
+      },
+      {
+        "question": "What is the event loop in JavaScript?",
+        "reference_answer": "The event loop handles asynchronous callbacks in JavaScript.",
+        "keywords": [
+          "loop",
+          "handles",
+          "callbacks",
+          "event",
+          "javascript"
+        ]
+      },
+      {
+        "question": "What is the virtual DOM in React?",
+        "reference_answer": "Virtual DOM is a lightweight copy of the real DOM for performance.",
+        "keywords": [
+          "real",
+          "copy",
+          "virtual"
+        ]
+      },
+      {
+        "question": "What is useEffect used for in React?",
+        "reference_answer": "useEffect performs side effects in functional components.",
+        "keywords": [
+          "performs",
+          "side",
+          "components",
+          "functional",
+          "effects"
+        ]
+      }
+    ],
+    "Medium": [
+      {
+        "question": "How does HTML5 differ from HTML4?",
+        "reference_answer": "HTML5 introduced new semantic tags, multimedia support, and APIs.",
+        "keywords": [
+          "semantic",
+          "apis",
+          "introduced",
+          "html5",
+          "support"
+        ]
+      },
+      {
+        "question": "What are hooks in React?",
+        "reference_answer": "Hooks let you use state and other features in functional components.",
+        "keywords": [
+          "components",
+          "functional",
+          "hooks",
+          "other",
+          "state"
+        ]
+      },
+      {
+        "question": "What are pseudo-classes in CSS?",
+        "reference_answer": "Pseudo-classes define a special state of an element, like :hover.",
+        "keywords": [
+          "define",
+          "special",
+          "like",
+          "element",
+          "state"
+        ]
+      },
+      {
+        "question": "What is CSS?",
+        "reference_answer": "CSS is used to style and layout web pages.",
+        "keywords": [
+          "pages",
+          "style",
+          "layout",
+          "used"
+        ]
+      },
+      {
+        "question": "What is React?",
+        "reference_answer": "React is a JavaScript library for building user interfaces.",
+        "keywords": [
+          "interfaces",
+          "library",
+          "react",
+          "building",
+          "javascript"
+        ]
+      },
+      {
+        "question": "What is the difference between class and id selectors in CSS?",
+        "reference_answer": "Classes can be reused, IDs are unique per element.",
+        "keywords": [
+          "reused",
+          "classes",
+          "element",
+          "unique"
+        ]
+      }
+    ],
+    "Hard": [
+      {
+        "question": "What is the Event Loop in JavaScript and how does it work?",
+        "reference_answer": "The Event Loop is a mechanism that handles asynchronous operations in JavaScript. It continuously checks the call stack and task queue. If the call stack is empty, it pushes the first task from the queue to the stack and runs it. This allows JavaScript to perform non-blocking operations.",
+        "keywords": ["event loop", "asynchronous", "call stack", "task queue", "javascript"]
+      },
+      {
+        "question": "Explain how prototypal inheritance works in JavaScript.",
+        "reference_answer": "In prototypal inheritance, objects inherit properties and methods from a prototype object. Each object has a hidden [[Prototype]] property that links to another object. When accessing a property, JavaScript checks the object and then the prototype chain.",
+        "keywords": ["prototype", "inheritance", "object", "javascript", "chain"]
+      },
+      {
+        "question": "What is React Fiber and how does it improve rendering?",
+        "reference_answer": "React Fiber is the new reconciliation engine in React 16+. It enables incremental rendering, prioritization of tasks, and pausing/resuming rendering. It helps build smoother, more responsive UIs by splitting work into small units.",
+        "keywords": ["react", "fiber", "reconciliation", "rendering", "ui"]
+      },
+      {
+        "question": "What are Higher-Order Components (HOC) in React?",
+        "reference_answer": "A Higher-Order Component is a function that takes a component and returns a new component with additional behavior. It's used for code reuse in React, commonly for authentication, theming, or logging.",
+        "keywords": ["react", "hoc", "component", "reusable", "function"]
+      },
+      {
+        "question": "Explain the CSS specificity hierarchy.",
+        "reference_answer": "CSS specificity determines which rule applies when multiple selectors match an element. Inline styles have the highest specificity, followed by IDs, classes, attributes, and finally elements. Specificity helps resolve styling conflicts.",
+        "keywords": ["css", "specificity", "selector", "inline", "priority"]
+      },
+      {
+        "question": "What is Webpack and why is it used in frontend development?",
+        "reference_answer": "Webpack is a module bundler that compiles JavaScript modules and assets like CSS or images into a single output file. It's used to optimize loading time, support modern JavaScript features, and manage dependencies.",
+        "keywords": ["webpack", "bundler", "javascript", "modules", "optimize"]
+      },
+      {
+        "question": "How do you handle memory leaks in a React application?",
+        "reference_answer": "To handle memory leaks in React, you should clean up subscriptions and timers in useEffect, avoid stale closures, and make sure components unmount cleanly. Tools like Chrome DevTools and React Profiler help identify leaks.",
+        "keywords": ["memory", "react", "leak", "cleanup", "useeffect"]
+      },
+      {
+        "question": "Explain throttling vs debouncing in JavaScript.",
+        "reference_answer": "Throttling limits the execution of a function to once every specified interval, while debouncing delays function execution until a specified time has passed since the last event. Both optimize performance in events like scrolling or resizing.",
+        "keywords": ["throttle", "debounce", "performance", "event", "function"]
+      },
+      {
+        "question": "How does the Virtual DOM improve performance in React?",
+        "reference_answer": "The Virtual DOM is a lightweight representation of the real DOM. React updates the Virtual DOM first, calculates the difference (diffing), and applies only necessary changes to the real DOM, improving performance.",
+        "keywords": ["react", "virtual dom", "performance", "diff", "update"]
+      },
+      {
+        "question": "What are Web Components and their advantages?",
+        "reference_answer": "Web Components are a set of browser APIs that allow you to create reusable, encapsulated custom HTML elements using Shadow DOM, custom elements, and templates. They promote modularity and reusability.",
+        "keywords": ["web components", "shadow dom", "encapsulation", "custom element"]
+      },
+      {
+        "question": "How does server-side rendering (SSR) work in React?",
+        "reference_answer": "SSR in React means rendering components on the server and sending HTML to the browser. This improves performance and SEO. Tools like Next.js enable SSR using Node.js on the backend.",
+        "keywords": ["ssr", "react", "server", "html", "next.js"]
+      },
+      {
+        "question": "What is hydration in React and when is it used?",
+        "reference_answer": "Hydration is the process where React attaches event listeners and behavior to static HTML generated on the server (SSR). It turns the static content into an interactive React app.",
+        "keywords": ["hydration", "react", "ssr", "html", "event"]
+      },
+      {
+        "question": "What are Micro Frontends?",
+        "reference_answer": "Micro Frontends are a design approach where a frontend app is divided into smaller, independently developed and deployed pieces. Each team can own a feature end-to-end.",
+        "keywords": ["micro frontend", "architecture", "modular", "independent", "feature"]
+      },
+      {
+        "question": "How do CSS-in-JS libraries like styled-components work?",
+        "reference_answer": "CSS-in-JS libraries allow writing CSS in JavaScript. styled-components create styled React components with scoped styles using tagged template literals, removing the need for class names.",
+        "keywords": ["css", "js", "styled", "react", "component"]
+      },
+      {
+        "question": "Explain lazy loading and code splitting in modern web apps.",
+        "reference_answer": "Lazy loading and code splitting reduce initial load time by loading only the required code when needed. Tools like Webpack and React.lazy help implement it.",
+        "keywords": ["lazy", "load", "code", "split", "performance"]
+      },
+      {
+        "question": "What is a Service Worker and how does it enable offline functionality?",
+        "reference_answer": "A Service Worker is a script that runs in the background, intercepting network requests. It can cache assets and enable offline usage, making web apps more reliable.",
+        "keywords": ["service worker", "cache", "offline", "background", "network"]
+      },
+      {
+        "question": "How does tree shaking work in JavaScript bundlers?",
+        "reference_answer": "Tree shaking is a process to remove unused code during bundling. ES6 module syntax allows bundlers like Webpack or Rollup to detect and eliminate dead code.",
+        "keywords": ["tree shaking", "webpack", "rollup", "bundle", "optimize"]
+      },
+      {
+        "question": "How would you optimize a large-scale React app for performance?",
+        "reference_answer": "To optimize a large React app, use memoization (React.memo, useMemo), lazy loading, code splitting, avoiding unnecessary re-renders, and profiling tools like React Profiler.",
+        "keywords": ["react", "optimize", "performance", "memo", "lazy"]
+      }
+    ]
+  }
+}
