@@ -1,8 +1,17 @@
 const mongoose = require("mongoose");
 
-const messageSchema = new mongoose.Schema({
-  from: String, // 'user' or 'ai'
-  text: String,
+const qaSchema = new mongoose.Schema({
+  question: String,
+  referenceAnswer: String,
+  userAnswer: String,
+  transcript: String, // if different from userAnswer
+  scores: {
+    semantic: Number,
+    keyword_overlap: Number,
+    confidence: Number,
+    overall: Number,
+  },
+  feedback: String,
   timestamp: { type: Date, default: Date.now },
 });
 
@@ -12,7 +21,8 @@ const interviewSchema = new mongoose.Schema({
   skill: String,
   difficulty: String,
   startedAt: { type: Date, default: Date.now },
-  messages: [messageSchema],
+  completedAt: Date,
+  questions: [qaSchema],
 });
 
 module.exports = mongoose.model("Interview", interviewSchema);

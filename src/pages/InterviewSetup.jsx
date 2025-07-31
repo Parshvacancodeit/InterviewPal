@@ -83,12 +83,18 @@ function InterviewSetup() {
           difficulty: formData.difficulty,
         });
 
-        const question = response.data.question;
+        const { question, interviewId } = response.data;
+
+        if (!interviewId || !question) {
+          alert("Invalid response from server. Interview not started.");
+          return;
+        }
 
         navigate("/interview", {
           state: {
             ...formData,
-            question, // Pass selected question to InterviewPage
+            question,
+            interviewId, // ✅ Now correctly set
           },
         });
       } catch (error) {
@@ -106,7 +112,7 @@ function InterviewSetup() {
     <div className="blurred-overlay">
       <div className="interview-modal">
         <h2 className="form-title">Interview Setup</h2>
-        <p>Let’s get to know you better so we can tailor the interview experience to match your goals. Answer a few quick questions, and we’ll take care of the rest.</p>
+        <p>Let’s get to know you better so we can tailor the interview experience to match your goals.</p>
 
         <div className="step-indicator">
           {steps.map((_, index) => (

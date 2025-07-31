@@ -4,36 +4,39 @@ const session = require("express-session");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
-const fs = require("fs");
 const path = require("path");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
+const dotenv = require("dotenv");
+const fs = require("fs");
+const Interview = require("./models/Interview");
 
 
-require("dotenv").config();
 
+dotenv.config();
 const app = express();
 const PORT = 5050;
 
-// Validate .env setup
+// Load models
+const User = require("./models/Users");
+
+const QUESTIONS_FILE = path.join(__dirname, "questions.json");
+
+// ✅ Connect to MongoDB
 if (!process.env.MONGO_URI) {
   console.error("❌ MONGO_URI not found in .env!");
   process.exit(1);
 }
-const QUESTIONS_FILE = path.join(__dirname, "questions.json");
-
 mongoose.connect(process.env.MONGO_URI, {
-  serverSelectionTimeoutMS: 5000
+  serverSelectionTimeoutMS: 5000,
 }).then(() => {
-  console.log('✅ MongoDB connected');
+  console.log("✅ MongoDB connected");
 }).catch(err => {
-  console.error('❌ MongoDB connection failed:', err);
+  console.error("❌ MongoDB connection failed:", err);
 });
 
-
-
-// Middlewares
+// ✅ Middleware
 app.use(cors({
   origin: "http://localhost:5173",
   credentials: true,
@@ -41,89 +44,68 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-// 🧠 Persistent session store
 app.use(session({
   secret: "mysecretkey",
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
-  cookie: { secure: false }, // Set to true if using HTTPS
+  cookie: { secure: false },
 }));
 
-// 🔍 Log session on every request
 app.use((req, res, next) => {
   console.log("📦 Incoming session:", req.session.user);
   next();
 });
 
-// File-based user management
-const USERS_FILE = path.join(__dirname, "users.json");
-
-const readUsers = () => {
-  try {
-    if (!fs.existsSync(USERS_FILE)) return [];
-    const data = fs.readFileSync(USERS_FILE, "utf-8");
-    return JSON.parse(data);
-  } catch (err) {
-    console.error("❌ Error reading users:", err);
-    return [];
-  }
-};
-
-const saveUsers = (users) => {
-  try {
-    fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
-    console.log("✅ Users saved");
-  } catch (err) {
-    console.error("❌ Failed to save users:", err);
-  }
-};
-
-// 🧾 Register
+// ✅ Auth: Register
 app.post("/register", async (req, res) => {
   const { username, password, fullName } = req.body;
   if (!username || !password || !fullName)
     return res.status(400).json({ msg: "All fields are required" });
 
-  const users = readUsers();
-  const existingUser = users.find(u => u.username === username);
-  if (existingUser)
-    return res.status(400).json({ msg: "User already exists" });
+  try {
+    const existingUser = await User.findOne({ username });
+    if (existingUser)
+      return res.status(400).json({ msg: "User already exists" });
 
-  const hashedPassword = await bcrypt.hash(password, 10);
-  const newUser = { username, fullName, password: hashedPassword };
-  users.push(newUser);
-  saveUsers(users);
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ username, fullName, password: hashedPassword });
+    await newUser.save();
 
-  res.json({ msg: "Registered successfully" });
+    res.json({ msg: "Registered successfully" });
+  } catch (err) {
+    console.error("❌ Register error:", err);
+    res.status(500).json({ msg: "Internal server error" });
+  }
 });
 
-
-// 🔐 Login
+// ✅ Auth: Login
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
   console.log("📥 Login attempt:", { username });
 
-  const users = readUsers();
-  const user = users.find(u => u.username === username);
-  if (!user) {
-    console.log("❌ User not found");
-    return res.status(401).json({ msg: "User not found" });
+  try {
+    const user = await User.findOne({ username });
+    if (!user) return res.status(401).json({ msg: "User not found" });
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) return res.status(401).json({ msg: "Invalid password" });
+
+    req.session.user = {
+      id: user._id,
+      username: user.username,
+      fullName: user.fullName,
+    };
+
+    console.log("✅ Session created:", req.session.user);
+    res.json({ msg: "Logged in" });
+  } catch (err) {
+    console.error("❌ Login error:", err);
+    res.status(500).json({ msg: "Internal server error" });
   }
-
-  const isMatch = await bcrypt.compare(password, user.password);
-  if (!isMatch) {
-    console.log("❌ Invalid password");
-    return res.status(401).json({ msg: "Invalid password" });
-  }
-
-  req.session.user = { username: user.username, fullName: user.fullName };
-  console.log("✅ Session created:", req.session.user);
-
-  res.json({ msg: "Logged in" });
 });
 
-// 🔓 Logout
+// ✅ Auth: Logout
 app.post("/logout", (req, res) => {
   req.session.destroy(() => {
     console.log("👋 Logged out user");
@@ -131,7 +113,7 @@ app.post("/logout", (req, res) => {
   });
 });
 
-// 🔎 Check Session
+// ✅ Auth: Session Check
 app.get("/session", (req, res) => {
   console.log("🔍 Checking session:", req.session.user);
   if (req.session.user) {
@@ -141,10 +123,13 @@ app.get("/session", (req, res) => {
   }
 });
 
+// ✅ Interview Start Logic (temporary, random)
 app.post("/start", async (req, res) => {
   const { tech, difficulty } = req.body;
 
-  console.log(`🎯 Interview start request for tech: ${tech}, difficulty: ${difficulty}`);
+  if (!req.session.user) {
+    return res.status(401).json({ msg: "Unauthorized. Please login first." });
+  }
 
   try {
     const fileContent = fs.readFileSync(QUESTIONS_FILE, "utf-8");
@@ -155,37 +140,54 @@ app.post("/start", async (req, res) => {
       return res.status(404).json({ msg: "No questions found for selected tech and difficulty." });
     }
 
-    // Pick one random question
+    // Pick one question
     const randomIndex = Math.floor(Math.random() * questions.length);
     const selectedQuestion = questions[randomIndex];
 
-    return res.json({ question: selectedQuestion });
+    // Save new interview
+    const newInterview = new Interview({
+      userId: req.session.user.id,
+      name: req.session.user.fullName,
+      skill: tech,
+      difficulty: difficulty,
+      questions: [], // will be filled during interview
+    });
+
+    const savedInterview = await newInterview.save();
+
+    res.json({
+      question: selectedQuestion,
+      interviewId: savedInterview._id,
+    });
   } catch (error) {
-    console.error("❌ Error loading questions:", error);
-    return res.status(500).json({ msg: "Failed to fetch questions." });
+    console.error("❌ Error during /start:", error);
+    return res.status(500).json({ msg: "Failed to start interview." });
   }
 });
 
-// ✅ Routes
+// ✅ API Routes
+const interviewDataRoutes = require("./routes/interviewData");
 const interviewRoutes = require("./routes/interviewroutes");
 const transcribeRoutes = require("./routes/transcribe");
 const evaluateRoute = require("./routes/evaluate");
 
+
 app.use("/api/interviews", interviewRoutes);
 app.use("/api", transcribeRoutes);
 app.use("/api/evaluate", evaluateRoute);
+app.use("/api/interview-data", interviewDataRoutes);
 
-// ✅ Root test
+// ✅ Root
 app.get("/", (req, res) => {
   res.send("✅ Backend is running");
 });
 
-// ❌ 404 fallback
+// ❌ 404
 app.use((req, res) => {
   res.status(404).json({ msg: "❌ Route not found" });
 });
 
-// 🚀 Start server
+// 🚀 Start
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
