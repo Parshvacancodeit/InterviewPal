@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaMicrophone, FaPause, FaStop } from "react-icons/fa";
 import "../styles/InterviewPage.css";
-import api from "../api/axios"; // ✅ use centralized axios instance
+import api from "../api/axios"; // ✅ centralized axios instance
 
 // Helper: Build the evaluation payload
 const buildEvaluationPayload = (questionObj, userAnswer) => ({
@@ -40,8 +40,6 @@ function InterviewPage() {
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
   const currentQuestionRef = useRef(question);
-
-
 
   const handleStartRecording = async () => {
     try {
@@ -110,11 +108,34 @@ function InterviewPage() {
                 text: `Evaluation: Overall Score - ${evalResult.score.overall}. Feedback - ${evalResult.feedback}`
               }
             ]);
+
+            console.log("📤 Saving answer to DB with payload:", {
+  interviewId,
+  question: currentQuestionRef.current.question,
+  referenceAnswer: currentQuestionRef.current.reference_answer,
+  userAnswer: text,
+  transcript: text,
+  scores: evalResult.score,
+  feedback: evalResult.feedback,
+});
+
+            // ✅ Save the answer
+            await api.post("/api/interview-data/save-answer", {
+              interviewId,
+              question: currentQuestionRef.current.question,
+              referenceAnswer: currentQuestionRef.current.reference_answer,
+              userAnswer: text,
+              transcript: text,
+              scores: evalResult.score,
+              feedback: evalResult.feedback,
+            });
+
           } catch (evalErr) {
             console.error("Evaluation failed:", evalErr);
             setMessages(prev => [...prev, { from: "ai", text: "Evaluation failed." }]);
           }
 
+          // ✅ Fetch next question or end interview
           setTimeout(async () => {
             try {
               const nextQRes = await api.post("/start", {
@@ -128,13 +149,16 @@ function InterviewPage() {
                 currentQuestionRef.current = nextQuestion;
                 setMessages(prev => [...prev, { from: "ai", text: nextQuestion.question }]);
               } else {
-                setMessages(prev => [...prev, { from: "ai", text: "No more questions. Thank you!" }]);
+                // ✅ Mark interview as complete
+                await api.post("/api/interview-data/complete", { interviewId });
+                setMessages(prev => [...prev, { from: "ai", text: "✅ Interview completed. Thank you!" }]);
               }
             } catch (fetchErr) {
               console.error("⚠️ Failed to fetch next question:", fetchErr);
               setMessages(prev => [...prev, { from: "ai", text: "Error fetching next question." }]);
+            } finally {
+              setLoading(false);
             }
-            setLoading(false);
           }, 2000);
 
         } catch (err) {

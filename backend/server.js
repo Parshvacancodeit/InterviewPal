@@ -125,7 +125,7 @@ app.get("/session", (req, res) => {
 
 // ✅ Interview Start Logic (temporary, random)
 app.post("/start", async (req, res) => {
-  const { tech, difficulty } = req.body;
+  const { name ,tech, difficulty } = req.body;
 
   if (!req.session.user) {
     return res.status(401).json({ msg: "Unauthorized. Please login first." });
@@ -146,6 +146,7 @@ app.post("/start", async (req, res) => {
 
     // Save new interview
     const newInterview = new Interview({
+      name, 
       userId: req.session.user.id,
       name: req.session.user.fullName,
       skill: tech,

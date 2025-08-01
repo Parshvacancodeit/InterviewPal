@@ -81,6 +81,7 @@ function InterviewSetup() {
         const response = await api.post("/start", {
           tech: formData.skill,
           difficulty: formData.difficulty,
+          name: formData.name,
         });
 
         const { question, interviewId } = response.data;
