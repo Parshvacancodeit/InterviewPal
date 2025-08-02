@@ -146,7 +146,7 @@ app.post("/start", async (req, res) => {
 
     // Save new interview
     const newInterview = new Interview({
-      name, 
+      interviewTitle: name,
       userId: req.session.user.id,
       name: req.session.user.fullName,
       skill: tech,

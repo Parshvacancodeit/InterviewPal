@@ -17,7 +17,7 @@ const qaSchema = new mongoose.Schema({
 
 const interviewSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-  name: String,
+  interviewTitle: String,
   skill: String,
   difficulty: String,
   questions: [qaSchema], // 🧠 Holds all Q&As with scores/feedback

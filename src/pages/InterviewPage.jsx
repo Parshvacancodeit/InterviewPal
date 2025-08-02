@@ -139,6 +139,7 @@ function InterviewPage() {
           setTimeout(async () => {
             try {
               const nextQRes = await api.post("/start", {
+                name:name,
                 tech: skill,
                 difficulty: difficulty
               });
