@@ -17,7 +17,9 @@
   font-weight: 600;
   color: #333;
   margin: 0;
+  cursor: pointer;
 }
+
 
 .navbar-login-btn {
   padding: 0.4rem 1rem;

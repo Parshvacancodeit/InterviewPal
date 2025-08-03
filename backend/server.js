@@ -14,6 +14,7 @@ const Interview = require("./models/Interview");
 
 
 
+
 dotenv.config();
 const app = express();
 const PORT = 5050;
@@ -171,12 +172,14 @@ const interviewDataRoutes = require("./routes/interviewData");
 const interviewRoutes = require("./routes/interviewroutes");
 const transcribeRoutes = require("./routes/transcribe");
 const evaluateRoute = require("./routes/evaluate");
+const interviewFetchRoutes = require("./routes/interviewFetch");
 
 
 app.use("/api/interviews", interviewRoutes);
 app.use("/api", transcribeRoutes);
 app.use("/api/evaluate", evaluateRoute);
 app.use("/api/interview-data", interviewDataRoutes);
+app.use("/api/interview-fetch", interviewFetchRoutes);
 
 // ✅ Root
 app.get("/", (req, res) => {

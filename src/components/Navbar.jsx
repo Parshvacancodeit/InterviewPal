@@ -3,11 +3,13 @@ import LoginModal from './LoginModal';
 import ProfileDropdown from './ProfileDropdown';
 import axios from '../api/axios';
 import '../styles/Navbar.css'; // ✅ external CSS
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -26,8 +28,9 @@ function Navbar() {
   };
 
   return (
+    
     <nav className="navbar">
-      <h1 className="navbar-logo">InterviewPal</h1>
+      <h1 className="navbar-logo" onClick={() => navigate("/")}>InterviewPal</h1>
 
       {isLoggedIn ? (
   <div className="navbar-profile-wrapper">
