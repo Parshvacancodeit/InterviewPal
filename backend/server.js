@@ -174,6 +174,8 @@ const transcribeRoutes = require("./routes/transcribe");
 const evaluateRoute = require("./routes/evaluate");
 const interviewFetchRoutes = require("./routes/interviewFetch");
 
+const evaluateAndSaveRoute = require("./routes/evaluate-and-save");
+app.use("/api/evaluate-and-save", evaluateAndSaveRoute);
 
 app.use("/api/interviews", interviewRoutes);
 app.use("/api", transcribeRoutes);
