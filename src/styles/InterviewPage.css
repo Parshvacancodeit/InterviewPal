@@ -139,3 +139,75 @@ body {
   border-radius: 12px;
   object-fit: cover;
 }
+
+
+.interview-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--bg);
+  font-family: 'Inter', sans-serif;
+}
+
+.interview-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.interview-header h2 {
+  color: var(--primary);
+  margin: 0;
+}
+
+.qa-history {
+  max-height: 50vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-right: 0.5rem;
+}
+
+.qa-card {
+  background: #fff;
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.question {
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.answer {
+  color: var(--dark);
+  font-size: 1rem;
+}
+
+.controls-box {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.controls-box button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.controls-box button:hover {
+  background-color: #e85e00;
+}

@@ -247,7 +247,7 @@ import { useState, useRef, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaMicrophone, FaPause, FaStop } from "react-icons/fa";
 import "../styles/InterviewPage.css";
-import api from "../api/axios"; // ✅ centralized axios instance
+import api from "../api/axios";
 
 const buildEvaluationPayload = (questionObj, userAnswer) => ({
   question: questionObj.question,
@@ -269,19 +269,18 @@ function InterviewPage() {
 
   const { name, skill, difficulty, question, interviewId } = formData;
 
-  const [messages, setMessages] = useState([
-    { from: "ai", text: `Welcome ${name}, let's begin your ${difficulty} ${skill} interview.` },
-    { from: "ai", text: question?.question || "Tell me about yourself." }
-  ]);
-
   const [transcript, setTranscript] = useState("");
   const [recording, setRecording] = useState(false);
   const [paused, setPaused] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [qaHistory, setQaHistory] = useState([
+    { question: question?.question || "Tell me about yourself.", answer: null }
+  ]);
 
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
   const currentQuestionRef = useRef(question);
+  const questionCount = qaHistory.length;
 
   const handleStartRecording = async () => {
     try {
@@ -298,7 +297,6 @@ function InterviewPage() {
       setRecording(true);
       setPaused(false);
     } catch (err) {
-      console.error("🎙️ Mic error:", err);
       alert("Microphone access denied.");
     }
   };
@@ -318,7 +316,6 @@ function InterviewPage() {
 
       mediaRecorderRef.current.onstop = async () => {
         const audioBlob = new Blob(audioChunksRef.current, { type: "audio/webm" });
-
         const formDataAudio = new FormData();
         formDataAudio.append("audio", audioBlob, "recording.webm");
 
@@ -335,24 +332,22 @@ function InterviewPage() {
 
           const payload = buildEvaluationPayload(currentQuestionRef.current, text);
 
-          // ✅ Show user answer
-          setMessages(prev => [...prev, { from: "user", text }]);
-
-          // ✅ Show evaluating immediately
-          setMessages(prev => [...prev, { from: "ai", text: "Evaluating..." }]);
-
-          // ✅ Fire-and-forget: evaluate and save in background
           api.post("/api/evaluate-and-save", {
             payload,
             interviewId,
             question: currentQuestionRef.current.question,
             referenceAnswer: currentQuestionRef.current.reference_answer,
             transcript: text,
-          }).catch(err => {
-            console.error("Background evaluation error:", err);
+          }).catch(console.error);
+
+          // Update latest answer
+          setQaHistory(prev => {
+            const updated = [...prev];
+            updated[updated.length - 1].answer = text;
+            return updated;
           });
 
-          // ✅ Move to next question after 2 seconds, regardless of evaluation status
+          // Get next question
           setTimeout(async () => {
             try {
               const nextQRes = await api.post("/start", {
@@ -365,21 +360,20 @@ function InterviewPage() {
 
               if (nextQuestion?.question) {
                 currentQuestionRef.current = nextQuestion;
-                setMessages(prev => [...prev, { from: "ai", text: nextQuestion.question }]);
+                setTranscript("");
+                setQaHistory(prev => [...prev, { question: nextQuestion.question, answer: null }]);
               } else {
                 await api.post("/api/interview-data/complete", { interviewId });
-                setMessages(prev => [...prev, { from: "ai", text: "✅ Interview completed. Thank you!" }]);
+                setTranscript("✅ Interview completed. Thank you!");
               }
-            } catch (fetchErr) {
-              console.error("⚠️ Failed to fetch next question:", fetchErr);
-              setMessages(prev => [...prev, { from: "ai", text: "Error fetching next question." }]);
+            } catch {
+              setTranscript("⚠️ Error fetching next question.");
             } finally {
               setLoading(false);
             }
           }, 2000);
 
         } catch (err) {
-          console.error("❌ Transcription failed:", err);
           alert("Transcription failed.");
           setLoading(false);
         }
@@ -389,6 +383,8 @@ function InterviewPage() {
 
   const handleEndInterview = async () => {
     if (!interviewId) return alert("Interview ID not found.");
+    const confirmEnd = window.confirm("Are you sure you want to end the interview?");
+    if (!confirmEnd) return;
 
     try {
       const response = await api.post("/api/interview-data/complete", { interviewId });
@@ -399,50 +395,50 @@ function InterviewPage() {
       } else {
         alert("Failed to end interview.");
       }
-    } catch (err) {
-      console.error("❌ Error ending interview:", err);
+    } catch {
       alert("Error ending interview.");
     }
   };
 
   return (
-    <div className="interview-wrapper">
-      <div className="chat-box">
-        {messages.map((msg, index) => (
-          <div key={index} className={`chat-bubble ${msg.from}`}>
-            {msg.text}
+    <div className="interview-container">
+      <div className="interview-header">
+        <h2>Interview with {name}</h2>
+        <p>{skill} | {difficulty} | Question {questionCount}</p>
+      </div>
+
+      <div className="qa-history">
+        {qaHistory.map((item, index) => (
+          <div key={index} className="qa-card">
+            <div className="question">
+              <strong>Q{index + 1}:</strong> {item.question}
+            </div>
+            {item.answer && (
+              <div className="answer">
+                <strong>Your Answer:</strong> {item.answer}
+              </div>
+            )}
           </div>
         ))}
       </div>
 
-      <div className="voice-input-box">
-        <input
-          type="text"
-          value={loading ? "Transcribing..." : transcript}
-          onChange={(e) => setTranscript(e.target.value)}
-          placeholder="Your spoken answer will appear here..."
-          readOnly
-        />
-
+      <div className="controls-box">
         {!recording && (
-          <button onClick={handleStartRecording} title="Start Recording">
-            <FaMicrophone />
+          <button onClick={handleStartRecording}>
+            <FaMicrophone /> Start
           </button>
         )}
-
         {recording && !paused && (
-          <button onClick={handlePauseRecording} title="Pause Recording">
-            <FaPause />
+          <button onClick={handlePauseRecording}>
+            <FaPause /> Pause
           </button>
         )}
-
         {recording && (
-          <button onClick={handleStopRecording} title="Stop and Transcribe">
-            <FaStop />
+          <button onClick={handleStopRecording}>
+            <FaStop /> Stop
           </button>
         )}
-
-        <button onClick={handleEndInterview} title="End Interview">
+        <button onClick={handleEndInterview}>
           End Interview
         </button>
       </div>
