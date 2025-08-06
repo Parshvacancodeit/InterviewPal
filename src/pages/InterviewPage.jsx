@@ -247,14 +247,10 @@ import { useState, useRef, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaMicrophone, FaPause, FaStop } from "react-icons/fa";
 import "../styles/InterviewPage.css";
-import api from "../api/axios";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
-const buildEvaluationPayload = (questionObj, userAnswer) => ({
-  question: questionObj.question,
-  reference_answer: questionObj.reference_answer,
-  keywords: questionObj.keywords,
-  user_answer: userAnswer,
-});
+import api from "../api/axios";
 
 function InterviewPage() {
   const location = useLocation();
@@ -276,11 +272,51 @@ function InterviewPage() {
   const [qaHistory, setQaHistory] = useState([
     { question: question?.question || "Tell me about yourself.", answer: null }
   ]);
+  const [availableVoices, setAvailableVoices] = useState([]);
 
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
   const currentQuestionRef = useRef(question);
   const questionCount = qaHistory.length;
+  const MAX_QUESTIONS = 5;
+
+  // 🗣️ Load available voices on mount
+  useEffect(() => {
+    const loadVoices = () => {
+      const voices = window.speechSynthesis.getVoices();
+      setAvailableVoices(voices);
+    };
+
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+    loadVoices();
+  }, []);
+
+  // 🗣️ Speak function with sweet voice
+  const speakText = (text) => {
+    if (!text || availableVoices.length === 0) return;
+
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+
+    const sweetVoice = availableVoices.find(
+      (v) =>
+        v.name.includes("Google UK English Female") ||
+        v.name.includes("Google US English") ||
+        v.name.includes("Microsoft Zira") ||
+        v.name.includes("Samantha")
+    );
+
+    if (sweetVoice) utterance.voice = sweetVoice;
+
+    window.speechSynthesis.speak(utterance);
+  };
+
+  // 🗣️ Speak first question on page load
+  useEffect(() => {
+    const firstQ = question?.question || "Tell me about yourself.";
+    speakText(firstQ);
+  }, [availableVoices]);
 
   const handleStartRecording = async () => {
     try {
@@ -297,7 +333,7 @@ function InterviewPage() {
       setRecording(true);
       setPaused(false);
     } catch (err) {
-      alert("Microphone access denied.");
+      toast.error("Microphone access denied.");
     }
   };
 
@@ -330,7 +366,12 @@ function InterviewPage() {
           const { text } = response.data;
           setTranscript(text);
 
-          const payload = buildEvaluationPayload(currentQuestionRef.current, text);
+          const payload = {
+            question: currentQuestionRef.current.question,
+            reference_answer: currentQuestionRef.current.reference_answer,
+            keywords: currentQuestionRef.current.keywords,
+            user_answer: text,
+          };
 
           api.post("/api/evaluate-and-save", {
             payload,
@@ -340,14 +381,12 @@ function InterviewPage() {
             transcript: text,
           }).catch(console.error);
 
-          // Update latest answer
           setQaHistory(prev => {
             const updated = [...prev];
             updated[updated.length - 1].answer = text;
             return updated;
           });
 
-          // Get next question
           setTimeout(async () => {
             try {
               const nextQRes = await api.post("/start", {
@@ -358,23 +397,37 @@ function InterviewPage() {
 
               const nextQuestion = nextQRes.data.question;
 
+              if (qaHistory.length >= MAX_QUESTIONS) {
+                await api.post("/api/interview-data/complete", { interviewId });
+                const doneMsg = "✅ Interview completed. Thank you!";
+                setTranscript(doneMsg);
+                speakText(doneMsg);
+                setLoading(false);
+                return;
+              }
+
               if (nextQuestion?.question) {
                 currentQuestionRef.current = nextQuestion;
+                speakText(nextQuestion.question);
                 setTranscript("");
                 setQaHistory(prev => [...prev, { question: nextQuestion.question, answer: null }]);
               } else {
                 await api.post("/api/interview-data/complete", { interviewId });
-                setTranscript("✅ Interview completed. Thank you!");
+                const doneMsg = "✅ Interview completed. Thank you!";
+                setTranscript(doneMsg);
+                speakText(doneMsg);
               }
             } catch {
-              setTranscript("⚠️ Error fetching next question.");
+              const errMsg = "⚠️ Error fetching next question.";
+              setTranscript(errMsg);
+              speakText(errMsg);
             } finally {
               setLoading(false);
             }
           }, 2000);
 
         } catch (err) {
-          alert("Transcription failed.");
+          toast.error("Transcription failed.");
           setLoading(false);
         }
       };
@@ -382,7 +435,8 @@ function InterviewPage() {
   };
 
   const handleEndInterview = async () => {
-    if (!interviewId) return alert("Interview ID not found.");
+    if (!interviewId) return toast.warning("Interview ID not found.");
+
     const confirmEnd = window.confirm("Are you sure you want to end the interview?");
     if (!confirmEnd) return;
 
@@ -390,13 +444,14 @@ function InterviewPage() {
       const response = await api.post("/api/interview-data/complete", { interviewId });
 
       if (response.data.success) {
-        alert("Interview ended successfully!");
+        toast.success("Interview ended successfully!");
+        speakText("Interview ended successfully!");
         navigate("/");
       } else {
-        alert("Failed to end interview.");
+        toast.error("Failed to end interview.");
       }
     } catch {
-      alert("Error ending interview.");
+      toast.error("Error ending interview.");
     }
   };
 
@@ -404,7 +459,14 @@ function InterviewPage() {
     <div className="interview-container">
       <div className="interview-header">
         <h2>Interview with {name}</h2>
-        <p>{skill} | {difficulty} | Question {questionCount}</p>
+        <p>{skill} | {difficulty} | Question {questionCount} of {MAX_QUESTIONS}</p>
+
+        <div className="progress-bar-container">
+          <div
+            className="progress-bar-fill"
+            style={{ width: `${(questionCount / MAX_QUESTIONS) * 100}%` }}
+          />
+        </div>
       </div>
 
       <div className="qa-history">
@@ -438,10 +500,25 @@ function InterviewPage() {
             <FaStop /> Stop
           </button>
         )}
-        <button onClick={handleEndInterview}>
-          End Interview
-        </button>
+        <button onClick={handleEndInterview}>End Interview</button>
+
+        {recording && !paused && (
+          <div className="audio-wave-container">
+            {[...Array(5)].map((_, i) => (
+              <div className="audio-bar" key={i}></div>
+            ))}
+          </div>
+        )}
       </div>
+
+      {loading && (
+        <div className="loader-container">
+          <div className="loader" />
+          <span>Transcribing...</span>
+        </div>
+      )}
+
+      <ToastContainer />
     </div>
   );
 }

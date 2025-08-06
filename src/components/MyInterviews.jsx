@@ -71,7 +71,6 @@ const MyInterviews = () => {
                 <div className="qa-body">
                   <p><strong>Your Answer:</strong> {qa.userAnswer}</p>
                   <p><strong>Reference:</strong> {qa.referenceAnswer}</p>
-                  <p><strong>Transcript:</strong> {qa.transcript}</p>
                   <p><strong>Feedback:</strong> {qa.feedback}</p>
                 </div>
               </div>
