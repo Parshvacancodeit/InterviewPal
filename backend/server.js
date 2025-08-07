@@ -173,6 +173,7 @@ const interviewRoutes = require("./routes/interviewroutes");
 const transcribeRoutes = require("./routes/transcribe");
 const evaluateRoute = require("./routes/evaluate");
 const interviewFetchRoutes = require("./routes/interviewFetch");
+const introRoutes = require('./routes/intro');
 
 const evaluateAndSaveRoute = require("./routes/evaluate-and-save");
 app.use("/api/evaluate-and-save", evaluateAndSaveRoute);
@@ -182,6 +183,8 @@ app.use("/api", transcribeRoutes);
 app.use("/api/evaluate", evaluateRoute);
 app.use("/api/interview-data", interviewDataRoutes);
 app.use("/api/interview-fetch", interviewFetchRoutes);
+app.use('/api/intro',introRoutes); 
+
 
 // ✅ Root
 app.get("/", (req, res) => {

@@ -256,6 +256,17 @@ function InterviewPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const formData = location.state;
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    api.get("/session", { withCredentials: true })
+      .then((res) => {
+        setUser(res.data.user); // 👈 user contains fullName and username
+      })
+      .catch(() => {
+        setUser(null);
+      });
+  }, []);
+
 
   useEffect(() => {
     if (!formData) navigate("/interview/setup");
@@ -263,24 +274,25 @@ function InterviewPage() {
 
   if (!formData) return null;
 
+
   const { name, skill, difficulty, question, interviewId } = formData;
 
   const [transcript, setTranscript] = useState("");
   const [recording, setRecording] = useState(false);
   const [paused, setPaused] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [qaHistory, setQaHistory] = useState([
-    { question: question?.question || "Tell me about yourself.", answer: null }
-  ]);
+  const [qaHistory, setQaHistory] = useState([]);
   const [availableVoices, setAvailableVoices] = useState([]);
+  const [hasIntroduced, setHasIntroduced] = useState(false);
+  const [waitingForStartConfirmation, setWaitingForStartConfirmation] = useState(false);
 
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
-  const currentQuestionRef = useRef(question);
+  const currentQuestionRef = useRef(null);
   const questionCount = qaHistory.length;
   const MAX_QUESTIONS = 5;
 
-  // 🗣️ Load available voices on mount
+  // 🗣️ Load voices
   useEffect(() => {
     const loadVoices = () => {
       const voices = window.speechSynthesis.getVoices();
@@ -291,31 +303,30 @@ function InterviewPage() {
     loadVoices();
   }, []);
 
-  // 🗣️ Speak function with sweet voice
   const speakText = (text) => {
-    if (!text || availableVoices.length === 0) return;
+    return new Promise((resolve) => {
+      if (!text || availableVoices.length === 0) return resolve();
 
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-US';
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
 
-    const sweetVoice = availableVoices.find(
-      (v) =>
-        v.name.includes("Google UK English Female") ||
-        v.name.includes("Google US English") ||
-        v.name.includes("Microsoft Zira") ||
-        v.name.includes("Samantha")
-    );
+      const sweetVoice = availableVoices.find(v => v.name.includes("Samantha"));
+      if (sweetVoice) utterance.voice = sweetVoice;
 
-    if (sweetVoice) utterance.voice = sweetVoice;
-
-    window.speechSynthesis.speak(utterance);
+      utterance.onend = () => resolve();
+      window.speechSynthesis.speak(utterance);
+    });
   };
 
-  // 🗣️ Speak first question on page load
+  // 🗣️ Initial greeting
   useEffect(() => {
-    const firstQ = question?.question || "Tell me about yourself.";
-    speakText(firstQ);
+    if (availableVoices.length === 0) return;
+
+    (async () => {
+      await speakText(`Hello, I will be taking your ${skill} interview today.`);
+      await speakText("Let's begin with your introduction.");
+    })();
   }, [availableVoices]);
 
   const handleStartRecording = async () => {
@@ -364,8 +375,72 @@ function InterviewPage() {
           });
 
           const { text } = response.data;
+          console.log("🎤 Transcribed Text:", text);
           setTranscript(text);
 
+          // ⏸ Awaiting start confirmation?
+          if (waitingForStartConfirmation) {
+            const userSaid = text.toLowerCase().trim();
+            if (["yes", "yeah", "sure", "okay", "ok", "yup"].some(word => userSaid.includes(word))) {
+              console.log("✅ User confirmed to start interview");
+              setWaitingForStartConfirmation(false);
+              setHasIntroduced(true);
+
+              try {
+                const nextQRes = await api.post("/start", {
+                  name,
+                  tech: skill,
+                  difficulty
+                });
+
+                const nextQuestion = nextQRes.data.question;
+                currentQuestionRef.current = nextQuestion;
+                setTranscript("");
+                await speakText(nextQuestion.question);
+                setQaHistory([{ question: nextQuestion.question, answer: null }]);
+              } catch (err) {
+                console.error("❌ Error fetching question:", err);
+                await speakText("Sorry, I couldn't load your interview questions.");
+              } finally {
+                setLoading(false);
+              }
+            } else {
+              console.log("❌ User did not confirm start.");
+              await speakText("Let me know when you're ready to start the interview.");
+              setLoading(false);
+            }
+            return;
+          }
+
+          // 🟡 Intro flow
+          if (!hasIntroduced) {
+            try {
+              const introRes = await api.post("/api/intro", {
+  text: text,
+  name: user.fullName
+});
+
+              console.log("🧠 Intro Parsed:", introRes.data.parsed);
+              console.log("📢 Feedback:", introRes.data.message);
+              console.log("🔍 Name being sent from frontend:", user.fullName);
+
+
+              await speakText(introRes.data.message);
+              setTranscript("");
+
+              await speakText("Shall we start the interview?");
+              setWaitingForStartConfirmation(true);
+              toast.info("Awaiting confirmation to begin the interview...");
+            } catch (err) {
+              toast.error("Intro analysis failed.");
+              console.error("❌ Intro error:", err);
+              await speakText("Sorry, I couldn't understand your introduction.");
+              setLoading(false);
+            }
+            return;
+          }
+
+          // ✅ Regular Q&A
           const payload = {
             question: currentQuestionRef.current.question,
             reference_answer: currentQuestionRef.current.reference_answer,
@@ -373,13 +448,13 @@ function InterviewPage() {
             user_answer: text,
           };
 
-          api.post("/api/evaluate-and-save", {
+          await api.post("/api/evaluate-and-save", {
             payload,
             interviewId,
             question: currentQuestionRef.current.question,
             referenceAnswer: currentQuestionRef.current.reference_answer,
             transcript: text,
-          }).catch(console.error);
+          });
 
           setQaHistory(prev => {
             const updated = [...prev];
@@ -401,26 +476,26 @@ function InterviewPage() {
                 await api.post("/api/interview-data/complete", { interviewId });
                 const doneMsg = "✅ Interview completed. Thank you!";
                 setTranscript(doneMsg);
-                speakText(doneMsg);
+                await speakText(doneMsg);
                 setLoading(false);
                 return;
               }
 
               if (nextQuestion?.question) {
                 currentQuestionRef.current = nextQuestion;
-                speakText(nextQuestion.question);
+                await speakText(nextQuestion.question);
                 setTranscript("");
                 setQaHistory(prev => [...prev, { question: nextQuestion.question, answer: null }]);
               } else {
                 await api.post("/api/interview-data/complete", { interviewId });
                 const doneMsg = "✅ Interview completed. Thank you!";
                 setTranscript(doneMsg);
-                speakText(doneMsg);
+                await speakText(doneMsg);
               }
             } catch {
               const errMsg = "⚠️ Error fetching next question.";
               setTranscript(errMsg);
-              speakText(errMsg);
+              await speakText(errMsg);
             } finally {
               setLoading(false);
             }
@@ -428,6 +503,7 @@ function InterviewPage() {
 
         } catch (err) {
           toast.error("Transcription failed.");
+          console.error("❌ Transcription error:", err);
           setLoading(false);
         }
       };
@@ -445,7 +521,7 @@ function InterviewPage() {
 
       if (response.data.success) {
         toast.success("Interview ended successfully!");
-        speakText("Interview ended successfully!");
+        await speakText("Interview ended successfully!");
         navigate("/");
       } else {
         toast.error("Failed to end interview.");
@@ -460,7 +536,6 @@ function InterviewPage() {
       <div className="interview-header">
         <h2>Interview with {name}</h2>
         <p>{skill} | {difficulty} | Question {questionCount} of {MAX_QUESTIONS}</p>
-
         <div className="progress-bar-container">
           <div
             className="progress-bar-fill"
