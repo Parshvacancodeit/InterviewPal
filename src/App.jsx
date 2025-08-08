@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import LandingPage from './pages/LandingPage';
 import InterviewSetup from './pages/InterviewSetup';
 import MyInterviews from './components/MyInterviews';
+import Report from './components/Report';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/interview" element={<InterviewPage />} />
         <Route path="/result" element={<ResultPage />} />
         <Route path="/my-interviews" element={<MyInterviews />} />
+        <Route path="/report/:interviewId" element={<Report />} />
       </Routes>
     </>
   );

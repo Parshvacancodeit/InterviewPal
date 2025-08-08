@@ -1,0 +1,74 @@
+/* src/pages/Report.css */
+
+.report-wrapper {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  font-family: 'Inter', sans-serif;
+  color: #1f2937;
+}
+
+.report-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.report-subheader {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+.report-subheader svg {
+  margin-right: 0.4rem;
+}
+
+.report-score {
+  margin-bottom: 2rem;
+}
+
+.score-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #4f46e5;
+}
+
+.report-chart {
+  margin-bottom: 2.5rem;
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.qa-block {
+  margin-bottom: 2rem;
+}
+
+.qa-block h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #374151;
+}
+
+.qa-card {
+  background: #f3f4f6;
+  padding: 1.25rem;
+  border-radius: 12px;
+  line-height: 1.6;
+}
+
+.report-feedback {
+  margin-top: 2rem;
+  background: #e0e7ff;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+}

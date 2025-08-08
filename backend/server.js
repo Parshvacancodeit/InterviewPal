@@ -176,7 +176,15 @@ const interviewFetchRoutes = require("./routes/interviewFetch");
 const introRoutes = require('./routes/intro');
 
 const evaluateAndSaveRoute = require("./routes/evaluate-and-save");
+// In app.js or server.js
+const reportRoutes = require('./routes/report');
+app.use('/api', reportRoutes);  // Or any base path like /api/report
+
 app.use("/api/evaluate-and-save", evaluateAndSaveRoute);
+const {getReportById}  = require('./controllers/reportController');
+
+app.get('/report/:id', getReportById);
+
 
 app.use("/api/interviews", interviewRoutes);
 app.use("/api", transcribeRoutes);

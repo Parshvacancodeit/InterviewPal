@@ -21,7 +21,7 @@ def evaluate(data):
     keyword = get_keyword_overlap(user, keywords)
     confidence = get_confidence_score(user)
 
-    overall = round(semantic * 0.6 + keyword * 0.2 + confidence * 0.2, 2)
+    overall = round(semantic * 0.55 + keyword * 0.3 + confidence * 0, 2)
     feedback = generate_feedback(semantic, keyword, confidence)
 
     result = {
