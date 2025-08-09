@@ -174,7 +174,7 @@ const transcribeRoutes = require("./routes/transcribe");
 const evaluateRoute = require("./routes/evaluate");
 const interviewFetchRoutes = require("./routes/interviewFetch");
 const introRoutes = require('./routes/intro');
-
+const reportFetch=require('./routes/reportFetch');
 const evaluateAndSaveRoute = require("./routes/evaluate-and-save");
 // In app.js or server.js
 const reportRoutes = require('./routes/report');
@@ -184,6 +184,7 @@ app.use("/api/evaluate-and-save", evaluateAndSaveRoute);
 const {getReportById}  = require('./controllers/reportController');
 
 app.get('/report/:id', getReportById);
+app.use("/api/report-fetch",reportFetch);
 
 
 app.use("/api/interviews", interviewRoutes);

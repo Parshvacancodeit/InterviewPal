@@ -8,6 +8,7 @@ import LandingPage from './pages/LandingPage';
 import InterviewSetup from './pages/InterviewSetup';
 import MyInterviews from './components/MyInterviews';
 import Report from './components/Report';
+import MyReport from './components/MyReport';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/result" element={<ResultPage />} />
         <Route path="/my-interviews" element={<MyInterviews />} />
         <Route path="/report/:interviewId" element={<Report />} />
+        <Route path="/my-reports" element={<MyReport/>}/>
       </Routes>
     </>
   );

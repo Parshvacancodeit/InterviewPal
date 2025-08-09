@@ -236,7 +236,7 @@ function InterviewPage() {
                 await speakText(doneMsg);
 
                 setLoading(false);
-                await new Promise((resolve) => setTimeout(resolve, 17000));
+                await new Promise((resolve) => setTimeout(resolve, 25000));
                 try {
     // Step 3: Call report generation route
     await api.post(`/api/report/generate/${interviewId}`);

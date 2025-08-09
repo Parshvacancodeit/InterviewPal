@@ -33,6 +33,10 @@ const ProfileDropdown = ({ onLogout }) => {
       <button onClick={() => navigate("/my-interviews")}>
         My Interviews
       </button>
+      <button onClick={() => navigate("/my-reports")}>
+        My Reports
+      </button>
+
 
       <button className="logout-btn" onClick={onLogout}>
         Logout
