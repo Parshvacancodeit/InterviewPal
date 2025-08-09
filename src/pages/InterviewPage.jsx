@@ -6,7 +6,8 @@ import { FaMicrophone, FaPause, FaStop } from "react-icons/fa";
 import "../styles/InterviewPage.css";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
+import Lottie from "lottie-react";
+import runningRabbit from "../assets/Long Dog.json";
 import api from "../api/axios";
 
 function InterviewPage() {
@@ -42,6 +43,10 @@ function InterviewPage() {
   const [availableVoices, setAvailableVoices] = useState([]);
   const [hasIntroduced, setHasIntroduced] = useState(false);
   const [waitingForStartConfirmation, setWaitingForStartConfirmation] = useState(false);
+  const [showWaitingAnimation, setShowWaitingAnimation] = useState(false);
+  const [facts, setFacts] = useState([]);
+const [randomFact, setRandomFact] = useState("");
+
 
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
@@ -75,6 +80,33 @@ function InterviewPage() {
       window.speechSynthesis.speak(utterance);
     });
   };
+
+  useEffect(() => {
+  fetch("../../backend/data/facts.json")
+    .then((res) => res.json())
+    .then((data) => {
+      setFacts(data);
+    })
+    .catch((err) => {
+      console.error("Failed to load facts:", err);
+    });
+}, []);
+
+useEffect(() => {
+  if (showWaitingAnimation && facts.length > 0) {
+    const intervalId = setInterval(() => {
+      const randomIndex = Math.floor(Math.random() * facts.length);
+      setRandomFact(facts[randomIndex]);
+    }, 4500); // every 3 seconds
+
+    // Immediately set a fact when animation starts (optional)
+    setRandomFact(facts[Math.floor(Math.random() * facts.length)]);
+
+    return () => clearInterval(intervalId); // cleanup on hide or unmount
+  }
+}, [showWaitingAnimation, facts]);
+
+
 
   // 🗣️ Initial greeting
   useEffect(() => {
@@ -236,18 +268,22 @@ function InterviewPage() {
                 await speakText(doneMsg);
 
                 setLoading(false);
-                await new Promise((resolve) => setTimeout(resolve, 25000));
-                try {
-    // Step 3: Call report generation route
-    await api.post(`/api/report/generate/${interviewId}`);
-navigate(`/report/${interviewId}`);
+                setShowWaitingAnimation(true);
 
-  } catch (err) {
-    console.error("Failed to generate report:", err);
-    setTranscript("Interview complete, but failed to generate report.");
-  }
+    setTimeout(async () => {
+      try {
+        // Call your report generation endpoint here
+        await api.post(`/api/report/generate/${interviewId}`);
 
-  setLoading(false);
+        // Navigate to the report page
+        navigate(`/report/${interviewId}`);
+      } catch (err) {
+        console.error("Failed to generate report:", err);
+        // You can hide the animation if failure occurs
+        setShowWaitingAnimation(false);
+      }
+    }, 25000); // 20 seconds wait
+  
   return;
                 
               }
@@ -303,6 +339,7 @@ navigate(`/report/${interviewId}`);
   };
 
   return (
+    <>
     <div className="interview-container">
       <div className="interview-header">
         <h2>Interview with {name}</h2>
@@ -366,7 +403,57 @@ navigate(`/report/${interviewId}`);
 
       <ToastContainer />
     </div>
+
+      {showWaitingAnimation && (
+  <div
+    style={{
+      position: "fixed",
+      top: 0, left: 0,
+      width: "100vw",
+      height: "100vh",
+      backgroundColor: "white",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 9999,
+      padding: 20,
+      textAlign: "center",
+    }}
+  >
+    <Lottie animationData={runningRabbit} style={{ width: 200, height: 200 }} loop={true} />
+    <p
+      style={{
+        marginTop: 20,
+        fontSize: 18,
+        color: "#555",
+        fontWeight: "bold",
+        maxWidth: "300px",
+      }}
+    >
+      All your answers are being checked and verified.<br /> Please wait...
+    </p>
+
+    {/* Show random fact below */}
+    {randomFact && (
+      <p
+        style={{
+          marginTop: 30,
+          fontSize: 16,
+          color: "#444",
+          fontStyle: "italic",
+          maxWidth: "350px",
+        }}
+      >
+        Did you know? {randomFact}
+      </p>
+    )}
+  </div>
+)}
+
+    </>
   );
 }
+
 
 export default InterviewPage;
