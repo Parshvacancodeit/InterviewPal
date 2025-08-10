@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
 import heroAnimation from "../assets/Rocket Launch.json";
 
+
 import {
   FaChevronDown,
   FaBrain,
@@ -25,7 +26,6 @@ import {
   FaTimesCircle
 
 } from 'react-icons/fa';
-
 function useCountUp(end) {
   const [count, setCount] = useState(0);
   const ref = useRef();
@@ -103,70 +103,86 @@ function LandingPage() {
       </section>
 
       {/* FEATURES */}
-      <section className="features">
-        <h2>Why Choose InterviewPal?</h2>
-        <div className="features-grid">
-          <div className="feature-card" data-aos="fade-up">
-            <FaBrain />
-            <h3>Smart Feedback</h3>
-            <p>Receive detailed, AI-generated analysis on your communication and content.</p>
-          </div>
-          <div className="feature-card" data-aos="fade-up" data-aos-delay="100">
-            <FaChartBar />
-            <h3>Track Growth</h3>
-            <p>Use our visual dashboard to monitor your improvement daily.</p>
-          </div>
-          <div className="feature-card" data-aos="fade-up" data-aos-delay="200">
-            <FaComments />
-            <h3>Real Questions</h3>
-            <p>Practice with handpicked behavioral and technical interview questions.</p>
-          </div>
-        </div>
-      </section>
+      <section className="features" data-aos="fade-up">
+  <h2>Why Choose InterviewPal?</h2>
+  <div className="features-list">
+    <div className="feature-item">
+      <div className="icon"><FaBrain /></div>
+      <div>
+        <h3>Smart Feedback</h3>
+        <p>Receive detailed, AI-generated analysis on your communication and content.</p>
+      </div>
+    </div>
+    <div className="feature-item">
+      <div className="icon"><FaChartBar /></div>
+      <div>
+        <h3>Track Growth</h3>
+        <p>Use our visual dashboard to monitor your improvement daily.</p>
+      </div>
+    </div>
+    <div className="feature-item">
+      <div className="icon"><FaComments /></div>
+      <div>
+        <h3>Real Questions</h3>
+        <p>Practice with handpicked behavioral and technical interview questions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* ACTION CARDS */}
-      <section className="action-cards" data-aos="fade-up">
-        <h2>Your Interview Journey</h2>
-        <div className="card-group">
-          <div className="card">
-            <FaPlayCircle />
+       <section className="action-dashboard" data-aos="fade-up">
+      <h2>Your Interview Journey</h2>
+      <div className="nav-grid">
+        <div className="nav-item" onClick={() => navigate("/interview")}>
+          <FaPlayCircle className="nav-icon" />
+          <div>
             <h4>Take Interview</h4>
             <p>Start a new mock interview based on your goals.</p>
           </div>
-          <div className="card">
-            <FaClipboardList />
+          <span className="arrow">→</span>
+        </div>
+        <div className="nav-item" onClick={() => navigate("/my-interviews")}>
+          <FaClipboardList className="nav-icon" />
+          <div>
             <h4>My Interviews</h4>
             <p>Access your past sessions and track your journey.</p>
           </div>
-          <div className="card">
-            <FaChartPie />
-            <h4>My Results</h4>
+          <span className="arrow">→</span>
+        </div>
+        <div className="nav-item" onClick={() => navigate("/my-reports")}>
+          <FaChartPie className="nav-icon" />
+          <div>
+            <h4>My Reports</h4>
             <p>Analyze AI feedback and improve every time.</p>
           </div>
+          <span className="arrow">→</span>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* FEEDBACK DEMO */}
       {/* HOW IT WORKS */}
 <section className="how-it-works" data-aos="fade-up">
   <h2 className="section-title">How It Works</h2>
   <div className="timeline">
-    <div className="step">
+    <div className="line" />
+    <div className="step" data-aos="fade-up" data-aos-delay="100">
       <div className="circle">1</div>
       <p>Sign Up and select your goal</p>
     </div>
-    <div className="line" />
-    <div className="step">
+    <div className="step" data-aos="fade-up" data-aos-delay="200">
       <div className="circle">2</div>
       <p>Take mock interviews with our AI</p>
     </div>
-    <div className="line" />
-    <div className="step">
+    <div className="step" data-aos="fade-up" data-aos-delay="300">
       <div className="circle">3</div>
       <p>Get feedback and improve every day</p>
     </div>
   </div>
 </section>
+
 
 {/* FAQ */}
 <section className="faq-section" data-aos="fade-up">
