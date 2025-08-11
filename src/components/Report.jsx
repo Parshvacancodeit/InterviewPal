@@ -38,27 +38,43 @@ const Report = () => {
         setLoading(false);
       }
     };
-
     fetchReport();
   }, [interviewId]);
 
   if (loading) return <div className="report-loading">Loading report...</div>;
   if (!report) return <div className="report-error">Report not found.</div>;
 
+  // Correct answers calculation (≥ 7 is correct)
+  const correctCount = report.scoreChart.filter(score => score >= 7).length;
+  const correctPercentage = ((correctCount / report.scoreChart.length) * 100).toFixed(1);
+
+  // Chart data
   const chartData = {
     labels: report.scoreChart.map((_, i) => `Q${i + 1}`),
     datasets: [
       {
         label: "Score",
         data: report.scoreChart,
-        backgroundColor: "#4f46e5",
+        backgroundColor: (ctx) => {
+          const chart = ctx.chart;
+          const { ctx: context, chartArea } = chart;
+          if (!chartArea) return null;
+          const gradient = context.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+          gradient.addColorStop(0, "#a78bfa");
+          gradient.addColorStop(1, "#4f46e5");
+          return gradient;
+        },
         borderRadius: 6,
       },
     ],
   };
 
+  // Star rating calculation (out of 5)
+  const starValue = Math.round((report.averageScore / 10) * 5 * 2) / 2; // round to half
+
   return (
-    <div className="report-wrapper">
+    <div className="report-wrapper fade-in">
+      {/* Header */}
       <div className="report-header">
         <h1>Interview Report</h1>
         <div className="report-subheader">
@@ -67,37 +83,89 @@ const Report = () => {
         </div>
       </div>
 
-      <div className="report-score">
-        <h2>Average Score</h2>
-        <div className="score-value">{report.averageScore.toFixed(2)} / 10</div>
-      </div>
-
-      <div className="report-chart">
-        <Bar data={chartData} options={{ responsive: true, plugins: { legend: { display: false } } }} />
-      </div>
-
-      <div className="qa-block">
-        <h3><FaArrowUp /> Best Answered Question</h3>
-        <div className="qa-card">
-          <p><strong>Q:</strong> {report.bestQuestion.question}</p>
-          <p><strong>Your Answer:</strong> {report.bestQuestion.userAnswer}</p>
-          <p><strong>Expected:</strong> {report.bestQuestion.expectedAnswer}</p>
-          <p><strong>Score:</strong> {report.bestQuestion.score.toFixed(2)}</p>
+      {/* Stats */}
+      <div className="stats-row">
+        <div className="report-card fade-in">
+          <h3>Average Score</h3>
+          <div className="score-value">{report.averageScore.toFixed(2)} / 10</div>
+          <div className="stars-container">
+            {[...Array(5)].map((_, i) => {
+              const full = i + 1 <= Math.floor(starValue);
+              const half = !full && i + 0.5 <= starValue;
+              return (
+                <FaStar
+                  key={i}
+                  className={`star-icon ${full ? "full" : half ? "half" : "empty"}`}
+                />
+              );
+            })}
+          </div>
+        </div>
+        <div className="report-card fade-in">
+          <h3>Total Questions</h3>
+          <p className="stat-number">{report.scoreChart.length}</p>
+        </div>
+        <div className="report-card fade-in">
+          <h3>Correct %</h3>
+          <p className="stat-number">{correctPercentage}%</p>
         </div>
       </div>
 
-      <div className="qa-block">
-        <h3><FaArrowDown /> Worst Answered Question</h3>
-        <div className="qa-card">
-          <p><strong>Q:</strong> {report.worstQuestion.question}</p>
-          <p><strong>Your Answer:</strong> {report.worstQuestion.userAnswer}</p>
-          <p><strong>Expected:</strong> {report.worstQuestion.expectedAnswer}</p>
-          <p><strong>Score:</strong> {report.worstQuestion.score.toFixed(2)}</p>
+      {/* Chart */}
+      <div className="report-chart fade-in small-chart">
+        <Bar
+          data={chartData}
+          options={{
+            responsive: true,
+            plugins: { legend: { display: false } },
+            animation: { duration: 1200 },
+            maintainAspectRatio: false
+          }}
+        />
+      </div>
+
+      {/* Best/Worst Questions */}
+      <div className="qa-grid">
+        <div className="flip-card fade-in">
+          <div className="flip-card-inner">
+            <div className="flip-card-front best">
+              <h3><FaArrowUp /> Best Answer</h3>
+              <p>{report.bestQuestion.question}</p>
+              <p className="score-tag">Score: {report.bestQuestion.score.toFixed(2)}</p>
+            </div>
+            <div className="flip-card-back">
+              <p><strong>Your Answer:</strong> {report.bestQuestion.userAnswer}</p>
+              <p><strong>Expected:</strong> {report.bestQuestion.expectedAnswer}</p>
+              <p className="extra-detail">
+                You handled this question exceptionally well, showing strong understanding
+                and clarity in explanation. Keep applying similar structuring to other answers.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="flip-card fade-in">
+          <div className="flip-card-inner">
+            <div className="flip-card-front worst">
+              <h3><FaArrowDown /> Needs Improvement</h3>
+              <p>{report.worstQuestion.question}</p>
+              <p className="score-tag">Score: {report.worstQuestion.score.toFixed(2)}</p>
+            </div>
+            <div className="flip-card-back">
+              <p><strong>Your Answer:</strong> {report.worstQuestion.userAnswer}</p>
+              <p><strong>Expected:</strong> {report.worstQuestion.expectedAnswer}</p>
+              <p className="extra-detail">
+                This answer lacked key points and clarity. Focus on structuring your response:
+                1) Restate the question, 2) Provide direct answer, 3) Add supporting examples.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="report-feedback">
-        <h3><FaCommentDots /> Feedback</h3>
+      {/* Feedback */}
+      <div className="report-feedback fade-in">
+        <FaCommentDots className="feedback-icon" />
         <p>{report.feedback}</p>
       </div>
     </div>

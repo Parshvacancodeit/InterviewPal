@@ -118,6 +118,7 @@
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s ease;
+  color: #FF7601;
 }
 
 .difficulty-options button.active {

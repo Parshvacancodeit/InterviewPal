@@ -1,7 +1,5 @@
-/* src/pages/Report.css */
-
 .report-wrapper {
-  max-width: 960px;
+  max-width: 1100px;
   margin: 2rem auto;
   padding: 2rem;
   background: #fff;
@@ -11,11 +9,20 @@
   color: #1f2937;
 }
 
+/* Fade In Animation */
+.fade-in {
+  animation: fadeInUp 0.6s ease both;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header */
 .report-header h1 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
-
 .report-subheader {
   display: flex;
   gap: 2rem;
@@ -23,52 +30,137 @@
   color: #6b7280;
   margin-bottom: 1.5rem;
 }
-
 .report-subheader svg {
   margin-right: 0.4rem;
 }
 
-.report-score {
+/* Stats Row */
+.stats-row {
+  display: flex;
+  gap: 1rem;
   margin-bottom: 2rem;
 }
-
-.score-value {
-  font-size: 2.5rem;
+.report-card {
+  flex: 1;
+  background: #f9fafb;
+  padding: 1.25rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+.report-card:hover {
+  transform: translateY(-4px);
+}
+.stat-number {
+  font-size: 1.8rem;
   font-weight: bold;
   color: #4f46e5;
 }
 
+/* Chart */
 .report-chart {
-  margin-bottom: 2.5rem;
-  background: #f9fafb;
+  margin-bottom: 2rem;
+  background: #f3f4f6;
   padding: 1rem;
   border-radius: 12px;
 }
 
-.qa-block {
+/* Flip Cards */
+.qa-grid {
+  display: flex;
+  gap: 1.5rem;
   margin-bottom: 2rem;
 }
+.flip-card {
+  background: transparent;
+  width: 50%;
+  height: 230px;
+  perspective: 1000px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  padding: 1rem;
+  color: #fff;
+}
+.flip-card-front.best {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+}
+.flip-card-front.worst {
+  background: linear-gradient(135deg, #f87171, #ef4444);
+}
+.flip-card-back {
+  background: #1f2937;
+  transform: rotateY(180deg);
+  font-size: 0.95rem;
+  text-align: left;
+  overflow-y: auto;
+}
+.score-tag {
+  margin-top: 1rem;
+  font-weight: bold;
+  background: rgba(255,255,255,0.2);
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+}
 
-.qa-block h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
+/* Feedback */
+.report-feedback {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  color: #374151;
-}
-
-.qa-card {
-  background: #f3f4f6;
-  padding: 1.25rem;
-  border-radius: 12px;
-  line-height: 1.6;
-}
-
-.report-feedback {
-  margin-top: 2rem;
+  gap: 1rem;
   background: #e0e7ff;
   padding: 1rem 1.5rem;
   border-radius: 12px;
   font-weight: 500;
+  font-size: 1rem;
+}
+.feedback-icon {
+  font-size: 1.5rem;
+  color: #4f46e5;
+}
+
+
+/* Small chart container */
+.small-chart {
+  height: 200px; /* Much smaller now */
+}
+
+/* Bigger, rounded stars */
+.stars-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+.star-icon {
+  font-size: 2rem;
+  border-radius: 50%;
+  padding: 4px;
+  background: #f3f4f6;
+}
+.star-icon.full { color: #ffd700; }
+.star-icon.half { color: linear-gradient(to right, #ffd700 50%, #d1d5db 50%); }
+.star-icon.empty { color: #d1d5db; }
+
+/* Flip card extra details */
+.extra-detail {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #cbd5e1;
 }
