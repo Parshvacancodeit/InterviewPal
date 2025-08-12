@@ -1,18 +1,31 @@
 import React, { useEffect, useState } from "react";
 import axios from "../api/axios";
-import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  BarElement,
+  PointElement,
+  LineElement,
   Title,
   Tooltip,
   Legend,
+  Filler,
 } from "chart.js";
+import { Line } from "react-chartjs-2";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+);
 import "../styles/MyReports.css";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+
 
 const MyReport = () => {
   const [reports, setReports] = useState([]);
@@ -40,34 +53,58 @@ const MyReport = () => {
   if (reports.length === 0) return <p className="loading">No reports found.</p>;
 
   const chartData = {
-    labels: selectedReport.scoreChart?.map((_, i) => `Q${i + 1}`) || [],
-    datasets: [
-      {
-        label: "Score per Question",
-        data: selectedReport.scoreChart || [],
-        backgroundColor: "var(--primary)",
-        borderRadius: 6,
+  labels: selectedReport.scoreChart?.map((_, i) => `Q${i + 1}`) || [],
+  datasets: [
+    {
+      label: "Score per Question",
+      data: selectedReport.scoreChart || [],
+      fill: true,
+      tension: 0.4, // smooth curves
+      borderColor: "#FF7601",
+      backgroundColor: (context) => {
+        const ctx = context.chart.ctx;
+        const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+        gradient.addColorStop(0, "rgba(255, 118, 1, 0.4)");
+        gradient.addColorStop(1, "rgba(255, 118, 1, 0)");
+        return gradient;
       },
-    ],
-  };
+      pointBackgroundColor: "#FF7601",
+      pointBorderColor: "#fff",
+      pointRadius: 5,
+      pointHoverRadius: 7,
+      borderWidth: 3,
+    },
+  ],
+};
 
-  const chartOptions = {
-    responsive: true,
-    plugins: { legend: { display: false } },
-    scales: {
-      y: {
-        beginAtZero: true,
-        max: 10,
-        ticks: { color: "var(--text)" },
-        grid: { color: "var(--accent)" },
-      },
-      x: {
-        ticks: { color: "var(--text)" },
-        grid: { color: "var(--accent)" },
+const chartOptions = {
+  responsive: true,
+  plugins: {
+    legend: { display: false },
+    tooltip: {
+      backgroundColor: "#333",
+      titleColor: "#fff",
+      bodyColor: "#fff",
+      cornerRadius: 8,
+      padding: 10,
+      callbacks: {
+        label: ctx => ` ${ctx.raw} / 10`,
       },
     },
-  };
-
+  },
+  scales: {
+    y: {
+      beginAtZero: true,
+      max: 10,
+      ticks: { stepSize: 1, color: "#666" },
+      grid: { color: "rgba(0,0,0,0.05)" },
+    },
+    x: {
+      ticks: { color: "#666" },
+      grid: { color: "rgba(0,0,0,0.05)" },
+    },
+  },
+};
   const truncate = (text, max = 100) =>
     text && text.length > max ? text.slice(0, max) + "…" : text;
 
@@ -102,7 +139,8 @@ const MyReport = () => {
         </header>
 
         <section className="chart-section">
-          <Bar data={chartData} options={chartOptions} />
+          <Line data={chartData} options={chartOptions} />
+
         </section>
 
         <div className="qa-grid">

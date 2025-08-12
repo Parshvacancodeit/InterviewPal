@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaUserCircle } from "react-icons/fa"; // ✅ user icon
+import { FaUserCircle, FaClipboardList, FaFileAlt, FaSignOutAlt } from "react-icons/fa";
 import axios from "../api/axios";
 import "../styles/ProfileDropdown.css";
 
@@ -10,12 +10,8 @@ const ProfileDropdown = ({ onLogout }) => {
 
   useEffect(() => {
     axios.get("/session", { withCredentials: true })
-      .then((res) => {
-        setUser(res.data.user); // 👈 user contains fullName and username
-      })
-      .catch(() => {
-        setUser(null);
-      });
+      .then((res) => setUser(res.data.user))
+      .catch(() => setUser(null));
   }, []);
 
   return (
@@ -31,15 +27,15 @@ const ProfileDropdown = ({ onLogout }) => {
       )}
 
       <button onClick={() => navigate("/my-interviews")}>
-        My Interviews
-      </button>
-      <button onClick={() => navigate("/my-reports")}>
-        My Reports
+        <FaClipboardList /> My Interviews
       </button>
 
+      <button onClick={() => navigate("/my-reports")}>
+        <FaFileAlt /> My Reports
+      </button>
 
       <button className="logout-btn" onClick={onLogout}>
-        Logout
+        <FaSignOutAlt /> Logout
       </button>
     </div>
   );

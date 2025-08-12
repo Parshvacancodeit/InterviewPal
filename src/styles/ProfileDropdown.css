@@ -2,14 +2,47 @@
   position: absolute;
   top: 60px;
   right: 20px;
-  background-color: #ffffff;
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
-  font-family: 'Inter', system-ui, sans-serif;
-  width: 180px;
-  z-index: 9999; /* Ensure it's clickable */
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 14px;
+  padding: 1rem;
+  font-family: 'Inter', sans-serif;
+  width: 210px;
+  z-index: 9999;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 0.8rem;
+}
+
+.user-icon {
+  font-size: 2rem;
+  color: #4a4a4a;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0;
+  color: #111;
+}
+
+.user-email {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
 }
 
 .profile-dropdown button {
@@ -22,62 +55,38 @@
   color: #333;
   font-size: 0.95rem;
   text-align: left;
-  padding: 0.5rem 0;
+  padding: 0.55rem 0.4rem;
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
-  border-radius: 4px;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+  border-radius: 8px;
 }
 
 .profile-dropdown button:hover {
-  background-color: #f5f5f5;
-  color: #000;
+  background-color: rgba(0, 0, 0, 0.04);
+  transform: translateX(2px);
 }
 
-/* Special style for logout button */
-.profile-dropdown .logout-btn {
+.logout-btn {
   margin-top: 0.75rem;
-  background-color: transparent;
-  color: #b00020;
+  color: white !important;
   font-weight: 500;
-  border: 1px solid #b00020;
-  padding: 0.4rem 0.8rem;
-  text-align: center;
-  border-radius: 6px;
-  transition: background 0.2s ease;
-  display: block;
+  background-color:#ea1b41 !important;
+  padding: 0.45rem 0.8rem;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-.profile-dropdown .logout-btn:hover {
-  background-color: #fcebed;
+/* Make logout hover override grey hover */
+.logout-btn:hover {
+  background-color: #ee274b !important;
+  color: white !important;
+  transform: none; /* Prevents the slide animation if you don't want it here */
 }
 
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 0.75rem;
-}
 
-.user-icon {
-  font-size: 1.8rem;
-  color: #333;
-}
-
-.user-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.user-name {
-  font-weight: 600;
-  margin: 0;
-  color: #111;
-}
-
-.user-email {
-  font-size: 0.85rem;
-  color: #555;
-  margin: 0;
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
 }

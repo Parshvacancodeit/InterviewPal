@@ -266,7 +266,7 @@ body {
   }
 }
 
-
+#new
 .loader-container {
   display: flex;
   align-items: center;
@@ -288,4 +288,33 @@ body {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+
+.interview-split-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.interview-left {
+  flex: 7; /* 70% */
+  padding: 20px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  background-color: #f8f9fa;
+  border-right: 1px solid #ddd;
+}
+
+.interview-right {
+  flex: 3; /* 30% */
+  padding: 20px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

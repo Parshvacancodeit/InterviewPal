@@ -10,6 +10,8 @@ import Lottie from "lottie-react";
 import runningRabbit from "../assets/Long Dog.json";
 import api from "../api/axios";
 import { encouragements, neutralAcknowledgements, tips } from "../../backend/data/ttsPhrases";
+import VideoSplit from "../components/VideoSplit";
+import aiVideoRef from '../assets/interviewer.mp4'
 
 function InterviewPage() {
   const location = useLocation();
@@ -47,6 +49,7 @@ function InterviewPage() {
   const [showWaitingAnimation, setShowWaitingAnimation] = useState(false);
   const [facts, setFacts] = useState([]);
 const [randomFact, setRandomFact] = useState("");
+const [isSpeaking, setIsSpeaking] = useState(false);
 
 
   const mediaRecorderRef = useRef(null);
@@ -66,18 +69,33 @@ const [randomFact, setRandomFact] = useState("");
     loadVoices();
   }, []);
 
-  const speakText = (text) => {
+   const speakText = (text) => {
     return new Promise((resolve) => {
       if (!text || availableVoices.length === 0) return resolve();
 
       window.speechSynthesis.cancel();
+
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-US';
+      utterance.lang = "en-US";
+      utterance.rate = 0.95;
+      utterance.pitch = 1.05;
+      utterance.volume = 1;
 
-      const sweetVoice = availableVoices.find(v => v.name.includes("Samantha"));
-      if (sweetVoice) utterance.voice = sweetVoice;
+      const preferredVoice = availableVoices.find((v) =>
+        v.name.includes("Samantha")
+      );
+      utterance.voice = preferredVoice || availableVoices[0];
 
-      utterance.onend = () => resolve();
+      utterance.text = text
+        .replace(/([,.!?])/g, "$1 ")
+        .replace(/([.?!])/g, "$1...");
+
+      utterance.onstart = () => setIsSpeaking(true); // video resumes playing here
+      utterance.onend = () => {
+        setIsSpeaking(false); // video pauses here
+        resolve();
+      };
+
       window.speechSynthesis.speak(utterance);
     });
   };
@@ -361,73 +379,82 @@ useEffect(() => {
     }
   };
 
-  return (
-    <>
-    <div className="interview-container">
-      <div className="interview-header">
-        <h2>Interview with {name}</h2>
-        <p>{skill} | {difficulty} | Question {questionCount} of {MAX_QUESTIONS}</p>
-        <div className="progress-bar-container">
-          <div
-            className="progress-bar-fill"
-            style={{ width: `${(questionCount / MAX_QUESTIONS) * 100}%` }}
-          />
-        </div>
-      </div>
+  
 
-      <div className="qa-history">
-        {qaHistory.map((item, index) => (
-          <div key={index} className="qa-card">
-            <div className="question">
-              <strong>Q{index + 1}:</strong> {item.question}
-            </div>
-            {item.answer && (
-              <div className="answer">
-                <strong>Your Answer:</strong> {item.answer}
+return (
+  <>
+    <div className="interview-split-container">
+      {/* Left half: Interview content */}
+      <div className="interview-left">
+        <div className="interview-header">
+          <h2>Interview with {name}</h2>
+          <p>{skill} | {difficulty} | Question {questionCount} of {MAX_QUESTIONS}</p>
+          <div className="progress-bar-container">
+            <div
+              className="progress-bar-fill"
+              style={{ width: `${(questionCount / MAX_QUESTIONS) * 100}%` }}
+            />
+          </div>
+        </div>
+
+        <div className="qa-history">
+          {qaHistory.map((item, index) => (
+            <div key={index} className="qa-card">
+              <div className="question">
+                <strong>Q{index + 1}:</strong> {item.question}
               </div>
-            )}
-          </div>
-        ))}
-      </div>
-
-      <div className="controls-box">
-        {!recording && (
-          <button onClick={handleStartRecording}>
-            <FaMicrophone /> Start
-          </button>
-        )}
-        {recording && !paused && (
-          <button onClick={handlePauseRecording}>
-            <FaPause /> Pause
-          </button>
-        )}
-        {recording && (
-          <button onClick={handleStopRecording}>
-            <FaStop /> Stop
-          </button>
-        )}
-        <button onClick={handleEndInterview}>End Interview</button>
-
-        {recording && !paused && (
-          <div className="audio-wave-container">
-            {[...Array(5)].map((_, i) => (
-              <div className="audio-bar" key={i}></div>
-            ))}
-          </div>
-        )}
-      </div>
-
-      {loading && (
-        <div className="loader-container">
-          <div className="loader" />
-          <span>Transcribing...</span>
+              {item.answer && (
+                <div className="answer">
+                  <strong>Your Answer:</strong> {item.answer}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
-      )}
 
-      <ToastContainer />
+        <div className="controls-box">
+          {!recording && (
+            <button onClick={handleStartRecording}>
+              <FaMicrophone /> Start
+            </button>
+          )}
+          {recording && !paused && (
+            <button onClick={handlePauseRecording}>
+              <FaPause /> Pause
+            </button>
+          )}
+          {recording && (
+            <button onClick={handleStopRecording}>
+              <FaStop /> Stop
+            </button>
+          )}
+          <button onClick={handleEndInterview}>End Interview</button>
+
+          {recording && !paused && (
+            <div className="audio-wave-container">
+              {[...Array(5)].map((_, i) => (
+                <div className="audio-bar" key={i}></div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {loading && (
+          <div className="loader-container">
+            <div className="loader" />
+            <span>Transcribing...</span>
+          </div>
+        )}
+
+        <ToastContainer />
+      </div>
+
+      {/* Right half: AI video + animation */}
+      <div className="interview-right">
+        <VideoSplit aiVideoSrc={aiVideoRef} isSpeaking={isSpeaking} />
+      </div>
     </div>
-
-      {showWaitingAnimation && (
+    give me {showWaitingAnimation && (
   <div
     style={{
       position: "fixed",
@@ -473,9 +500,9 @@ useEffect(() => {
     )}
   </div>
 )}
+  </>
+);
 
-    </>
-  );
 }
 
 

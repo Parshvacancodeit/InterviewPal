@@ -64,12 +64,12 @@ button:hover {
 }
 
 .hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 4rem;
+  margin-bottom: 1.2rem;
 }
 
 .hero-content p {
-  font-size: 1.25rem;
+  font-size: 1.55rem;
   max-width: 600px;
   margin: 0 auto 2rem;
 }
@@ -643,3 +643,5 @@ details[open] .faq-icon {
     gap: 0.5rem;
   }
 }
+
+
