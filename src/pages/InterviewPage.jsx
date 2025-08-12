@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Lottie from "lottie-react";
 import runningRabbit from "../assets/Long Dog.json";
 import api from "../api/axios";
+import { encouragements, neutralAcknowledgements, tips } from "../../backend/data/ttsPhrases";
 
 function InterviewPage() {
   const location = useLocation();
@@ -80,6 +81,26 @@ const [randomFact, setRandomFact] = useState("");
       window.speechSynthesis.speak(utterance);
     });
   };
+
+  const quickLocalResponse = async (text) => {
+  const lowerText = text.toLowerCase();
+
+  // If unsure
+  if (lowerText.includes("i don't know") || lowerText.includes("not sure") || lowerText.includes("no idea")) {
+    await speakText(encouragements[Math.floor(Math.random() * encouragements.length)]);
+    return;
+  }
+
+  // 30% chance to give a general tip
+  if (Math.random() < 0.3) {
+    await speakText(tips[Math.floor(Math.random() * tips.length)]);
+    return;
+  }
+
+  // Otherwise give a neutral acknowledgement
+  await speakText(neutralAcknowledgements[Math.floor(Math.random() * neutralAcknowledgements.length)]);
+};
+
 
   useEffect(() => {
   fetch("../../backend/data/facts.json")
@@ -244,6 +265,8 @@ useEffect(() => {
             referenceAnswer: currentQuestionRef.current.reference_answer,
             transcript: text,
           });
+
+          await quickLocalResponse(text);
 
           setQaHistory(prev => {
             const updated = [...prev];

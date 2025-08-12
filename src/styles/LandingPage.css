@@ -554,3 +554,92 @@ details[open] .faq-icon {
   font-size: 0.95rem;
   color: var(--dark);
 }
+
+
+/* Extra Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* HERO */
+  .hero {
+    flex-direction: column;
+    padding: 2rem 1rem;
+    height: auto;
+    text-align: center;
+  }
+
+  .hero-animation {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    order: 2;
+  }
+
+  .hero-content {
+    order: 1;
+    padding: 0 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* STATS */
+  .stats-section {
+    gap: 1.5rem;
+    padding: 2rem 1rem;
+  }
+
+  .stat h3 {
+    font-size: 1.5rem;
+  }
+
+  /* FEATURES */
+  .features {
+    padding: 3rem 1rem;
+  }
+
+  .feature-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* ACTION CARDS */
+  .nav-grid {
+    padding: 0 1rem;
+  }
+
+  /* HOW IT WORKS */
+  .how-it-works {
+    padding: 4rem 1rem;
+  }
+
+  /* TESTIMONIALS */
+  .testimonial {
+    width: 100%;
+  }
+
+  /* NEWSLETTER */
+  .newsletter-box {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .newsletter-box input {
+    width: 100%;
+  }
+
+  .newsletter-box button {
+    width: 100%;
+  }
+
+  /* FOOTER */
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
