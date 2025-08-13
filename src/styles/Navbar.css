@@ -50,14 +50,14 @@
   color: rgb(255, 255, 255);
   border: none;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 300;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .navbar-login-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+  box-shadow: 0 5px 16px rgba(240, 144, 35, 0.3);
 }
 
 /* Profile Button */
@@ -74,7 +74,19 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
+
+/* Remove ugly orange hover */
+.profile-toggle-btn:hover {
+  background: rgba(0, 0, 0, 0.05); /* subtle hover effect */
+  transform: translateY(-1px);
+}
+
+
+
 .user-avatar {
   width: 34px;
   height: 34px;
