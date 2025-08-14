@@ -18,6 +18,8 @@ function InterviewPage() {
   const navigate = useNavigate();
   const formData = location.state;
   const [user, setUser] = useState(null);
+  const qaHistoryRef = useRef(null);
+
   useEffect(() => {
     api.get("/session", { withCredentials: true })
       .then((res) => {
@@ -130,6 +132,13 @@ const [isSpeaking, setIsSpeaking] = useState(false);
       console.error("Failed to load facts:", err);
     });
 }, []);
+
+useEffect(() => {
+  if (qaHistoryRef.current) {
+    qaHistoryRef.current.scrollTop = qaHistoryRef.current.scrollHeight;
+  }
+}, [qaHistory]);
+
 
 useEffect(() => {
   if (showWaitingAnimation && facts.length > 0) {
@@ -382,125 +391,139 @@ useEffect(() => {
   
 
 return (
-  <>
-    <div className="interview-split-container">
-      {/* Left half: Interview content */}
-      <div className="interview-left">
-        <div className="interview-header">
-          <h2>Interview with {name}</h2>
-          <p>{skill} | {difficulty} | Question {questionCount} of {MAX_QUESTIONS}</p>
-          <div className="progress-bar-container">
-            <div
-              className="progress-bar-fill"
-              style={{ width: `${(questionCount / MAX_QUESTIONS) * 100}%` }}
-            />
-          </div>
+<>
+  <div className="interview-split-container">
+    {/* Left half: Interview content */}
+    <div className="interview-left">
+      <div className="interview-header">
+        <h2>Interview with {name}</h2>
+        <p>
+          {skill} | {difficulty} | Question {questionCount} of {MAX_QUESTIONS}
+        </p>
+        <div className="progress-bar-container">
+          <div
+            className="progress-bar-fill"
+            style={{ width: `${(questionCount / MAX_QUESTIONS) * 100}%` }}
+          />
         </div>
+      </div>
 
-        <div className="qa-history">
-          {qaHistory.map((item, index) => (
-            <div key={index} className="qa-card">
-              <div className="question">
-                <strong>Q{index + 1}:</strong> {item.question}
-              </div>
-              {item.answer && (
-                <div className="answer">
-                  <strong>Your Answer:</strong> {item.answer}
-                </div>
-              )}
-            </div>
-          ))}
+    <div className="qa-history" ref={qaHistoryRef}>
+  {qaHistory.map((item, index) => (
+    <div key={index} className="qa-card">
+      <div className="question">
+        <strong>Q{index + 1}:</strong> {item.question}
+      </div>
+      {item.answer && (
+        <div className="answer">
+          <strong>Your Answer:</strong> {item.answer}
         </div>
-
-        <div className="controls-box">
-          {!recording && (
-            <button onClick={handleStartRecording}>
-              <FaMicrophone /> Start
-            </button>
-          )}
-          {recording && !paused && (
-            <button onClick={handlePauseRecording}>
-              <FaPause /> Pause
-            </button>
-          )}
-          {recording && (
-            <button onClick={handleStopRecording}>
-              <FaStop /> Stop
-            </button>
-          )}
-          <button onClick={handleEndInterview}>End Interview</button>
-
-          {recording && !paused && (
-            <div className="audio-wave-container">
-              {[...Array(5)].map((_, i) => (
-                <div className="audio-bar" key={i}></div>
-              ))}
-            </div>
-          )}
+      )}
+      {index === qaHistory.length - 1 && loading && (
+        <div className="loader-inline">
+          <span className="loader-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          <span className="loader-text">Transcribing...</span>
         </div>
+      )}
+    </div>
+  ))}
+</div>
 
-        {loading && (
-          <div className="loader-container">
-            <div className="loader" />
-            <span>Transcribing...</span>
+
+
+      <div className="controls-box">
+        {!recording && (
+          <button onClick={handleStartRecording}>
+            <FaMicrophone /> Start
+          </button>
+        )}
+        {recording && !paused && (
+          <button onClick={handlePauseRecording}>
+            <FaPause /> Pause
+          </button>
+        )}
+        {recording && (
+          <button onClick={handleStopRecording}>
+            <FaStop /> Stop
+          </button>
+        )}
+        <button onClick={handleEndInterview}>End Interview</button>
+
+        {recording && !paused && (
+          <div className="audio-wave-container">
+            {[...Array(5)].map((_, i) => (
+              <div className="audio-bar" key={i}></div>
+            ))}
           </div>
         )}
-
-        <ToastContainer />
       </div>
 
-      {/* Right half: AI video + animation */}
-      <div className="interview-right">
-        <VideoSplit aiVideoSrc={aiVideoRef} isSpeaking={isSpeaking} />
-      </div>
+      <ToastContainer />
     </div>
-    give me {showWaitingAnimation && (
-  <div
-    style={{
-      position: "fixed",
-      top: 0, left: 0,
-      width: "100vw",
-      height: "100vh",
-      backgroundColor: "white",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      zIndex: 9999,
-      padding: 20,
-      textAlign: "center",
-    }}
-  >
-    <Lottie animationData={runningRabbit} style={{ width: 200, height: 200 }} loop={true} />
-    <p
+
+    {/* Right half: AI video + animation */}
+    <div className="interview-right">
+      <VideoSplit aiVideoSrc={aiVideoRef} isSpeaking={isSpeaking} />
+    </div>
+  </div>
+
+  {showWaitingAnimation && (
+    <div
       style={{
-        marginTop: 20,
-        fontSize: 18,
-        color: "#555",
-        fontWeight: "bold",
-        maxWidth: "300px",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        backgroundColor: "white",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        zIndex: 9999,
+        padding: 20,
+        textAlign: "center",
       }}
     >
-      All your answers are being checked and verified.<br /> Please wait...
-    </p>
-
-    {/* Show random fact below */}
-    {randomFact && (
+      <Lottie
+        animationData={runningRabbit}
+        style={{ width: 200, height: 200 }}
+        loop={true}
+      />
       <p
         style={{
-          marginTop: 30,
-          fontSize: 16,
-          color: "#444",
-          fontStyle: "italic",
-          maxWidth: "350px",
+          marginTop: 20,
+          fontSize: 18,
+          color: "#555",
+          fontWeight: "bold",
+          maxWidth: "300px",
         }}
       >
-        Did you know? {randomFact}
+        All your answers are being checked and verified.
+        <br /> Please wait...
       </p>
-    )}
-  </div>
-)}
-  </>
+
+      {randomFact && (
+        <p
+          style={{
+            marginTop: 30,
+            fontSize: 16,
+            color: "#444",
+            fontStyle: "italic",
+            maxWidth: "350px",
+          }}
+        >
+          Did you know? {randomFact}
+        </p>
+      )}
+    </div>
+  )}
+</>
+
 );
 
 }

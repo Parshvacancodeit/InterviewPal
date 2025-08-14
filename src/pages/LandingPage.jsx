@@ -5,7 +5,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
-import heroAnimation from "../assets/Rocket Launch.json";
+import heroAnimation from "../assets/Businessman flies up with rocket.json";
 
 
 import {
@@ -67,16 +67,23 @@ function LandingPage() {
   return (
     <div className="landing-v2">
       {/* HERO */}
-      <section className="hero">
+     <section className="hero">
+  {/* Animation on left */}
   <div className="hero-animation">
     <Lottie animationData={heroAnimation} loop autoplay />
   </div>
+
+  {/* Content on right */}
   <div className="hero-content">
-    <h1>Land Your Dream Job. Practice Like a Pro.</h1>
+    <h1>Land Your <span>Dream</span> Job. Practice Like a Pro.</h1>
     <p>AI-powered mock interviews built by top engineers to help you crack the toughest interviews.</p>
-    <button onClick={() => navigate('/interview')}>Start Preparing</button>
+    <div className="hero-buttons">
+      <button className="primary" onClick={() => navigate('/interview')}>Start Preparing</button>
+      <button className="secondary" onClick={() => navigate('/learn-more')}>Learn More</button>
+    </div>
   </div>
 </section>
+
 
       {/* CREDIBILITY */}
       <section className="credibility" data-aos="fade-up">
@@ -108,27 +115,22 @@ function LandingPage() {
   <div className="features-list">
     <div className="feature-item">
       <div className="icon"><FaBrain /></div>
-      <div>
-        <h3>Smart Feedback</h3>
-        <p>Receive detailed, AI-generated analysis on your communication and content.</p>
-      </div>
+      <h3>Smart Feedback</h3>
+      <p>Receive detailed, AI-generated analysis on your communication and content.</p>
     </div>
     <div className="feature-item">
       <div className="icon"><FaChartBar /></div>
-      <div>
-        <h3>Track Growth</h3>
-        <p>Use our visual dashboard to monitor your improvement daily.</p>
-      </div>
+      <h3>Track Growth</h3>
+      <p>Use our visual dashboard to monitor your improvement daily.</p>
     </div>
     <div className="feature-item">
       <div className="icon"><FaComments /></div>
-      <div>
-        <h3>Real Questions</h3>
-        <p>Practice with handpicked behavioral and technical interview questions.</p>
-      </div>
+      <h3>Real Questions</h3>
+      <p>Practice with handpicked behavioral and technical interview questions.</p>
     </div>
   </div>
 </section>
+
 
 
       {/* ACTION CARDS */}
