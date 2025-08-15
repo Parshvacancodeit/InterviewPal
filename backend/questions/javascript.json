@@ -1,0 +1,180 @@
+[
+  {
+    "tech": "JavaScript",
+    "difficulty": "Easy",
+    "question": "What is JavaScript?",
+    "reference_answer": "JavaScript is a lightweight, interpreted programming language primarily used for adding interactivity to web pages. It runs in the browser as well as on the server using Node.js.",
+    "keywords": ["JavaScript", "programming language", "browser", "Node.js", "interactivity"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Easy",
+    "question": "How do you declare a variable in JavaScript?",
+    "reference_answer": "In JavaScript, you can declare variables using var, let, or const. var is function-scoped, let and const are block-scoped, and const is used for variables whose values should not change.",
+    "keywords": ["variable", "declare", "var", "let", "const", "block scoped", "function scoped"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Easy",
+    "question": "What are data types in JavaScript?",
+    "reference_answer": "JavaScript has several data types including Number, String, Boolean, Undefined, Null, Symbol, BigInt, and Object. These types help define the kind of values variables can hold.",
+    "keywords": ["data types", "Number", "String", "Boolean", "Undefined", "Null", "Symbol", "BigInt", "Object"]
+  },
+{
+  "tech": "JavaScript",
+  "difficulty": "Medium",
+  "question": "What is the difference between double equal and triple equal in JavaScript?",
+  "reference_answer": "In JavaScript, double equal checks if two values are equal after converting their types if necessary. This is called type coercion. Triple equal checks if two values are equal without converting their types, meaning both the value and the type must be the same.",
+  "keywords": ["double equal", "triple equal", "type coercion", "value comparison", "strict equality", "loose equality"]
+},
+
+  {
+    "tech": "JavaScript",
+    "difficulty": "Easy",
+    "question": "How do you create a function in JavaScript?",
+    "reference_answer": "You can create functions using function declarations, function expressions, or arrow functions. Functions are reusable blocks of code that perform specific tasks.",
+    "keywords": ["function", "declare", "expression", "arrow function", "reusable code"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Easy",
+    "question": "What is an array in JavaScript?",
+    "reference_answer": "An array is a data structure in JavaScript that holds multiple values in a single variable. Arrays can store values of any type and have methods to manipulate them.",
+    "keywords": ["array", "data structure", "values", "methods", "manipulate"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Easy",
+    "question": "What is an object in JavaScript?",
+    "reference_answer": "An object is a collection of key-value pairs in JavaScript. Objects can store any data type and are widely used to organize and manage data.",
+    "keywords": ["object", "key value pair", "data", "collection", "organize"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Easy",
+    "question": "What is the difference between let and var?",
+    "reference_answer": "var is function-scoped and can be redeclared, while let is block-scoped and cannot be redeclared in the same scope. let helps prevent issues with variable hoisting and scope confusion.",
+    "keywords": ["var", "let", "scope", "redeclaration", "hoisting"]
+  },
+
+  {
+    "tech": "JavaScript",
+    "difficulty": "Medium",
+    "question": "What are closures in JavaScript?",
+    "reference_answer": "A closure is a function that has access to variables from its outer function even after the outer function has finished executing. Closures are useful for creating private variables and functions.",
+    "keywords": ["closure", "function", "outer function", "private variables", "scope"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Medium",
+    "question": "Explain event bubbling in JavaScript.",
+    "reference_answer": "Event bubbling is a concept where an event starts from the innermost element and propagates up to its ancestors in the DOM tree. You can stop it using stopPropagation method.",
+    "keywords": ["event bubbling", "DOM", "propagation", "stopPropagation"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Medium",
+    "question": "What is the difference between call, apply, and bind?",
+    "reference_answer": "call and apply invoke functions with a specific this value, with apply accepting arguments as an array, while bind returns a new function with a fixed this value without invoking it immediately.",
+    "keywords": ["call", "apply", "bind", "this", "function"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Medium",
+    "question": "What are promises in JavaScript?",
+    "reference_answer": "Promises are objects representing the eventual completion or failure of an asynchronous operation. They help avoid callback hell and allow chaining with then and catch methods.",
+    "keywords": ["promise", "asynchronous", "then", "catch", "callback"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Medium",
+    "question": "Explain the difference between synchronous and asynchronous code.",
+    "reference_answer": "Synchronous code executes line by line, blocking further execution until the current task finishes. Asynchronous code allows certain tasks to run in the background, freeing the main thread.",
+    "keywords": ["synchronous", "asynchronous", "blocking", "main thread", "execution"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Medium",
+    "question": "What is the event loop in JavaScript?",
+    "reference_answer": "The event loop is a mechanism that allows JavaScript to perform non-blocking operations despite being single-threaded. It checks the call stack and task queue to execute asynchronous callbacks when the stack is empty.",
+    "keywords": ["event loop", "single threaded", "call stack", "task queue", "asynchronous"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Medium",
+    "question": "What are template literals in JavaScript?",
+    "reference_answer": "Template literals are string literals that allow embedded expressions using backticks and ${}. They provide easier string interpolation and multi-line strings compared to traditional quotes.",
+    "keywords": ["template literal", "string", "interpolation", "backticks", "multi-line"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Medium",
+    "question": "What is hoisting in JavaScript?",
+    "reference_answer": "Hoisting is a JavaScript mechanism where variable and function declarations are moved to the top of their scope during compilation. Only declarations are hoisted, not initializations.",
+    "keywords": ["hoisting", "variable", "function", "scope", "declaration"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Medium",
+    "question": "Explain the difference between null and undefined.",
+    "reference_answer": "undefined means a variable has been declared but not assigned a value. null is an assignment value representing no value or empty object reference.",
+    "keywords": ["null", "undefined", "variable", "value", "assignment"]
+  },
+
+  {
+    "tech": "JavaScript",
+    "difficulty": "Hard",
+    "question": "What is the difference between let, const, and var in terms of scope and hoisting?",
+    "reference_answer": "var is function-scoped and hoisted with undefined initialization. let and const are block-scoped and hoisted but not initialized. const must be assigned during declaration and cannot be reassigned.",
+    "keywords": ["let", "const", "var", "scope", "hoisting", "block-scoped", "function-scoped"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Hard",
+    "question": "Explain the concept of JavaScript modules.",
+    "reference_answer": "JavaScript modules allow splitting code into separate files, exporting and importing functionality using export and import statements. Modules help maintain organized and reusable code, avoiding global scope pollution.",
+    "keywords": ["module", "export", "import", "code organization", "reusable"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Hard",
+    "question": "What is the difference between shallow and deep copy in JavaScript?",
+    "reference_answer": "A shallow copy copies object properties by reference, so nested objects remain shared. A deep copy creates an entirely new copy of an object, including nested objects, avoiding reference sharing.",
+    "keywords": ["shallow copy", "deep copy", "object", "reference", "nested object"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Hard",
+    "question": "What are higher-order functions in JavaScript?",
+    "reference_answer": "Higher-order functions are functions that take other functions as arguments or return functions. They are used for callbacks, functional programming, and code reuse.",
+    "keywords": ["higher order function", "callback", "function argument", "return function", "functional programming"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Hard",
+    "question": "Explain the difference between call stack and task queue in JavaScript.",
+    "reference_answer": "The call stack keeps track of function execution in a LIFO manner. The task queue holds asynchronous callbacks waiting for execution. The event loop moves tasks from the queue to the stack when it is empty.",
+    "keywords": ["call stack", "task queue", "asynchronous", "event loop", "LIFO"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Hard",
+    "question": "What is the difference between synchronous and asynchronous errors in JavaScript?",
+    "reference_answer": "Synchronous errors occur immediately during code execution and can be caught using try-catch. Asynchronous errors occur later in callbacks, promises, or events and require proper handling with callbacks, catch, or async-await.",
+    "keywords": ["synchronous error", "asynchronous error", "try catch", "promise", "callback"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Hard",
+    "question": "Explain memory leaks in JavaScript and how to prevent them.",
+    "reference_answer": "Memory leaks happen when memory is not released after use, often due to references in closures, forgotten timers, or global variables. Prevent them by cleaning up unused objects, clearing timers, and avoiding unnecessary global variables.",
+    "keywords": ["memory leak", "closure", "timer", "global variable", "cleanup"]
+  },
+  {
+    "tech": "JavaScript",
+    "difficulty": "Hard",
+    "question": "What is the difference between synchronous iteration and asynchronous iteration?",
+    "reference_answer": "Synchronous iteration processes elements one by one blocking execution, while asynchronous iteration uses async iterators and for-await-of loops to handle asynchronous data streams without blocking the main thread.",
+    "keywords": ["synchronous iteration", "asynchronous iteration", "async iterator", "for await of", "main thread"]
+  }
+]

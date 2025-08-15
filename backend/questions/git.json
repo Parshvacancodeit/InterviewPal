@@ -1,0 +1,172 @@
+[
+  {
+    "tech": "Git",
+    "difficulty": "Easy",
+    "question": "What is Git?",
+    "reference_answer": "Git is a distributed version control system that helps developers track changes in source code and collaborate efficiently on projects.",
+    "keywords": ["git", "version control", "distributed", "source code", "collaboration"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Easy",
+    "question": "What is a repository in Git?",
+    "reference_answer": "A repository in Git is a storage location that holds all the project files, history of changes, and configuration for version control.",
+    "keywords": ["git", "repository", "storage", "project files", "version control"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Easy",
+    "question": "What is a commit in Git?",
+    "reference_answer": "A commit in Git is a snapshot of changes made to the files in a repository, allowing tracking and reverting changes when needed.",
+    "keywords": ["git", "commit", "snapshot", "changes", "repository"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Easy",
+    "question": "What is the difference between git pull and git fetch?",
+    "reference_answer": "Git fetch downloads updates from a remote repository but does not merge them, while git pull downloads and merges the updates into the local branch.",
+    "keywords": ["git", "pull", "fetch", "update", "merge"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Easy",
+    "question": "What is a branch in Git?",
+    "reference_answer": "A branch in Git is a separate line of development that allows multiple features or fixes to be developed independently before merging.",
+    "keywords": ["git", "branch", "development", "merge", "features"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Easy",
+    "question": "What is git clone?",
+    "reference_answer": "Git clone is a command used to create a copy of an existing remote repository on the local machine, including all history and branches.",
+    "keywords": ["git", "clone", "copy", "repository", "local"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Easy",
+    "question": "What is git status?",
+    "reference_answer": "Git status is a command that shows the state of the working directory and staging area, including modified, staged, or untracked files.",
+    "keywords": ["git", "status", "working directory", "staging", "files"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Easy",
+    "question": "What is the difference between git add and git commit?",
+    "reference_answer": "Git add stages changes to be included in the next commit, while git commit saves the staged changes into the repository history.",
+    "keywords": ["git", "add", "commit", "staging", "repository"]
+  },
+
+  {
+    "tech": "Git",
+    "difficulty": "Medium",
+    "question": "What is the purpose of git merge?",
+    "reference_answer": "Git merge combines changes from one branch into another, integrating independent lines of development into a single unified branch.",
+    "keywords": ["git", "merge", "branch", "combine", "development"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Medium",
+    "question": "What is git rebase and how is it different from git merge?",
+    "reference_answer": "Git rebase moves or combines a sequence of commits to a new base, creating a linear history, while git merge creates a new commit joining branches with their existing histories.",
+    "keywords": ["git", "rebase", "merge", "linear history", "branch"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Medium",
+    "question": "What is the difference between git reset and git revert?",
+    "reference_answer": "Git reset changes the current branch history by removing commits, while git revert creates a new commit that undoes the changes of a previous commit without altering history.",
+    "keywords": ["git", "reset", "revert", "history", "commit"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Medium",
+    "question": "What is a remote in Git?",
+    "reference_answer": "A remote in Git is a reference to a repository hosted on a server or cloud, allowing collaboration and synchronization of changes across multiple locations.",
+    "keywords": ["git", "remote", "repository", "server", "collaboration"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Medium",
+    "question": "What is git stash used for?",
+    "reference_answer": "Git stash temporarily saves uncommitted changes, allowing developers to switch branches or perform other tasks without committing incomplete work.",
+    "keywords": ["git", "stash", "temporary", "changes", "branches"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Medium",
+    "question": "What is the difference between fast forward and three way merge in Git?",
+    "reference_answer": "A fast forward merge moves the branch pointer forward when no divergent changes exist, while a three way merge combines histories when branches have diverged, creating a merge commit.",
+    "keywords": ["git", "merge", "fast forward", "three way", "branch"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Medium",
+    "question": "What is the purpose of git tag?",
+    "reference_answer": "Git tag is used to mark specific points in history, usually for releases, allowing developers to reference stable versions of the repository.",
+    "keywords": ["git", "tag", "history", "release", "version"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Medium",
+    "question": "What is the use of git log?",
+    "reference_answer": "Git log displays a list of commits in a repository, showing commit messages, authors, dates, and unique hashes for tracking changes.",
+    "keywords": ["git", "log", "commits", "history", "tracking"]
+  },
+
+  {
+    "tech": "Git",
+    "difficulty": "Hard",
+    "question": "Explain the difference between git cherry pick and git revert.",
+    "reference_answer": "Git cherry pick applies a specific commit from another branch onto the current branch, while git revert creates a new commit that undoes changes from a previous commit.",
+    "keywords": ["git", "cherry pick", "revert", "commit", "branch"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Hard",
+    "question": "What are Git hooks and how are they used?",
+    "reference_answer": "Git hooks are scripts that run automatically on certain events like commit or push, used to enforce policies, run tests, or automate workflows.",
+    "keywords": ["git", "hooks", "scripts", "commit", "automation"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Hard",
+    "question": "What is the difference between git fetch origin and git pull origin?",
+    "reference_answer": "Git fetch origin downloads updates from the remote repository without merging, while git pull origin fetches and merges changes into the current branch.",
+    "keywords": ["git", "fetch", "pull", "origin", "merge"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Hard",
+    "question": "Explain detached HEAD in Git.",
+    "reference_answer": "A detached HEAD occurs when Git points to a commit instead of a branch, allowing inspection or temporary changes without affecting any branch history.",
+    "keywords": ["git", "detached head", "commit", "branch", "history"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Hard",
+    "question": "What is git bisect used for?",
+    "reference_answer": "Git bisect is a tool to find the commit that introduced a bug by performing a binary search through the repository history, marking commits as good or bad.",
+    "keywords": ["git", "bisect", "bug", "history", "binary search"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Hard",
+    "question": "Explain git reflog and its use.",
+    "reference_answer": "Git reflog records updates to the tip of branches, allowing recovery of lost commits or branches even after resets or force pushes.",
+    "keywords": ["git", "reflog", "branches", "recovery", "commits"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Hard",
+    "question": "What is the difference between git merge --no-ff and git merge --squash?",
+    "reference_answer": "Git merge --no-ff creates a merge commit even for fast forward merges, preserving branch history, while git merge --squash combines all changes into a single commit.",
+    "keywords": ["git", "merge", "no ff", "squash", "history"]
+  },
+  {
+    "tech": "Git",
+    "difficulty": "Hard",
+    "question": "Explain how Git handles conflicts and how to resolve them.",
+    "reference_answer": "Git marks conflicting files during a merge or rebase. Developers resolve conflicts by editing files manually and using git add to stage resolved changes, then committing them.",
+    "keywords": ["git", "conflict", "merge", "rebase", "resolve"]
+  }
+]

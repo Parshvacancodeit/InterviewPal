@@ -1,0 +1,163 @@
+[
+  {
+    "tech": "Node.js",
+    "difficulty": "Easy",
+    "question": "What is Node.js?",
+    "reference_answer": "Node.js is a JavaScript runtime built on Chrome's V8 engine that allows developers to run JavaScript on the server side. It is event-driven and non-blocking, making it suitable for building scalable applications.",
+    "keywords": ["nodejs", "javascript runtime", "server side", "event driven", "non blocking", "scalable"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Easy",
+    "question": "What is npm?",
+    "reference_answer": "npm stands for Node Package Manager. It is a tool used to install, manage, and share reusable code packages in Node.js applications. It simplifies dependency management and project setup.",
+    "keywords": ["npm", "node package manager", "install packages", "manage dependencies", "share code", "project setup"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Easy",
+    "question": "What is a callback in Node.js?",
+    "reference_answer": "A callback is a function passed as an argument to another function that is executed after a certain operation completes. Node.js heavily uses callbacks for asynchronous operations like file reading and network requests.",
+    "keywords": ["callback", "function argument", "asynchronous", "operations", "file reading", "network requests"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Easy",
+    "question": "What is the event loop in Node.js?",
+    "reference_answer": "The event loop is a core concept in Node.js that allows non-blocking I/O operations. It continuously checks the event queue and executes callbacks, enabling Node.js to handle multiple operations without blocking the execution thread.",
+    "keywords": ["event loop", "non blocking", "io operations", "callbacks", "event queue", "execution thread"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Easy",
+    "question": "What are modules in Node.js?",
+    "reference_answer": "Modules in Node.js are reusable blocks of code encapsulated in separate files. They can be imported using require or import statements, helping in organizing and maintaining code efficiently.",
+    "keywords": ["modules", "reusable code", "separate files", "require", "import", "organize code"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Easy",
+    "question": "What is the difference between synchronous and asynchronous functions in Node.js?",
+    "reference_answer": "Synchronous functions block the execution until the operation completes, whereas asynchronous functions allow the program to continue running while waiting for the operation to finish. Node.js emphasizes asynchronous programming for scalability.",
+    "keywords": ["synchronous", "asynchronous", "blocking", "non blocking", "operation", "scalability"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Easy",
+    "question": "What is the purpose of package.json in Node.js?",
+    "reference_answer": "The package.json file is used to manage project metadata, dependencies, scripts, and configurations. It is essential for setting up, sharing, and maintaining Node.js projects.",
+    "keywords": ["package.json", "project metadata", "dependencies", "scripts", "configuration", "manage projects"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Easy",
+    "question": "What is the global object in Node.js?",
+    "reference_answer": "The global object in Node.js provides variables and functions that are available everywhere without requiring import. Examples include console, process, and setTimeout.",
+    "keywords": ["global object", "nodejs", "variables", "functions", "console", "process", "settimeout"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Medium",
+    "question": "What is a stream in Node.js?",
+    "reference_answer": "Streams in Node.js are objects that allow reading or writing data piece by piece, rather than loading everything into memory at once. They are efficient for handling large files or network data.",
+    "keywords": ["stream", "data", "read", "write", "memory efficient", "large files", "network"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Medium",
+    "question": "What is the difference between require and import in Node.js?",
+    "reference_answer": "require is used in CommonJS modules for synchronous loading, while import is used in ES6 modules for asynchronous loading. Both are used to include modules but follow different syntax and behavior.",
+    "keywords": ["require", "import", "commonjs", "es6 modules", "synchronous", "asynchronous", "include modules"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Medium",
+    "question": "How does Node.js handle concurrency?",
+    "reference_answer": "Node.js handles concurrency using its event-driven, non-blocking I/O model combined with the event loop. This allows multiple operations to be processed simultaneously without creating multiple threads.",
+    "keywords": ["concurrency", "event driven", "non blocking", "io", "event loop", "multiple operations"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Medium",
+    "question": "What is the role of the buffer class in Node.js?",
+    "reference_answer": "Buffers in Node.js are used to handle binary data directly in memory. They are essential for working with streams, files, and network protocols where raw binary manipulation is needed.",
+    "keywords": ["buffer", "binary data", "memory", "streams", "files", "network protocols", "raw data"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Medium",
+    "question": "What is the difference between process.nextTick and setImmediate?",
+    "reference_answer": "process.nextTick schedules a callback to execute immediately after the current operation completes, before I/O events. setImmediate schedules a callback to execute on the next iteration of the event loop, after I/O events are processed.",
+    "keywords": ["process.nexttick", "setimmediate", "callback", "event loop", "io events", "schedule"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Medium",
+    "question": "What are environment variables in Node.js?",
+    "reference_answer": "Environment variables in Node.js are key-value pairs used to configure application settings outside of code. They help in maintaining different configurations for development, testing, and production environments.",
+    "keywords": ["environment variables", "configuration", "settings", "development", "testing", "production"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Medium",
+    "question": "What is middleware in Node.js?",
+    "reference_answer": "Middleware is a function that has access to the request and response objects and can modify them or perform operations before passing control to the next middleware. They are commonly used in server applications.",
+    "keywords": ["middleware", "request", "response", "function", "server", "operations", "next"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Medium",
+    "question": "What is the difference between readFileSync and readFile?",
+    "reference_answer": "readFileSync is a synchronous method that blocks execution until the file is read, whereas readFile is asynchronous and allows the program to continue running while reading the file. Asynchronous reading is preferred in Node.js.",
+    "keywords": ["readfilesync", "readfile", "synchronous", "asynchronous", "file reading", "execution"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Hard",
+    "question": "Explain the concept of event emitters in Node.js.",
+    "reference_answer": "Event emitters are objects in Node.js that allow emitting named events and registering listeners for those events. They provide a pattern to handle asynchronous operations and communication between components.",
+    "keywords": ["event emitters", "events", "listeners", "asynchronous", "communication", "components"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Hard",
+    "question": "What is clustering in Node.js and why is it used?",
+    "reference_answer": "Clustering in Node.js allows creating multiple processes that share the same server port. It is used to take advantage of multi-core processors and improve performance for CPU-intensive applications.",
+    "keywords": ["clustering", "processes", "server port", "multi core", "performance", "cpu intensive"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Hard",
+    "question": "What is the difference between fork and spawn in Node.js?",
+    "reference_answer": "fork is used to create a new Node.js process with an IPC channel, while spawn launches a new process without IPC. fork is suitable for creating worker processes, whereas spawn is used for running external commands.",
+    "keywords": ["fork", "spawn", "process", "ipc", "worker", "external commands"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Hard",
+    "question": "Explain the concept of streams piping in Node.js.",
+    "reference_answer": "Piping in streams allows connecting a readable stream to a writable stream so that data flows automatically from one to another. This reduces memory consumption and simplifies handling large amounts of data.",
+    "keywords": ["streams", "piping", "readable", "writable", "data flow", "memory efficient", "large data"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Hard",
+    "question": "What is the difference between process.env and dotenv in Node.js?",
+    "reference_answer": "process.env accesses environment variables directly from the system, whereas dotenv is a module that loads environment variables from a .env file into process.env. dotenv simplifies managing environment-specific configurations.",
+    "keywords": ["process.env", "dotenv", "environment variables", "system", "configuration", "manage"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Hard",
+    "question": "What are promises in Node.js and how do they help in asynchronous programming?",
+    "reference_answer": "Promises in Node.js represent the eventual completion or failure of an asynchronous operation. They provide a cleaner alternative to callbacks, allowing chaining of operations and better error handling.",
+    "keywords": ["promises", "asynchronous", "completion", "failure", "callback alternative", "chaining", "error handling"]
+  },
+  {
+    "tech": "Node.js",
+    "difficulty": "Hard",
+    "question": "What is the purpose of the cluster module in Node.js?",
+    "reference_answer": "The cluster module allows creating child processes that share the same server port, enabling Node.js applications to utilize multiple CPU cores for improved concurrency and performance.",
+    "keywords": ["cluster module", "child processes", "server port", "cpu cores", "concurrency", "performance"]
+  }
+]

@@ -1,0 +1,172 @@
+[
+  {
+    "tech": "MySQL",
+    "difficulty": "Easy",
+    "question": "What is MySQL?",
+    "reference_answer": "MySQL is a relational database management system (RDBMS) that uses structured query language (SQL) to manage data in tables.",
+    "keywords": ["mysql", "rdbms", "database", "sql", "tables"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Easy",
+    "question": "What is a table in MySQL?",
+    "reference_answer": "A table in MySQL is a collection of related data organized in rows and columns.",
+    "keywords": ["table", "rows", "columns", "data", "mysql"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Easy",
+    "question": "What is a primary key in MySQL?",
+    "reference_answer": "A primary key is a unique identifier for each record in a table, ensuring that no two rows have the same key.",
+    "keywords": ["primary key", "unique", "identifier", "table", "mysql"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Easy",
+    "question": "What is a foreign key in MySQL?",
+    "reference_answer": "A foreign key is a field in one table that refers to the primary key in another table, establishing a relationship between tables.",
+    "keywords": ["foreign key", "relationship", "primary key", "table", "mysql"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Easy",
+    "question": "How do you insert data into a MySQL table?",
+    "reference_answer": "You insert data using the INSERT INTO statement followed by the table name and the values to be inserted.",
+    "keywords": ["insert", "data", "table", "mysql", "insert into"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Easy",
+    "question": "What is a SELECT statement in MySQL?",
+    "reference_answer": "The SELECT statement is used to retrieve data from one or more tables in a MySQL database.",
+    "keywords": ["select", "query", "retrieve", "data", "mysql", "tables"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Easy",
+    "question": "What is the difference between CHAR and VARCHAR in MySQL?",
+    "reference_answer": "CHAR is a fixed-length string type, while VARCHAR is a variable-length string type.",
+    "keywords": ["char", "varchar", "string", "mysql", "length"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Easy",
+    "question": "What is the purpose of the WHERE clause in MySQL?",
+    "reference_answer": "The WHERE clause is used to filter records based on specified conditions in a query.",
+    "keywords": ["where", "filter", "condition", "query", "mysql"]
+  },
+
+  {
+    "tech": "MySQL",
+    "difficulty": "Medium",
+    "question": "What is an index in MySQL?",
+    "reference_answer": "An index is a data structure that improves the speed of data retrieval operations on a table at the cost of additional writes and storage.",
+    "keywords": ["index", "performance", "retrieval", "table", "mysql"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Medium",
+    "question": "What is the difference between INNER JOIN and LEFT JOIN?",
+    "reference_answer": "INNER JOIN returns only the matching rows between tables, while LEFT JOIN returns all rows from the left table and matched rows from the right table.",
+    "keywords": ["inner join", "left join", "tables", "mysql", "matching"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Medium",
+    "question": "What is normalization in MySQL?",
+    "reference_answer": "Normalization is the process of organizing data to reduce redundancy and improve data integrity using normal forms.",
+    "keywords": ["normalization", "redundancy", "integrity", "tables", "mysql"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Medium",
+    "question": "What is the difference between GROUP BY and ORDER BY?",
+    "reference_answer": "GROUP BY groups rows that have the same values in specified columns, while ORDER BY sorts the result set based on specified columns.",
+    "keywords": ["group by", "order by", "sort", "group", "mysql"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Medium",
+    "question": "What are transactions in MySQL?",
+    "reference_answer": "Transactions are a set of SQL operations executed as a single unit to ensure atomicity, consistency, isolation, and durability (ACID properties).",
+    "keywords": ["transactions", "acid", "atomicity", "consistency", "mysql"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Medium",
+    "question": "What is the difference between a view and a table?",
+    "reference_answer": "A view is a virtual table based on a SELECT query and does not store data physically, whereas a table stores data physically.",
+    "keywords": ["view", "table", "virtual", "physical", "mysql"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Medium",
+    "question": "What is the difference between UNIQUE and PRIMARY KEY?",
+    "reference_answer": "A PRIMARY KEY uniquely identifies each row and does not allow NULLs, while a UNIQUE key ensures uniqueness but allows a single NULL value.",
+    "keywords": ["unique", "primary key", "null", "mysql", "constraints"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Medium",
+    "question": "What is a stored procedure in MySQL?",
+    "reference_answer": "A stored procedure is a set of SQL statements stored in the database that can be executed repeatedly with parameters.",
+    "keywords": ["stored procedure", "sql", "execute", "mysql", "parameters"]
+  },
+
+  {
+    "tech": "MySQL",
+    "difficulty": "Hard",
+    "question": "What is the difference between InnoDB and MyISAM storage engines?",
+    "reference_answer": "InnoDB supports transactions, foreign keys, and row-level locking, while MyISAM does not support transactions and uses table-level locking.",
+    "keywords": ["innodb", "myisam", "storage engine", "transactions", "mysql"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Hard",
+    "question": "What is the difference between clustered and non-clustered indexes?",
+    "reference_answer": "A clustered index determines the physical order of data in a table, whereas a non-clustered index creates a separate structure to point to data without changing its physical order.",
+    "keywords": ["clustered index", "non-clustered", "physical order", "mysql", "index"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Hard",
+    "question": "What is a trigger in MySQL?",
+    "reference_answer": "A trigger is a set of SQL statements automatically executed in response to certain events on a table, such as INSERT, UPDATE, or DELETE.",
+    "keywords": ["trigger", "sql", "event", "insert", "update", "mysql"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Hard",
+    "question": "What is the difference between a subquery and a join?",
+    "reference_answer": "A subquery is a query nested inside another query, whereas a join combines rows from two or more tables based on a related column.",
+    "keywords": ["subquery", "join", "nested", "tables", "mysql"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Hard",
+    "question": "How does MySQL handle ACID compliance?",
+    "reference_answer": "MySQL handles ACID compliance using storage engines like InnoDB, ensuring transactions are atomic, consistent, isolated, and durable.",
+    "keywords": ["acid", "transactions", "innodb", "mysql", "compliance"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Hard",
+    "question": "What is the difference between DELETE and TRUNCATE?",
+    "reference_answer": "DELETE removes specific rows and can be rolled back, while TRUNCATE removes all rows from a table quickly and cannot be rolled back in most engines.",
+    "keywords": ["delete", "truncate", "rows", "rollback", "mysql"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Hard",
+    "question": "What are MySQL events and how are they used?",
+    "reference_answer": "MySQL events are scheduled tasks that run SQL statements at specified intervals or times, similar to cron jobs.",
+    "keywords": ["events", "schedule", "sql", "mysql", "cron"]
+  },
+  {
+    "tech": "MySQL",
+    "difficulty": "Hard",
+    "question": "What is replication in MySQL?",
+    "reference_answer": "Replication is the process of copying and maintaining database objects from one MySQL server (master) to another (slave) to ensure redundancy and availability.",
+    "keywords": ["replication", "master", "slave", "mysql", "redundancy"]
+  }
+]

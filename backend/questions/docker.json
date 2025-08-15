@@ -1,0 +1,172 @@
+[
+  {
+    "tech": "Docker",
+    "difficulty": "Easy",
+    "question": "What is Docker?",
+    "reference_answer": "Docker is a platform that allows developers to package applications and their dependencies into containers, which can run consistently across different environments.",
+    "keywords": ["docker", "containers", "applications", "dependencies", "platform"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Easy",
+    "question": "What is a Docker container?",
+    "reference_answer": "A Docker container is a lightweight, standalone package that contains an application and all of its dependencies, ensuring it runs reliably in any environment.",
+    "keywords": ["container", "docker", "application", "dependencies", "package"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Easy",
+    "question": "What is a Docker image?",
+    "reference_answer": "A Docker image is a read-only template that defines how a container should run, including the application code, libraries, and configuration files.",
+    "keywords": ["image", "docker", "template", "container", "application"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Easy",
+    "question": "What is Docker Hub?",
+    "reference_answer": "Docker Hub is a cloud-based repository where developers can store, share, and distribute Docker images publicly or privately.",
+    "keywords": ["docker", "hub", "repository", "images", "cloud"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Easy",
+    "question": "What is Dockerfile?",
+    "reference_answer": "A Dockerfile is a text file containing a set of instructions that define how to build a Docker image automatically.",
+    "keywords": ["dockerfile", "docker", "instructions", "build", "image"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Easy",
+    "question": "What is the difference between Docker container and virtual machine?",
+    "reference_answer": "Docker containers are lightweight and share the host operating system kernel, while virtual machines are heavier and include a full operating system for each instance.",
+    "keywords": ["docker", "container", "virtual machine", "lightweight", "operating system"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Easy",
+    "question": "What is Docker Compose?",
+    "reference_answer": "Docker Compose is a tool that allows defining and running multi-container Docker applications using a single configuration file.",
+    "keywords": ["docker", "compose", "multi container", "applications", "configuration"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Easy",
+    "question": "What is the command to list running Docker containers?",
+    "reference_answer": "The command 'docker ps' is used to list all currently running Docker containers along with their details such as container ID and status.",
+    "keywords": ["docker", "command", "list", "containers", "ps"]
+  },
+
+  {
+    "tech": "Docker",
+    "difficulty": "Medium",
+    "question": "What is the purpose of Docker volumes?",
+    "reference_answer": "Docker volumes provide persistent storage for containers, allowing data to remain intact even if the container is removed or recreated.",
+    "keywords": ["docker", "volumes", "persistent", "storage", "containers"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Medium",
+    "question": "What is the difference between COPY and ADD in Dockerfile?",
+    "reference_answer": "COPY copies files or directories from the host to the container, while ADD can also extract tar files and fetch files from remote URLs.",
+    "keywords": ["dockerfile", "copy", "add", "files", "container"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Medium",
+    "question": "What is Docker networking?",
+    "reference_answer": "Docker networking allows containers to communicate with each other and with external systems by creating virtual networks with configurable settings.",
+    "keywords": ["docker", "networking", "containers", "communication", "virtual network"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Medium",
+    "question": "What is a Docker registry?",
+    "reference_answer": "A Docker registry is a storage and distribution system for Docker images, enabling developers to push and pull images for deployment.",
+    "keywords": ["docker", "registry", "storage", "images", "distribution"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Medium",
+    "question": "What is the difference between docker stop and docker kill?",
+    "reference_answer": "Docker stop gracefully stops a container by sending a termination signal, while docker kill immediately terminates the container without cleanup.",
+    "keywords": ["docker", "stop", "kill", "terminate", "container"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Medium",
+    "question": "What is the use of ENTRYPOINT in Dockerfile?",
+    "reference_answer": "ENTRYPOINT specifies the main command that should run when the container starts, allowing the container to behave like an executable.",
+    "keywords": ["dockerfile", "entrypoint", "command", "container", "executable"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Medium",
+    "question": "How can you update a running container?",
+    "reference_answer": "A running container cannot be directly updated; instead, you modify the Dockerfile or image and recreate a new container with the updated image.",
+    "keywords": ["docker", "update", "running container", "image", "recreate"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Medium",
+    "question": "What is the purpose of docker prune?",
+    "reference_answer": "Docker prune removes unused containers, networks, images, and volumes to free up system resources and maintain a clean environment.",
+    "keywords": ["docker", "prune", "cleanup", "containers", "images"]
+  },
+
+  {
+    "tech": "Docker",
+    "difficulty": "Hard",
+    "question": "Explain the difference between bridge and overlay networks in Docker.",
+    "reference_answer": "Bridge networks are used for communication between containers on a single host, while overlay networks allow containers to communicate across multiple hosts.",
+    "keywords": ["docker", "bridge network", "overlay network", "containers", "hosts"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Hard",
+    "question": "What is the purpose of multi-stage builds in Docker?",
+    "reference_answer": "Multi-stage builds help reduce image size by allowing you to use multiple FROM statements, copying only the necessary artifacts to the final image.",
+    "keywords": ["docker", "multi stage build", "image size", "artifacts", "dockerfile"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Hard",
+    "question": "What are Docker secrets?",
+    "reference_answer": "Docker secrets allow secure storage and management of sensitive data such as passwords, tokens, and keys for containers without exposing them in images.",
+    "keywords": ["docker", "secrets", "sensitive data", "containers", "secure"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Hard",
+    "question": "Explain the difference between docker attach and docker exec.",
+    "reference_answer": "Docker attach connects to a running container's main process, while docker exec runs a new command inside an existing container.",
+    "keywords": ["docker", "attach", "exec", "container", "command"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Hard",
+    "question": "How can you rollback a Docker container to a previous version?",
+    "reference_answer": "To rollback, you stop the current container and start a new container from the previous version of the Docker image stored in the registry or local system.",
+    "keywords": ["docker", "rollback", "container", "previous version", "image"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Hard",
+    "question": "What is Docker Swarm?",
+    "reference_answer": "Docker Swarm is a native clustering and orchestration tool for Docker that allows managing multiple containers across different hosts as a single system.",
+    "keywords": ["docker", "swarm", "clustering", "orchestration", "containers"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Hard",
+    "question": "Explain Docker build cache and its importance.",
+    "reference_answer": "Docker build cache stores intermediate image layers to speed up subsequent builds, reducing build time and avoiding redundant operations.",
+    "keywords": ["docker", "build cache", "image layers", "build", "optimization"]
+  },
+  {
+    "tech": "Docker",
+    "difficulty": "Hard",
+    "question": "What is the difference between Docker CE and Docker EE?",
+    "reference_answer": "Docker CE is the community edition for general use and learning, while Docker EE is the enterprise edition with additional security and support features.",
+    "keywords": ["docker", "ce", "ee", "community edition", "enterprise edition"]
+  }
+]

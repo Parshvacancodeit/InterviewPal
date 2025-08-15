@@ -1,0 +1,163 @@
+[
+  {
+    "tech": "React",
+    "difficulty": "Easy",
+    "question": "What is React?",
+    "reference_answer": "React is a JavaScript library used to build user interfaces, primarily for single page applications. It allows developers to create reusable UI components.",
+    "keywords": ["React", "JavaScript", "library", "user interface", "components"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Easy",
+    "question": "What is JSX?",
+    "reference_answer": "JSX is a syntax extension for JavaScript that looks similar to HTML. It allows developers to write UI components in a declarative way and gets transpiled to JavaScript.",
+    "keywords": ["JSX", "JavaScript", "syntax", "components", "HTML"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Easy",
+    "question": "What are props in React?",
+    "reference_answer": "Props are inputs to React components. They are passed from parent components to child components and are read only, meaning they cannot be modified by the child component.",
+    "keywords": ["React", "props", "input", "component", "parent", "child"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Easy",
+    "question": "What is the difference between state and props?",
+    "reference_answer": "Props are inputs passed to components from parent, while state is an internal data store of the component that can change over time and trigger a re-render.",
+    "keywords": ["React", "props", "state", "component", "data", "re-render"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Easy",
+    "question": "What is a component in React?",
+    "reference_answer": "A component is a reusable piece of code that returns a React element to be rendered on the page. Components can be functional or class-based.",
+    "keywords": ["React", "component", "reusable", "functional", "class-based"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Easy",
+    "question": "What is the virtual DOM?",
+    "reference_answer": "The virtual DOM is a lightweight copy of the actual DOM that React uses to optimize updates. React compares the virtual DOM with the real DOM and updates only what changed.",
+    "keywords": ["React", "virtual DOM", "DOM", "optimization", "update"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Easy",
+    "question": "What are React fragments?",
+    "reference_answer": "Fragments let you group multiple elements without adding extra nodes to the DOM. They are useful when a component needs to return multiple children.",
+    "keywords": ["React", "fragments", "elements", "DOM", "children"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Easy",
+    "question": "What is a key in React?",
+    "reference_answer": "Keys are unique identifiers used in lists of elements to help React identify which items have changed, are added, or removed.",
+    "keywords": ["React", "key", "list", "identifier", "element", "update"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Medium",
+    "question": "What is useState hook?",
+    "reference_answer": "useState is a hook that allows functional components to have state. It returns an array containing the current state value and a function to update it.",
+    "keywords": ["React", "useState", "hook", "functional component", "state"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Medium",
+    "question": "What is useEffect hook?",
+    "reference_answer": "useEffect is a hook used to perform side effects in functional components, such as fetching data, setting up subscriptions, or manually changing the DOM.",
+    "keywords": ["React", "useEffect", "hook", "functional component", "side effects"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Medium",
+    "question": "What is context in React?",
+    "reference_answer": "Context provides a way to pass data through the component tree without having to pass props manually at every level. It is useful for global state management.",
+    "keywords": ["React", "context", "component tree", "data", "global state"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Medium",
+    "question": "What are React hooks?",
+    "reference_answer": "Hooks are functions that let you use state and other React features in functional components. Common hooks include useState, useEffect, and useContext.",
+    "keywords": ["React", "hooks", "state", "functional component", "useState", "useEffect", "useContext"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Medium",
+    "question": "What is lifting state up?",
+    "reference_answer": "Lifting state up is a technique to move state to the nearest common ancestor component so that multiple child components can share and update the state.",
+    "keywords": ["React", "lifting state up", "state", "ancestor", "component", "child"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Medium",
+    "question": "What is a controlled component?",
+    "reference_answer": "A controlled component is a form element whose value is controlled by React state. Any changes to the input are handled through event handlers.",
+    "keywords": ["React", "controlled component", "form", "state", "input", "event handler"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Medium",
+    "question": "What is a higher-order component?",
+    "reference_answer": "A higher-order component is a function that takes a component and returns a new enhanced component. It is used for reusing component logic.",
+    "keywords": ["React", "higher-order component", "HOC", "function", "enhanced component", "reuse"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Medium",
+    "question": "What is prop drilling?",
+    "reference_answer": "Prop drilling refers to passing props through multiple levels of components to reach a deeply nested component. Context or state management libraries can avoid this.",
+    "keywords": ["React", "prop drilling", "props", "nested component", "context", "state management"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Hard",
+    "question": "What is React.memo?",
+    "reference_answer": "React.memo is a higher order component used to optimize functional components by preventing unnecessary re-rendering if props have not changed.",
+    "keywords": ["React", "memo", "optimization", "functional component", "re-render"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Hard",
+    "question": "What is useCallback hook?",
+    "reference_answer": "useCallback returns a memoized callback function that only changes if its dependencies change. It helps prevent unnecessary re-renders in child components.",
+    "keywords": ["React", "useCallback", "hook", "memoization", "callback", "dependency"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Hard",
+    "question": "What is useMemo hook?",
+    "reference_answer": "useMemo is a hook that memoizes the result of a calculation and recomputes it only if dependencies change. It improves performance by avoiding expensive calculations.",
+    "keywords": ["React", "useMemo", "hook", "memoization", "performance", "calculation"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Hard",
+    "question": "What is React.lazy?",
+    "reference_answer": "React.lazy allows components to be loaded lazily, i.e., only when they are rendered. It is used for code-splitting to reduce initial load time.",
+    "keywords": ["React", "lazy", "code-splitting", "component", "load", "performance"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Hard",
+    "question": "What is React.Suspense?",
+    "reference_answer": "React.Suspense lets you display a fallback UI while waiting for components to load asynchronously, usually used with React.lazy for code-splitting.",
+    "keywords": ["React", "Suspense", "fallback UI", "asynchronous", "lazy", "component"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Hard",
+    "question": "What is reconciliation in React?",
+    "reference_answer": "Reconciliation is the process by which React updates the DOM by comparing the virtual DOM with the real DOM and applying minimal changes needed to reflect the new state.",
+    "keywords": ["React", "reconciliation", "virtual DOM", "DOM", "update", "performance"]
+  },
+  {
+    "tech": "React",
+    "difficulty": "Hard",
+    "question": "What is an error boundary in React?",
+    "reference_answer": "An error boundary is a component that catches JavaScript errors anywhere in its child component tree, logs them, and displays a fallback UI instead of crashing the app.",
+    "keywords": ["React", "error boundary", "component", "error handling", "fallback UI", "child"]
+  }
+]

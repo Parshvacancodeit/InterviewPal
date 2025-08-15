@@ -1,0 +1,170 @@
+[
+  {
+    "tech": "Java",
+    "difficulty": "Easy",
+    "question": "What is Java?",
+    "reference_answer": "Java is a high level, object oriented programming language that is platform independent and widely used for building applications.",
+    "keywords": ["Java", "programming language", "object oriented", "platform independent", "applications"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Easy",
+    "question": "What is a class in Java?",
+    "reference_answer": "A class is a blueprint in Java that defines objects with attributes and methods. Classes are used to create instances called objects.",
+    "keywords": ["class", "blueprint", "object", "attributes", "methods", "instance"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Easy",
+    "question": "What is an object in Java?",
+    "reference_answer": "An object is an instance of a class in Java. Objects have state and behavior defined by the class.",
+    "keywords": ["object", "instance", "class", "state", "behavior", "Java"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Easy",
+    "question": "What is a constructor in Java?",
+    "reference_answer": "A constructor is a special method in Java used to initialize objects. It has the same name as the class and no return type.",
+    "keywords": ["constructor", "method", "initialize", "object", "class", "Java"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Easy",
+    "question": "What is the difference between JDK, JRE and JVM?",
+    "reference_answer": "JDK is the Java development kit used for development, JRE is the runtime environment to run Java programs, and JVM is the Java virtual machine that executes bytecode.",
+    "keywords": ["JDK", "JRE", "JVM", "development", "runtime", "bytecode"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Easy",
+    "question": "What is the difference between == and equals in Java?",
+    "reference_answer": "The == operator compares references for objects, while equals method compares the content or value of the objects.",
+    "keywords": ["compare", "reference", "content", "object", "equals", "operator"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Easy",
+    "question": "What is inheritance in Java?",
+    "reference_answer": "Inheritance is a mechanism in Java where one class can acquire properties and methods of another class to promote code reuse.",
+    "keywords": ["inheritance", "class", "properties", "methods", "code reuse", "Java"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Easy",
+    "question": "What is polymorphism in Java?",
+    "reference_answer": "Polymorphism is the ability in Java to take multiple forms. It allows methods to behave differently based on the object calling them.",
+    "keywords": ["polymorphism", "methods", "multiple forms", "object", "behavior", "Java"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Medium",
+    "question": "What is abstraction in Java?",
+    "reference_answer": "Abstraction is a concept in Java to hide implementation details and show only essential features using abstract classes or interfaces.",
+    "keywords": ["abstraction", "hide", "implementation", "features", "abstract class", "interface"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Medium",
+    "question": "What is encapsulation in Java?",
+    "reference_answer": "Encapsulation is the technique of wrapping data and methods into a single unit and restricting access using access modifiers.",
+    "keywords": ["encapsulation", "data", "methods", "access modifiers", "class", "Java"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Medium",
+    "question": "What is the difference between abstract class and interface?",
+    "reference_answer": "An abstract class can have methods with implementation and variables, while an interface can only have abstract methods and constants. Interfaces support multiple inheritance.",
+    "keywords": ["abstract class", "interface", "methods", "implementation", "variables", "multiple inheritance"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Medium",
+    "question": "What is the difference between method overloading and method overriding?",
+    "reference_answer": "Method overloading allows multiple methods with the same name but different parameters in the same class. Method overriding allows a subclass to provide a different implementation of a superclass method.",
+    "keywords": ["method overloading", "method overriding", "same name", "parameters", "subclass", "superclass"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Medium",
+    "question": "What is the use of the final keyword in Java?",
+    "reference_answer": "The final keyword in Java is used to declare constants, prevent method overriding, and prevent inheritance of a class.",
+    "keywords": ["final", "constant", "prevent overriding", "inheritance", "class", "Java"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Medium",
+    "question": "What are Java exceptions?",
+    "reference_answer": "Exceptions are events in Java that occur during program execution and disrupt normal flow. They are handled using try, catch, and finally blocks.",
+    "keywords": ["exception", "event", "disrupt", "execution", "try", "catch", "finally"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Medium",
+    "question": "What is the difference between checked and unchecked exceptions?",
+    "reference_answer": "Checked exceptions are checked at compile time and must be handled. Unchecked exceptions occur at runtime and do not require explicit handling.",
+    "keywords": ["checked exception", "unchecked exception", "compile time", "runtime", "handling", "Java"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Medium",
+    "question": "What are Java packages?",
+    "reference_answer": "Packages in Java are namespaces used to organize classes and interfaces. They help avoid name conflicts and provide access control.",
+    "keywords": ["package", "namespace", "organize", "class", "interface", "access control"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Hard",
+    "question": "What is the difference between a process and a thread in Java?",
+    "reference_answer": "A process is an independent program with its own memory, while a thread is a lightweight unit of execution within a process that shares memory with other threads.",
+    "keywords": ["process", "thread", "memory", "execution", "lightweight", "Java"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Hard",
+    "question": "What is the difference between synchronized and concurrent in Java?",
+    "reference_answer": "Synchronized ensures that only one thread accesses a block at a time, while concurrent allows multiple threads to execute simultaneously safely using concurrent classes.",
+    "keywords": ["synchronized", "concurrent", "threads", "safe", "execution", "Java"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Hard",
+    "question": "What is Java memory model?",
+    "reference_answer": "The Java memory model defines how threads interact through memory and how changes in one thread are visible to others, ensuring thread safety and consistency.",
+    "keywords": ["Java", "memory model", "threads", "visibility", "safety", "consistency"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Hard",
+    "question": "What is reflection in Java?",
+    "reference_answer": "Reflection in Java allows the program to inspect and manipulate classes, methods, and fields at runtime dynamically.",
+    "keywords": ["reflection", "inspect", "manipulate", "classes", "methods", "runtime"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Hard",
+    "question": "What is garbage collection in Java?",
+    "reference_answer": "Garbage collection in Java is the automatic process of reclaiming memory by removing objects that are no longer reachable to prevent memory leaks.",
+    "keywords": ["garbage collection", "memory", "reclaim", "objects", "reachable", "Java"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Hard",
+    "question": "What are generics in Java?",
+    "reference_answer": "Generics in Java allow classes and methods to operate on objects of various types while providing compile time type safety.",
+    "keywords": ["generics", "classes", "methods", "types", "compile time", "type safety"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Hard",
+    "question": "What is the difference between wait and sleep in Java?",
+    "reference_answer": "Wait pauses a thread until notified and releases the lock, while sleep pauses a thread for a specific time but does not release the lock.",
+    "keywords": ["wait", "sleep", "thread", "pause", "lock", "Java"]
+  },
+  {
+    "tech": "Java",
+    "difficulty": "Hard",
+    "question": "What is the difference between shallow copy and deep copy in Java?",
+    "reference_answer": "Shallow copy copies the object reference, so changes affect the original object. Deep copy copies the object and its nested objects, creating a fully independent clone.",
+    "keywords": ["shallow copy", "deep copy", "object", "reference", "clone", "Java"]
+  }
+]

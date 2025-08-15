@@ -1,0 +1,172 @@
+[
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Easy",
+    "question": "What is machine learning?",
+    "reference_answer": "Machine learning is a field of artificial intelligence where computers learn patterns from data and make predictions without explicit programming.",
+    "keywords": ["machine learning", "artificial intelligence", "patterns", "data", "predictions"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Easy",
+    "question": "What is supervised learning?",
+    "reference_answer": "Supervised learning is a type of machine learning where models are trained on labeled data to predict outcomes for new data.",
+    "keywords": ["supervised learning", "labeled data", "training", "predict", "model"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Easy",
+    "question": "What is unsupervised learning?",
+    "reference_answer": "Unsupervised learning is a type of machine learning where the model finds patterns or structure in data without labeled outputs.",
+    "keywords": ["unsupervised learning", "patterns", "structure", "data", "model"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Easy",
+    "question": "What is a model in machine learning?",
+    "reference_answer": "A model in machine learning is a mathematical representation of a real-world process that is trained to make predictions or decisions from data.",
+    "keywords": ["model", "machine learning", "mathematical representation", "predictions", "decisions"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Easy",
+    "question": "What is a feature in machine learning?",
+    "reference_answer": "A feature is an individual measurable property or characteristic of the data used by a machine learning model to make predictions.",
+    "keywords": ["feature", "data", "characteristic", "property", "predictions"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Easy",
+    "question": "What is a label in machine learning?",
+    "reference_answer": "A label is the output or target value in supervised learning that the model tries to predict based on input features.",
+    "keywords": ["label", "supervised learning", "output", "target", "prediction"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Easy",
+    "question": "What is training data?",
+    "reference_answer": "Training data is a dataset used to teach a machine learning model, containing input features and the corresponding outputs for learning.",
+    "keywords": ["training data", "dataset", "machine learning", "input", "output"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Easy",
+    "question": "What is testing data?",
+    "reference_answer": "Testing data is a dataset used to evaluate a trained machine learning model's performance and generalization on new data.",
+    "keywords": ["testing data", "dataset", "evaluation", "performance", "model"]
+  },
+
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Medium",
+    "question": "What is overfitting in machine learning?",
+    "reference_answer": "Overfitting occurs when a machine learning model learns the training data too well, including noise, and fails to generalize to new data.",
+    "keywords": ["overfitting", "training data", "noise", "generalization", "model"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Medium",
+    "question": "What is underfitting in machine learning?",
+    "reference_answer": "Underfitting occurs when a model is too simple to capture the underlying patterns in the data, resulting in poor performance on training and test data.",
+    "keywords": ["underfitting", "simple model", "patterns", "performance", "data"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Medium",
+    "question": "What is a decision tree?",
+    "reference_answer": "A decision tree is a machine learning algorithm that splits data into branches based on feature values to make predictions.",
+    "keywords": ["decision tree", "algorithm", "split", "feature", "predictions"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Medium",
+    "question": "What is a neural network?",
+    "reference_answer": "A neural network is a machine learning model inspired by the human brain, consisting of layers of interconnected nodes to learn patterns in data.",
+    "keywords": ["neural network", "model", "layers", "nodes", "patterns"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Medium",
+    "question": "What is gradient descent?",
+    "reference_answer": "Gradient descent is an optimization algorithm used to minimize the error in machine learning models by adjusting model parameters iteratively.",
+    "keywords": ["gradient descent", "optimization", "algorithm", "error", "parameters"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Medium",
+    "question": "What is a confusion matrix?",
+    "reference_answer": "A confusion matrix is a table used to evaluate the performance of a classification model by showing true positives, true negatives, false positives, and false negatives.",
+    "keywords": ["confusion matrix", "classification", "true positives", "false positives", "evaluation"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Medium",
+    "question": "What is cross validation?",
+    "reference_answer": "Cross validation is a technique for assessing how a machine learning model will generalize to independent data by partitioning the data into training and validation sets multiple times.",
+    "keywords": ["cross validation", "technique", "generalization", "training", "validation"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Medium",
+    "question": "What is regularization?",
+    "reference_answer": "Regularization is a technique used in machine learning to prevent overfitting by adding a penalty to the model for large parameter values.",
+    "keywords": ["regularization", "prevent", "overfitting", "penalty", "parameters"]
+  },
+
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Hard",
+    "question": "What is a support vector machine?",
+    "reference_answer": "A support vector machine is a supervised learning algorithm that finds the best boundary to separate classes in a dataset for classification tasks.",
+    "keywords": ["support vector machine", "supervised learning", "boundary", "separate classes", "classification"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Hard",
+    "question": "What is principal component analysis?",
+    "reference_answer": "Principal component analysis is a dimensionality reduction technique that transforms data into a set of uncorrelated variables called principal components.",
+    "keywords": ["principal component analysis", "dimensionality reduction", "uncorrelated", "principal components", "transform"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Hard",
+    "question": "What is a convolutional neural network?",
+    "reference_answer": "A convolutional neural network is a type of neural network designed to process grid-like data such as images, using convolution layers to extract features.",
+    "keywords": ["convolutional neural network", "neural network", "images", "features", "convolution layers"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Hard",
+    "question": "What is reinforcement learning?",
+    "reference_answer": "Reinforcement learning is a type of machine learning where an agent learns to make decisions by receiving rewards or penalties for actions in an environment.",
+    "keywords": ["reinforcement learning", "agent", "decisions", "rewards", "environment"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Hard",
+    "question": "What is a recurrent neural network?",
+    "reference_answer": "A recurrent neural network is a type of neural network that uses feedback connections to process sequential data and capture temporal dependencies.",
+    "keywords": ["recurrent neural network", "neural network", "sequential data", "feedback", "temporal"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Hard",
+    "question": "What is batch normalization?",
+    "reference_answer": "Batch normalization is a technique in neural networks to normalize inputs of each layer to improve training speed and stability.",
+    "keywords": ["batch normalization", "neural network", "normalize", "training", "stability"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Hard",
+    "question": "What is a hyperparameter?",
+    "reference_answer": "A hyperparameter is a configuration value used to control the learning process of a machine learning model, set before training begins.",
+    "keywords": ["hyperparameter", "configuration", "learning process", "model", "training"]
+  },
+  {
+    "tech": "MachineLearning",
+    "difficulty": "Hard",
+    "question": "What is ensemble learning?",
+    "reference_answer": "Ensemble learning is a technique where multiple machine learning models are combined to produce better performance than individual models.",
+    "keywords": ["ensemble learning", "multiple models", "combine", "performance", "technique"]
+  }
+]

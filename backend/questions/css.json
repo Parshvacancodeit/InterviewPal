@@ -1,0 +1,172 @@
+[
+  {
+    "tech":"Css",
+    "question": "What does CSS stand for and why is it used in web development?",
+    "difficulty": "Easy",
+    "reference_answer": "CSS stands for Cascading Style Sheets. It is used to define the presentation and layout of HTML elements on a webpage, including colors, fonts, spacing, and positioning. Without CSS, web pages would only display plain, unstyled HTML content.",
+    "keywords": ["cascading style sheets", "styling", "presentation"]
+  },
+  {
+        "tech":"Css",
+    "question": "What is the difference between inline, internal, and external CSS?",
+    "difficulty": "Easy",
+    "reference_answer": "Inline CSS is applied directly to an HTML element using the style attribute. Internal CSS is written inside a <style> tag within the head section of an HTML document. External CSS is stored in a separate .css file and linked to the HTML file. External CSS is preferred for maintainability and reusability.",
+    "keywords": ["inline css", "internal css", "external css", "style attribute", "style tag"]
+  },
+  {
+        "tech":"Css",
+    "question": "What is the difference between relative, absolute, fixed, and sticky positioning in CSS?",
+    "difficulty": "Easy",
+    "reference_answer": "Relative positioning moves an element relative to its normal position. Absolute positioning places it relative to its nearest positioned ancestor. Fixed positioning keeps it in the same position relative to the viewport even when scrolling. Sticky positioning toggles between relative and fixed based on the scroll position.",
+    "keywords": ["relative position", "absolute position", "fixed position", "sticky position"]
+  },
+  {
+        "tech":"Css",
+    "question": "What is the difference between id and class selectors in CSS?",
+    "difficulty": "Easy",
+    "reference_answer": "An id selector uses a hash (#) symbol and is unique to one element on the page. A class selector uses a dot (.) symbol and can be applied to multiple elements. IDs have higher specificity than classes in CSS.",
+    "keywords": ["id selector", "class selector", "specificity"]
+  },
+  {
+        "tech":"Css",
+    "question": "What are pseudo-classes in CSS?",
+    "difficulty": "Easy",
+    "reference_answer": "Pseudo-classes define the state of an element, such as :hover for mouse-over, :focus for input focus, or :nth-child() for selecting elements based on their order. They allow applying styles based on dynamic states without needing extra classes.",
+    "keywords": ["pseudo class", "hover", "focus", "nth child"]
+  },
+  {
+        "tech":"Css",
+    "question": "What is the difference between 'em', 'rem', and 'px' units in CSS?",
+    "difficulty": "Easy",
+    "reference_answer": "The px unit is a fixed size in pixels. The em unit is relative to the font size of the element's parent. The rem unit is relative to the root element's font size. rem is preferred for consistency in responsive designs.",
+    "keywords": ["em unit", "rem unit", "px unit", "relative units"]
+  },
+  {
+        "tech":"Css",
+    "question": "What is the difference between inline-block and block elements in CSS?",
+    "difficulty": "Easy",
+    "reference_answer": "Block elements take up the full width available and start on a new line. Inline-block elements behave like inline elements but allow setting width and height, unlike purely inline elements.",
+    "keywords": ["inline block", "block element", "display property"]
+  },
+  {
+        "tech":"Css",
+    "question": "What is the difference between the 'absolute' and 'relative' paths in CSS for images and files?",
+    "difficulty": "Easy",
+    "reference_answer": "An absolute path specifies the complete URL or location from the root of the domain. A relative path is defined relative to the location of the CSS or HTML file. Relative paths are more portable across environments.",
+    "keywords": ["absolute path", "relative path", "file paths"]
+  },
+
+  {
+        "tech":"Css",
+    "question": "What is the difference between 'position: absolute' and 'position: fixed'?",
+    "difficulty": "Medium",
+    "reference_answer": "Absolute positioning places an element relative to its nearest positioned ancestor. Fixed positioning keeps an element in the same position relative to the viewport, regardless of scrolling. Fixed elements stay visible as the page scrolls.",
+    "keywords": ["absolute position", "fixed position"]
+  },
+  {
+     "tech":"Css",
+    "question": "What is the difference between relative and absolute units in CSS?",
+    "difficulty": "Medium",
+    "reference_answer": "Relative units like em, rem, and % adjust based on the font size or container size, making them flexible for responsive design. Absolute units like px and cm remain fixed regardless of screen size.",
+    "keywords": ["relative units", "absolute units", "responsive design"]
+  },
+  {
+        "tech":"Css",
+    "question": "What is the difference between flexbox and grid in CSS?",
+    "difficulty": "Medium",
+    "reference_answer": "Flexbox is designed for one-dimensional layouts (row or column) and handles alignment and space distribution in that direction. Grid is for two-dimensional layouts, allowing both rows and columns to be managed simultaneously. Flexbox is great for small-scale layouts; Grid for full-page or complex designs.",
+    "keywords": ["flexbox", "css grid", "layout systems"]
+  },
+  {
+        "tech":"Css",
+    "question": "What are media queries in CSS?",
+    "difficulty": "Medium",
+    "reference_answer": "Media queries allow applying CSS rules conditionally based on device characteristics like width, height, or screen resolution. They are essential for responsive web design. Example: @media (max-width: 600px) { ... }.",
+    "keywords": ["media query", "responsive design", "breakpoints"]
+  },
+  {
+        "tech":"Css",
+    "question": "What is the difference between min-width and max-width in media queries?",
+    "difficulty": "Medium",
+    "reference_answer": "min-width applies styles when the viewport is wider than or equal to a specified value. max-width applies styles when the viewport is narrower than or equal to a specified value. Combining both helps target specific ranges.",
+    "keywords": ["min width", "max width", "media query"]
+  },
+  {
+        "tech":"Css",
+    "question": "What is z-index in CSS and how does it work?",
+    "difficulty": "Medium",
+    "reference_answer": "z-index controls the stack order of elements. Higher z-index values appear above lower ones. It only works on positioned elements (relative, absolute, fixed, or sticky). Negative z-index can place elements behind others.",
+    "keywords": ["z index", "stack order"]
+  },
+  {
+        "tech":"Css",
+    "question": "What is the difference between absolute, relative, and sticky positioning?",
+    "difficulty": "Medium",
+    "reference_answer": "Absolute positions relative to the nearest positioned ancestor. Relative moves relative to its normal position. Sticky toggles between relative and fixed depending on scroll position and specified offsets.",
+    "keywords": ["absolute position", "relative position", "sticky position"]
+  },
+  {
+        "tech":"Css",
+    "question": "What are CSS transitions and animations?",
+    "difficulty": "Medium",
+    "reference_answer": "Transitions change property values smoothly over a given duration, triggered by an event like hover. Animations use keyframes to create continuous changes over time, independent of user interaction. Animations allow more complex effects.",
+    "keywords": ["css transitions", "css animations", "keyframes"]
+  },
+
+  {
+        "tech":"Css",
+    "question": "What is the difference between absolute and relative paths in background images?",
+"difficulty": "Hard",
+    "reference_answer": "Absolute paths point to a fixed location on the server or internet, starting from the root or including the domain. Relative paths are based on the location of the CSS file. Relative paths are better for portability but may cause issues if folder structures change.",
+    "keywords": ["absolute path", "relative path", "background image path"]
+  },
+  {
+        "tech":"Css",
+    "question": "What is the difference between RGB, RGBA, HEX, and HSL color formats in CSS?",
+"difficulty": "Hard",
+    "reference_answer": "RGB defines color using red, green, and blue values. RGBA adds an alpha channel for transparency. HEX uses hexadecimal notation for RGB values. HSL defines colors in terms of hue, saturation, and lightness, making adjustments easier.",
+    "keywords": ["rgb color", "rgba color", "hex color", "hsl color"]
+  },
+  {
+        "tech":"Css",
+    "question": "What is the difference between fixed and sticky positioning?",
+"difficulty": "Hard",
+    "reference_answer": "Fixed positioning locks the element relative to the viewport at all times. Sticky acts like relative until a specific scroll threshold is reached, after which it behaves like fixed. Sticky is useful for headers that stick after scrolling.",
+    "keywords": ["fixed position", "sticky position"]
+  },
+  {
+        "tech":"Css",
+    "question": "What is the difference between absolute positioning and float in CSS?",
+"difficulty": "Hard",
+    "reference_answer": "Absolute positioning removes the element from normal flow and positions it relative to its ancestor. Float pushes an element to the left or right within its container, allowing inline content to wrap around it. Float was historically used for layouts but now is mostly replaced by Flexbox and Grid.",
+    "keywords": ["absolute position", "float property"]
+  },
+  {
+        "tech":"Css",
+    "question": "What is the difference between 'relative', 'absolute', and 'fixed' in terms of containing block?",
+"difficulty": "Hard",
+    "reference_answer": "For relative, the containing block is its normal position. For absolute, the containing block is the nearest ancestor with a position other than static. For fixed, the containing block is always the viewport. Sticky shares properties of relative and fixed.",
+    "keywords": ["containing block", "relative", "absolute", "fixed"]
+  },
+  {
+        "tech":"Css",
+    "question": "What is the difference between CSS variables and preprocessor variables (like in SASS)?",
+"difficulty": "Hard",
+    "reference_answer": "CSS variables are native to the browser and defined with --varName syntax, changing at runtime. Preprocessor variables exist only at compile time and require tools like SASS or LESS. CSS variables can be updated dynamically via JavaScript.",
+    "keywords": ["css variables", "sass variables", "less variables"]
+  },
+  {
+        "tech":"Css",
+    "question": "What are CSS custom properties and how are they inherited?",
+"difficulty": "Hard",
+    "reference_answer": "CSS custom properties (variables) are declared using --varName and accessed with var(--varName). They are inherited like normal CSS properties, meaning child elements can use variables defined on parent elements unless overridden.",
+    "keywords": ["css custom properties", "css variables", "inheritance"]
+  },
+  {
+        "tech":"Css",
+    "question": "What is the difference between transform, translate, scale, and rotate in CSS?",
+    "difficulty": "Hard",
+    "reference_answer": "The transform property allows applying visual changes like translate (move along X/Y axes), scale (resize element), and rotate (turn around a point). They can be combined for complex animations and do not affect document flow.",
+    "keywords": ["css transform", "translate", "scale", "rotate"]
+  }
+]

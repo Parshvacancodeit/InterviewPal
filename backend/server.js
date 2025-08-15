@@ -11,7 +11,7 @@ const MongoStore = require("connect-mongo");
 const dotenv = require("dotenv");
 const fs = require("fs");
 const Interview = require("./models/Interview");
-
+const Question = require("./models/Question");
 
 
 
@@ -22,7 +22,7 @@ const PORT = 5050;
 // Load models
 const User = require("./models/Users");
 
-const QUESTIONS_FILE = path.join(__dirname, "questions.json");
+
 
 // ✅ Connect to MongoDB
 if (!process.env.MONGO_URI) {
@@ -125,23 +125,26 @@ app.get("/session", (req, res) => {
 });
 
 // ✅ Interview Start Logic (temporary, random)
+// ✅ Interview Start Logic (MongoDB version)
 app.post("/start", async (req, res) => {
-  const { name ,tech, difficulty } = req.body;
+  const { name, tech, difficulty } = req.body;
 
   if (!req.session.user) {
     return res.status(401).json({ msg: "Unauthorized. Please login first." });
   }
 
   try {
-    const fileContent = fs.readFileSync(QUESTIONS_FILE, "utf-8");
-    const questionsData = JSON.parse(fileContent);
+    // Fetch questions from MongoDB
+    const questions = await Question.find({ 
+      tech: tech, 
+      difficulty: difficulty 
+    });
 
-    const questions = questionsData[tech]?.[difficulty];
     if (!questions || questions.length === 0) {
       return res.status(404).json({ msg: "No questions found for selected tech and difficulty." });
     }
 
-    // Pick one question
+    // Pick one random question
     const randomIndex = Math.floor(Math.random() * questions.length);
     const selectedQuestion = questions[randomIndex];
 
@@ -152,7 +155,7 @@ app.post("/start", async (req, res) => {
       name: req.session.user.fullName,
       skill: tech,
       difficulty: difficulty,
-      questions: [], // will be filled during interview
+      questions: [], // will be filled during the interview
     });
 
     const savedInterview = await newInterview.save();

@@ -168,22 +168,30 @@ function LandingPage() {
       {/* HOW IT WORKS */}
 <section className="how-it-works" data-aos="fade-up">
   <h2 className="section-title">How It Works</h2>
-  <div className="timeline">
-    <div className="line" />
-    <div className="step" data-aos="fade-up" data-aos-delay="100">
-      <div className="circle">1</div>
-      <p>Sign Up and select your goal</p>
+  <div className="steps-container">
+    <div className="how-step" data-aos="fade-right" data-aos-delay="100">
+      <div className="step-icon"><FaUserGraduate /></div>
+      <div className="step-number">1</div>
+      <h3>Create Your Account</h3>
+      <p>Sign up, set your career goal, and let us tailor your interview plan.</p>
     </div>
-    <div className="step" data-aos="fade-up" data-aos-delay="200">
-      <div className="circle">2</div>
-      <p>Take mock interviews with our AI</p>
+
+    <div className="how-step" data-aos="fade-up" data-aos-delay="200">
+      <div className="step-icon"><FaMicrophoneAlt /></div>
+      <div className="step-number">2</div>
+      <h3>Take AI-Powered Interviews</h3>
+      <p>Answer real questions with our AI interviewer — anytime, anywhere.</p>
     </div>
-    <div className="step" data-aos="fade-up" data-aos-delay="300">
-      <div className="circle">3</div>
-      <p>Get feedback and improve every day</p>
+
+    <div className="how-step" data-aos="fade-left" data-aos-delay="300">
+      <div className="step-icon"><FaRegLightbulb /></div>
+      <div className="step-number">3</div>
+      <h3>Get Actionable Feedback</h3>
+      <p>Receive detailed insights and tips to improve with every session.</p>
     </div>
   </div>
 </section>
+
 
 
 {/* FAQ */}
@@ -213,20 +221,7 @@ function LandingPage() {
 </section>
 
 
-      {/* TESTIMONIALS */}
-      <section className="testimonials" data-aos="fade-up">
-        <h2>What Learners Say</h2>
-        <div className="testimonial-group">
-          <div className="testimonial">
-            <p>“InterviewPal gave me confidence I never had. The AI feedback is shockingly accurate.”</p>
-            <h5>– Riya S., Placed at Deloitte</h5>
-          </div>
-          <div className="testimonial">
-            <p>“It felt like a real interview. I improved with every session.”</p>
-            <h5>– Arjun M., Amazon Intern</h5>
-          </div>
-        </div>
-      </section>
+
 
       {/* COMPARISON */}
       <section className="comparison" data-aos="fade-up">

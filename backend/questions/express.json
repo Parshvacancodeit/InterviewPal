@@ -1,0 +1,165 @@
+[
+  {
+    "tech": "Express.js",
+    "difficulty": "Easy",
+    "question": "What is Express.js?",
+    "reference_answer": "Express.js is a minimal and flexible Node.js web application framework that provides a set of features to develop web and mobile applications. It simplifies the process of building server-side applications.",
+    "keywords": ["express", "nodejs", "web framework", "server", "application"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Easy",
+    "question": "How do you install Express.js?",
+    "reference_answer": "You can install Express.js using npm by running the command npm install express in your project directory. This adds Express.js to your node modules so you can use it in your application.",
+    "keywords": ["install", "express", "npm", "nodejs", "project"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Easy",
+    "question": "What is a middleware in Express.js?",
+    "reference_answer": "A middleware is a function in Express.js that executes during the request-response cycle. Middleware functions can modify the request and response objects or end the request-response cycle.",
+    "keywords": ["middleware", "function", "request", "response", "cycle"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Easy",
+    "question": "How do you create a basic Express.js server?",
+    "reference_answer": "To create a basic Express.js server, you require express, create an app using express(), define routes, and make the app listen on a port using app.listen().",
+    "keywords": ["create", "server", "express", "routes", "listen"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Easy",
+    "question": "What is a route in Express.js?",
+    "reference_answer": "A route defines an endpoint in Express.js that listens for requests at a specific path and method, and sends a response back to the client.",
+    "keywords": ["route", "endpoint", "path", "method", "response"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Easy",
+    "question": "What method is used to handle GET requests?",
+    "reference_answer": "The get method in Express.js is used to handle GET requests sent by clients to the server at a specified route.",
+    "keywords": ["get", "request", "handle", "route", "client"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Easy",
+    "question": "What is the role of app.listen in Express.js?",
+    "reference_answer": "The app.listen method binds and listens for connections on the specified port. It starts the server and allows it to accept incoming requests.",
+    "keywords": ["listen", "server", "port", "connections", "requests"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Easy",
+    "question": "How can you handle errors in Express.js?",
+    "reference_answer": "Errors in Express.js can be handled using middleware functions with four parameters: error, request, response, and next. This middleware catches and manages errors in the application.",
+    "keywords": ["error", "handle", "middleware", "request", "response"]
+  },
+
+  {
+    "tech": "Express.js",
+    "difficulty": "Medium",
+    "question": "What is the difference between app.use and app.get?",
+    "reference_answer": "app.use is used to apply middleware functions for all HTTP methods or paths, whereas app.get handles only GET requests for a specific route.",
+    "keywords": ["app use", "app get", "middleware", "route", "request"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Medium",
+    "question": "How do you serve static files in Express.js?",
+    "reference_answer": "You can serve static files using the express.static middleware and specifying the folder containing files. For example, app.use(express.static('public')) serves files from the public folder.",
+    "keywords": ["static", "files", "express", "folder", "serve"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Medium",
+    "question": "What is a router in Express.js?",
+    "reference_answer": "A router in Express.js is a mini application that can contain its own routes and middleware. It helps in organizing routes into modular units for better structure.",
+    "keywords": ["router", "routes", "middleware", "modular", "structure"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Medium",
+    "question": "How do you parse incoming request bodies in Express.js?",
+    "reference_answer": "You can parse incoming request bodies using middleware like express.json() for JSON data and express.urlencoded() for URL encoded data.",
+    "keywords": ["parse", "request", "body", "express json", "express urlencoded"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Medium",
+    "question": "What is the difference between res.send and res.json?",
+    "reference_answer": "res.send can send any type of response like string, buffer, or object, while res.json specifically sends a JSON response with proper headers set.",
+    "keywords": ["response", "send", "json", "res send", "res json"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Medium",
+    "question": "How can you redirect a request in Express.js?",
+    "reference_answer": "You can redirect requests using the res.redirect method and providing the target URL. It sends a response to the client to navigate to another route.",
+    "keywords": ["redirect", "res redirect", "request", "url", "route"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Medium",
+    "question": "What are route parameters in Express.js?",
+    "reference_answer": "Route parameters are dynamic segments in the URL that can be accessed in the route handler using request.params object.",
+    "keywords": ["route parameters", "dynamic", "url", "request params", "handler"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Medium",
+    "question": "How do you handle 404 errors in Express.js?",
+    "reference_answer": "You can handle 404 errors by adding a middleware at the end of all routes which sends a response when no other route matches the request.",
+    "keywords": ["404", "error", "middleware", "route", "response"]
+  },
+
+  {
+    "tech": "Express.js",
+    "difficulty": "Hard",
+    "question": "How do you structure a large Express.js application?",
+    "reference_answer": "A large Express.js application can be structured using separate modules for routes, controllers, models, and middleware. This separation improves maintainability and scalability.",
+    "keywords": ["structure", "large application", "modules", "routes", "controllers"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Hard",
+    "question": "What is the purpose of next function in Express.js middleware?",
+    "reference_answer": "The next function is used to pass control to the next middleware function in the stack. It allows multiple middleware functions to handle a request sequentially.",
+    "keywords": ["next", "middleware", "function", "control", "stack"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Hard",
+    "question": "How can you implement authentication in Express.js?",
+    "reference_answer": "Authentication can be implemented using middleware that checks credentials, tokens, or sessions before allowing access to protected routes.",
+    "keywords": ["authentication", "middleware", "credentials", "tokens", "protected routes"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Hard",
+    "question": "What are the benefits of using Express Router?",
+    "reference_answer": "Express Router allows modular route handling, separation of concerns, easier testing, and better organization of routes in large applications.",
+    "keywords": ["router", "modular", "routes", "organization", "testing"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Hard",
+    "question": "How do you handle asynchronous errors in Express.js?",
+    "reference_answer": "Asynchronous errors can be handled using try-catch blocks inside async route handlers or by using middleware that catches rejected promises and passes errors to error-handling middleware.",
+    "keywords": ["asynchronous", "errors", "async", "middleware", "try catch"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Hard",
+    "question": "How do you integrate Express.js with a database?",
+    "reference_answer": "Express.js can be integrated with databases like MongoDB or MySQL by using database clients or ORMs, connecting to the database, and performing CRUD operations within route handlers.",
+    "keywords": ["integrate", "database", "mongodb", "mysql", "crud"]
+  },
+  {
+    "tech": "Express.js",
+    "difficulty": "Hard",
+    "question": "What is the difference between middleware at application level and router level?",
+    "reference_answer": "Application-level middleware is applied to all routes in the app, whereas router-level middleware is applied only to routes defined in that router, allowing modular control over request handling.",
+    "keywords": ["middleware", "application level", "router level", "routes", "control"]
+  }
+]

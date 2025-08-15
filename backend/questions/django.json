@@ -1,0 +1,172 @@
+[
+  {
+    "tech": "Django",
+    "difficulty": "Easy",
+    "question": "What is Django?",
+    "reference_answer": "Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. It comes with built-in ORM, admin interface, and authentication.",
+    "keywords": ["django", "python", "framework", "web", "orm"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Easy",
+    "question": "How do you install Django?",
+    "reference_answer": "Django can be installed using pip with the command pip install django, which installs the framework and its dependencies.",
+    "keywords": ["install", "django", "pip", "python", "framework"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Easy",
+    "question": "What is a Django project?",
+    "reference_answer": "A Django project is a collection of configurations and apps that together make a web application. It contains settings, URLs, and app modules.",
+    "keywords": ["project", "django", "settings", "urls", "apps"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Easy",
+    "question": "What is a Django app?",
+    "reference_answer": "A Django app is a modular component of a project, designed to perform a specific function, such as blog, shop, or authentication.",
+    "keywords": ["app", "django", "modular", "project", "function"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Easy",
+    "question": "How do you create a Django project?",
+    "reference_answer": "You create a Django project using the command django-admin startproject projectname, which generates the folder structure and default files.",
+    "keywords": ["create", "project", "django-admin", "startproject", "folder"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Easy",
+    "question": "How do you run a Django development server?",
+    "reference_answer": "Run python manage.py runserver inside the project directory to start the development server at localhost:8000 by default.",
+    "keywords": ["runserver", "development", "django", "python", "localhost"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Easy",
+    "question": "What is Django ORM?",
+    "reference_answer": "Django ORM is an Object-Relational Mapping layer that allows developers to interact with the database using Python objects instead of SQL queries.",
+    "keywords": ["orm", "django", "database", "python", "objects"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Easy",
+    "question": "What is a Django template?",
+    "reference_answer": "A Django template is an HTML file with placeholders and template tags that allow dynamic content rendering using the Django template language.",
+    "keywords": ["template", "html", "dynamic", "rendering", "tags"]
+  },
+
+  {
+    "tech": "Django",
+    "difficulty": "Medium",
+    "question": "How do you create models in Django?",
+    "reference_answer": "Models in Django are created by defining classes that inherit from django.db.models.Model, with attributes representing database fields.",
+    "keywords": ["model", "django", "class", "fields", "database"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Medium",
+    "question": "What is Django migrations?",
+    "reference_answer": "Migrations are Django's way of propagating changes to models into the database schema, using commands like makemigrations and migrate.",
+    "keywords": ["migrations", "models", "database", "schema", "django"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Medium",
+    "question": "How do you handle forms in Django?",
+    "reference_answer": "Forms in Django can be handled using django.forms module to create form classes, validate input, and render HTML forms in templates.",
+    "keywords": ["forms", "django", "validate", "html", "templates"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Medium",
+    "question": "What is Django admin?",
+    "reference_answer": "Django admin is a built-in interface that allows managing database models, users, and other data through a web-based UI.",
+    "keywords": ["admin", "django", "interface", "models", "manage"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Medium",
+    "question": "How do you handle static files in Django?",
+    "reference_answer": "Static files like CSS, JS, and images are placed in static folders and served using STATIC_URL. In production, collectstatic is used.",
+    "keywords": ["static", "files", "css", "js", "collectstatic"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Medium",
+    "question": "What is Django middleware?",
+    "reference_answer": "Middleware in Django is a framework of hooks into request/response processing. Each middleware component can process requests, responses, or exceptions.",
+    "keywords": ["middleware", "request", "response", "django", "hooks"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Medium",
+    "question": "How do you create URL patterns in Django?",
+    "reference_answer": "URL patterns are defined in urls.py using path() or re_path(), mapping URLs to views that handle requests and return responses.",
+    "keywords": ["urls", "patterns", "views", "django", "path"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Medium",
+    "question": "How do you implement authentication in Django?",
+    "reference_answer": "Django provides built-in authentication with models, login/logout views, and decorators like login_required to secure routes.",
+    "keywords": ["authentication", "django", "login", "logout", "decorators"]
+  },
+
+  {
+    "tech": "Django",
+    "difficulty": "Hard",
+    "question": "How do you optimize Django queries?",
+    "reference_answer": "Django queries can be optimized using select_related, prefetch_related, values, and annotation to reduce database hits and improve performance.",
+    "keywords": ["optimize", "queries", "select_related", "prefetch_related", "django"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Hard",
+    "question": "How do you deploy Django in production?",
+    "reference_answer": "Django can be deployed using WSGI servers like Gunicorn or uWSGI behind Nginx, with proper database and static/media configuration.",
+    "keywords": ["deployment", "production", "gunicorn", "nginx", "django"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Hard",
+    "question": "What are Django signals?",
+    "reference_answer": "Signals in Django allow certain senders to notify receivers when actions occur, like post_save or pre_delete, enabling decoupled event handling.",
+    "keywords": ["signals", "django", "post_save", "pre_delete", "events"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Hard",
+    "question": "How do you implement REST APIs in Django?",
+    "reference_answer": "REST APIs in Django can be implemented using Django REST Framework (DRF) by defining serializers, viewsets, and routers for endpoint handling.",
+    "keywords": ["rest", "api", "drf", "serializers", "viewsets"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Hard",
+    "question": "What is the difference between Django and Flask in terms of scalability?",
+    "reference_answer": "Django provides more built-in features and structure, which helps scalability in large applications, whereas Flask offers more flexibility but requires custom solutions for scaling.",
+    "keywords": ["django", "flask", "scalability", "features", "flexibility"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Hard",
+    "question": "How do you handle caching in Django?",
+    "reference_answer": "Caching in Django can be implemented using cache framework with backends like Memcached or Redis to store frequently accessed data and improve performance.",
+    "keywords": ["caching", "django", "memcached", "redis", "performance"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Hard",
+    "question": "How do you secure a Django application?",
+    "reference_answer": "Security in Django involves using built-in protections against CSRF, XSS, SQL injection, proper password hashing, SSL, and secure settings configuration.",
+    "keywords": ["security", "csrf", "xss", "sql", "django"]
+  },
+  {
+    "tech": "Django",
+    "difficulty": "Hard",
+    "question": "How can you handle asynchronous tasks in Django?",
+    "reference_answer": "Asynchronous tasks in Django are handled using Celery or Django-Q to run background jobs without blocking the main application flow.",
+    "keywords": ["asynchronous", "tasks", "django", "celery", "background"]
+  }
+]

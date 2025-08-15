@@ -1,0 +1,172 @@
+[
+  {
+    "tech": "Flask",
+    "difficulty": "Easy",
+    "question": "What is Flask?",
+    "reference_answer": "Flask is a lightweight and flexible Python web framework used to build web applications. It is easy to learn and allows rapid development with minimal setup.",
+    "keywords": ["flask", "python", "web framework", "lightweight", "application"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Easy",
+    "question": "How do you install Flask?",
+    "reference_answer": "Flask can be installed using pip with the command pip install flask. This installs Flask and its dependencies in your Python environment.",
+    "keywords": ["install", "flask", "pip", "python", "environment"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Easy",
+    "question": "How do you create a basic Flask application?",
+    "reference_answer": "You create a basic Flask app by importing Flask, creating an app instance using Flask(__name__), defining routes, and running the app with app.run().",
+    "keywords": ["create", "flask", "app", "routes", "run"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Easy",
+    "question": "What is a route in Flask?",
+    "reference_answer": "A route in Flask maps a URL to a Python function. When a client sends a request to that URL, the associated function is executed and returns a response.",
+    "keywords": ["route", "url", "function", "request", "response"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Easy",
+    "question": "How do you run a Flask application?",
+    "reference_answer": "You run a Flask application by calling app.run() inside the Python file. You can also set host and port parameters to specify where the app will run.",
+    "keywords": ["run", "flask", "app", "host", "port"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Easy",
+    "question": "What is the purpose of Flask's debug mode?",
+    "reference_answer": "Debug mode in Flask automatically reloads the server on code changes and provides detailed error messages to help developers during development.",
+    "keywords": ["debug", "mode", "reload", "errors", "development"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Easy",
+    "question": "What is the difference between Flask and Django?",
+    "reference_answer": "Flask is a microframework with minimal built-in features, giving developers flexibility, whereas Django is a full-featured framework with built-in ORM, admin, and authentication.",
+    "keywords": ["flask", "django", "microframework", "full-featured", "flexibility"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Easy",
+    "question": "How can you access query parameters in Flask?",
+    "reference_answer": "Query parameters can be accessed using request.args.get('param_name'), which retrieves the value of the specified parameter from the URL.",
+    "keywords": ["query", "parameters", "request", "args", "url"]
+  },
+
+  {
+    "tech": "Flask",
+    "difficulty": "Medium",
+    "question": "What is a Flask template?",
+    "reference_answer": "A Flask template is an HTML file that can include placeholders and logic using Jinja2 syntax. Templates allow dynamic content rendering in web applications.",
+    "keywords": ["template", "html", "jinja2", "dynamic", "rendering"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Medium",
+    "question": "How do you serve static files in Flask?",
+    "reference_answer": "Static files such as CSS, JS, and images can be served from the static folder. Flask automatically makes files in this folder accessible via /static/<filename>.",
+    "keywords": ["static", "files", "css", "js", "images"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Medium",
+    "question": "How do you handle POST requests in Flask?",
+    "reference_answer": "POST requests can be handled by specifying methods=['POST'] in the route decorator. Form data can then be accessed using request.form or request.json for JSON payloads.",
+    "keywords": ["post", "request", "route", "form", "json"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Medium",
+    "question": "What is the purpose of Flask's app.config?",
+    "reference_answer": "app.config stores configuration variables for the Flask app, such as SECRET_KEY, database URLs, and environment settings.",
+    "keywords": ["config", "app", "variables", "secret", "settings"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Medium",
+    "question": "What is Flask Blueprints?",
+    "reference_answer": "Blueprints in Flask allow organizing application components like routes, templates, and static files into modular units for better structure and maintainability.",
+    "keywords": ["blueprints", "modular", "routes", "templates", "structure"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Medium",
+    "question": "How do you handle 404 errors in Flask?",
+    "reference_answer": "404 errors can be handled by defining an errorhandler for 404 using @app.errorhandler(404) and returning a custom response or template.",
+    "keywords": ["404", "error", "handler", "app", "response"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Medium",
+    "question": "How can you redirect in Flask?",
+    "reference_answer": "Redirects can be performed using the redirect() function along with url_for() to specify the target route.",
+    "keywords": ["redirect", "url_for", "route", "response", "flask"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Medium",
+    "question": "What are Flask request hooks?",
+    "reference_answer": "Request hooks are functions executed before or after requests, such as before_request, after_request, and teardown_request, to perform actions like logging or cleanup.",
+    "keywords": ["hooks", "request", "before", "after", "teardown"]
+  },
+
+  {
+    "tech": "Flask",
+    "difficulty": "Hard",
+    "question": "How do you implement authentication in Flask?",
+    "reference_answer": "Authentication can be implemented using Flask-Login or custom middleware that validates user credentials, manages sessions, and protects routes.",
+    "keywords": ["authentication", "flask", "login", "sessions", "middleware"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Hard",
+    "question": "How can you structure a large Flask application?",
+    "reference_answer": "Large Flask apps can be structured using Blueprints, separate modules for routes, models, templates, and static files to improve maintainability and scalability.",
+    "keywords": ["structure", "blueprints", "modules", "routes", "scalability"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Hard",
+    "question": "How do you handle asynchronous tasks in Flask?",
+    "reference_answer": "Asynchronous tasks in Flask can be handled using Celery or background threads to run tasks without blocking the main application.",
+    "keywords": ["asynchronous", "tasks", "celery", "thread", "background"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Hard",
+    "question": "How do you integrate Flask with a database?",
+    "reference_answer": "Flask can integrate with databases like SQLite, MySQL, or MongoDB using ORMs such as SQLAlchemy or direct database connectors to perform CRUD operations.",
+    "keywords": ["database", "integration", "sqlalchemy", "crud", "flask"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Hard",
+    "question": "What is the difference between application-level and blueprint-level middleware?",
+    "reference_answer": "Application-level middleware applies to all routes in the app, while blueprint-level middleware only applies to routes within that specific blueprint.",
+    "keywords": ["middleware", "application", "blueprint", "routes", "flask"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Hard",
+    "question": "How do you handle JSON requests and responses in Flask?",
+    "reference_answer": "JSON requests can be accessed using request.get_json(), and JSON responses can be sent using jsonify() function in Flask.",
+    "keywords": ["json", "request", "response", "get_json", "jsonify"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Hard",
+    "question": "How do you implement error logging in Flask?",
+    "reference_answer": "Error logging in Flask can be implemented using Python's logging module or Flask extensions to log errors to files or monitoring systems.",
+    "keywords": ["error", "logging", "flask", "module", "monitoring"]
+  },
+  {
+    "tech": "Flask",
+    "difficulty": "Hard",
+    "question": "How can Flask be deployed in production?",
+    "reference_answer": "Flask can be deployed using WSGI servers like Gunicorn or uWSGI behind a reverse proxy such as Nginx, with proper configuration for environment and security.",
+    "keywords": ["deployment", "production", "gunicorn", "nginx", "wsgi"]
+  }
+]

@@ -1,0 +1,163 @@
+[
+  {
+    "tech": "Python",
+    "difficulty": "Easy",
+    "question": "What is a list in Python?",
+    "reference_answer": "A list is a collection of items in Python that is ordered and changeable. Lists can store multiple types of data and allow operations like adding or removing items.",
+    "keywords": ["list", "collection", "ordered", "changeable", "items", "operations"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Easy",
+    "question": "What is a tuple in Python?",
+    "reference_answer": "A tuple is a collection of items in Python that is ordered but unchangeable. Tuples can store multiple types of data and allow accessing items by index.",
+    "keywords": ["tuple", "collection", "ordered", "unchangeable", "items", "index"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Easy",
+    "question": "What is a dictionary in Python?",
+    "reference_answer": "A dictionary is a collection of key value pairs in Python that is unordered and changeable. It allows fast lookup of values using keys.",
+    "keywords": ["dictionary", "key value", "collection", "unordered", "changeable", "lookup"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Easy",
+    "question": "What is a set in Python?",
+    "reference_answer": "A set is a collection of unique items in Python that is unordered and changeable. Sets are used to perform operations like union and intersection.",
+    "keywords": ["set", "unique", "collection", "unordered", "changeable", "operations"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Easy",
+    "question": "What is a function in Python?",
+    "reference_answer": "A function is a block of reusable code in Python that performs a specific task. Functions can take inputs and return outputs.",
+    "keywords": ["function", "reusable", "code", "task", "inputs", "outputs"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Easy",
+    "question": "What is a variable in Python?",
+    "reference_answer": "A variable is a named location in memory used to store data. Variables can store different types of data and can be changed during execution.",
+    "keywords": ["variable", "named", "memory", "store", "data", "changeable"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Easy",
+    "question": "What is a loop in Python?",
+    "reference_answer": "A loop is a programming construct in Python used to repeat a block of code multiple times. Python supports for and while loops.",
+    "keywords": ["loop", "repeat", "code", "for", "while", "construct"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Easy",
+    "question": "What is an if statement in Python?",
+    "reference_answer": "An if statement is a conditional statement in Python that executes a block of code only if a specified condition is true.",
+    "keywords": ["if statement", "conditional", "code", "condition", "true", "execute"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Medium",
+    "question": "What is a list comprehension in Python?",
+    "reference_answer": "A list comprehension is a concise way to create lists in Python using a single line of code with a loop and optional condition.",
+    "keywords": ["list comprehension", "concise", "create", "list", "loop", "condition"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Medium",
+    "question": "What is the difference between a list and a tuple?",
+    "reference_answer": "A list is ordered and changeable, while a tuple is ordered but unchangeable. Lists allow modification of items, tuples do not.",
+    "keywords": ["list", "tuple", "ordered", "changeable", "unchangeable", "modification"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Medium",
+    "question": "What is the use of the range function in Python?",
+    "reference_answer": "The range function generates a sequence of numbers which can be used in loops or iterations. It is commonly used with for loops.",
+    "keywords": ["range", "sequence", "numbers", "loops", "iterations", "for loop"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Medium",
+    "question": "What is the difference between shallow and deep copy?",
+    "reference_answer": "A shallow copy copies only the top level of a data structure, while a deep copy copies all levels. Modifying a deep copy does not affect the original object.",
+    "keywords": ["shallow copy", "deep copy", "data structure", "copy", "original", "levels"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Medium",
+    "question": "What is the purpose of Python decorators?",
+    "reference_answer": "Decorators are functions in Python that modify the behavior of other functions or methods without changing their code.",
+    "keywords": ["decorator", "function", "modify", "behavior", "methods", "Python"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Medium",
+    "question": "What are Python modules?",
+    "reference_answer": "Modules are files containing Python code that can be imported and used in other Python programs to organize code and reuse functionality.",
+    "keywords": ["module", "Python", "import", "reuse", "code", "functionality"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Medium",
+    "question": "What is the difference between mutable and immutable types?",
+    "reference_answer": "Mutable types in Python can be changed after creation, while immutable types cannot be changed once created.",
+    "keywords": ["mutable", "immutable", "changeable", "unchangeable", "types", "Python"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Medium",
+    "question": "What is the purpose of the zip function in Python?",
+    "reference_answer": "The zip function combines two or more iterables element wise into tuples. It is useful for parallel iteration over multiple sequences.",
+    "keywords": ["zip", "combine", "iterables", "tuples", "parallel", "iteration"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Hard",
+    "question": "What is Python's global interpreter lock?",
+    "reference_answer": "Python's global interpreter lock is a mechanism that allows only one thread to execute Python bytecode at a time, which affects multi threading performance.",
+    "keywords": ["global interpreter lock", "thread", "bytecode", "execution", "multithreading", "Python"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Hard",
+    "question": "What are Python generators?",
+    "reference_answer": "Generators are functions that yield items one at a time using the yield keyword. They are memory efficient for large datasets.",
+    "keywords": ["generator", "yield", "function", "items", "memory efficient", "dataset"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Hard",
+    "question": "What is the difference between deep and regular inheritance in Python?",
+    "reference_answer": "Regular inheritance uses single or multiple levels, while deep inheritance involves many levels of subclassing. Deep inheritance can be harder to manage.",
+    "keywords": ["inheritance", "subclass", "single", "multiple", "levels", "Python"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Hard",
+    "question": "What is monkey patching in Python?",
+    "reference_answer": "Monkey patching is the dynamic modification of a class or module at runtime. It allows changes without altering the original source code.",
+    "keywords": ["monkey patching", "dynamic", "modification", "class", "module", "runtime"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Hard",
+    "question": "What are Python context managers?",
+    "reference_answer": "Context managers are used to properly manage resources such as files or network connections using the with statement to ensure proper cleanup.",
+    "keywords": ["context manager", "resource", "files", "network", "with statement", "cleanup"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Hard",
+    "question": "What is the purpose of Python's built in functions map and filter?",
+    "reference_answer": "The map function applies a given function to all items in an iterable, while filter selects items based on a condition. Both help in functional style programming.",
+    "keywords": ["map", "filter", "function", "iterable", "condition", "Python"]
+  },
+  {
+    "tech": "Python",
+    "difficulty": "Hard",
+    "question": "What is the difference between Python iterators and iterables?",
+    "reference_answer": "An iterable is any Python object capable of returning its members one at a time, while an iterator is an object that keeps track of the current state during iteration.",
+    "keywords": ["iterator", "iterable", "object", "iteration", "state", "Python"]
+  }
+]

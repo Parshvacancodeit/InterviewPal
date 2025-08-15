@@ -1,0 +1,165 @@
+[
+  {
+    "tech": "MongoDB",
+    "difficulty": "Easy",
+    "question": "What is MongoDB?",
+    "reference_answer": "MongoDB is a NoSQL database that stores data in flexible, JSON-like documents instead of traditional tables. It allows for easy scalability and quick development.",
+    "keywords": ["mongodb", "nosql", "database", "json", "documents", "scalability"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Easy",
+    "question": "What is a collection in MongoDB?",
+    "reference_answer": "A collection in MongoDB is a group of documents. It is similar to a table in relational databases, but without a fixed schema.",
+    "keywords": ["collection", "documents", "group", "mongodb", "schema"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Easy",
+    "question": "What is a document in MongoDB?",
+    "reference_answer": "A document in MongoDB is a set of key-value pairs stored in BSON format. Each document is analogous to a row in a relational database table.",
+    "keywords": ["document", "key-value", "bson", "mongodb", "row"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Easy",
+    "question": "What is the default primary key in MongoDB?",
+    "reference_answer": "The default primary key in MongoDB is the '_id' field. Every document automatically gets this field unless specified otherwise.",
+    "keywords": ["primary key", "id", "mongodb", "document", "default"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Easy",
+    "question": "How do you insert a document in MongoDB?",
+    "reference_answer": "You can insert a document in MongoDB using the insertOne or insertMany methods on a collection.",
+    "keywords": ["insert", "document", "insertOne", "insertMany", "mongodb", "collection"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Easy",
+    "question": "What is a query in MongoDB?",
+    "reference_answer": "A query in MongoDB is a request to retrieve documents from a collection that match specified criteria.",
+    "keywords": ["query", "retrieve", "documents", "criteria", "mongodb"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Easy",
+    "question": "What is the difference between findOne and find in MongoDB?",
+    "reference_answer": "findOne returns a single document that matches the query, while find returns a cursor to all matching documents.",
+    "keywords": ["findOne", "find", "document", "cursor", "mongodb", "query"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Easy",
+    "question": "What is the role of MongoDB Atlas?",
+    "reference_answer": "MongoDB Atlas is a cloud-hosted MongoDB service that handles database deployment, scaling, and management.",
+    "keywords": ["atlas", "cloud", "mongodb", "deployment", "scaling", "management"]
+  },
+
+  {
+    "tech": "MongoDB",
+    "difficulty": "Medium",
+    "question": "What is indexing in MongoDB?",
+    "reference_answer": "Indexing in MongoDB improves query performance by creating special data structures that allow faster retrieval of documents.",
+    "keywords": ["indexing", "performance", "query", "documents", "mongodb"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Medium",
+    "question": "What is the difference between embedded documents and references in MongoDB?",
+    "reference_answer": "Embedded documents store related data within a single document, while references store only the ID and require a separate query to retrieve related data.",
+    "keywords": ["embedded", "references", "document", "data", "mongodb", "query"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Medium",
+    "question": "What is aggregation in MongoDB?",
+    "reference_answer": "Aggregation in MongoDB is a way to process data records and return computed results using stages like match, group, and sort.",
+    "keywords": ["aggregation", "process", "data", "match", "group", "sort", "mongodb"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Medium",
+    "question": "What is the difference between updateOne and updateMany?",
+    "reference_answer": "updateOne updates the first document that matches the filter, whereas updateMany updates all documents that match the filter.",
+    "keywords": ["updateOne", "updateMany", "update", "documents", "mongodb", "filter"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Medium",
+    "question": "What is the purpose of the $set operator in MongoDB?",
+    "reference_answer": "$set is used to update the value of a field in a document or add a new field if it does not exist.",
+    "keywords": ["set", "update", "field", "document", "mongodb"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Medium",
+    "question": "What is a capped collection in MongoDB?",
+    "reference_answer": "A capped collection is a fixed-size collection that maintains insertion order and automatically overwrites the oldest documents when it reaches its size limit.",
+    "keywords": ["capped collection", "fixed-size", "overwrite", "documents", "mongodb"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Medium",
+    "question": "What is the difference between find and aggregate pipelines?",
+    "reference_answer": "find retrieves documents based on simple queries, while aggregation pipelines allow multi-stage data processing with filtering, grouping, and transformations.",
+    "keywords": ["find", "aggregate", "pipeline", "query", "documents", "mongodb"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Medium",
+    "question": "What are transactions in MongoDB?",
+    "reference_answer": "Transactions in MongoDB allow multiple operations to be executed atomically across one or more collections.",
+    "keywords": ["transactions", "atomic", "operations", "collections", "mongodb"]
+  },
+
+  {
+    "tech": "MongoDB",
+    "difficulty": "Hard",
+    "question": "How does sharding work in MongoDB?",
+    "reference_answer": "Sharding in MongoDB distributes data across multiple servers or shards to support horizontal scaling and high throughput.",
+    "keywords": ["sharding", "horizontal scaling", "servers", "mongodb", "throughput"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Hard",
+    "question": "What is the difference between replica sets and sharding?",
+    "reference_answer": "Replica sets provide data redundancy and high availability, while sharding distributes data across multiple servers for scalability.",
+    "keywords": ["replica sets", "sharding", "redundancy", "availability", "scalability", "mongodb"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Hard",
+    "question": "What is the WiredTiger storage engine?",
+    "reference_answer": "WiredTiger is the default storage engine in MongoDB that provides high performance, compression, and document-level concurrency.",
+    "keywords": ["wiredtiger", "storage engine", "performance", "compression", "concurrency", "mongodb"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Hard",
+    "question": "What is the difference between MongoClient and MongoDatabase in Node.js?",
+    "reference_answer": "MongoClient is used to connect to the MongoDB server, while MongoDatabase represents a specific database on that server.",
+    "keywords": ["mongoclient", "mongodbatabase", "connect", "database", "nodejs", "mongodb"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Hard",
+    "question": "What is the use of the $lookup operator in aggregation?",
+    "reference_answer": "$lookup performs a left outer join to combine documents from two collections based on a specified field.",
+    "keywords": ["lookup", "aggregation", "join", "collections", "mongodb"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Hard",
+    "question": "What is the difference between capped and regular collections?",
+    "reference_answer": "Capped collections have a fixed size and maintain insertion order, while regular collections have no size limit and allow flexible operations.",
+    "keywords": ["capped collection", "regular collection", "fixed size", "insertion order", "mongodb"]
+  },
+  {
+    "tech": "MongoDB",
+    "difficulty": "Hard",
+    "question": "How do you handle schema validation in MongoDB?",
+    "reference_answer": "MongoDB allows schema validation using JSON schema rules at the collection level to enforce data structure and field types.",
+    "keywords": ["schema validation", "json schema", "collection", "mongodb", "field types"]
+  }
+]

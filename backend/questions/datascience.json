@@ -1,0 +1,163 @@
+[
+  {
+    "tech": "DataScience",
+    "difficulty": "Easy",
+    "question": "What is data science?",
+    "reference_answer": "Data science is the process of extracting insights and knowledge from data using statistical, computational, and analytical techniques. It combines domain knowledge, programming, and data analysis to solve real-world problems.",
+    "keywords": ["data science", "insights", "knowledge", "analysis", "techniques"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Easy",
+    "question": "What is a dataset?",
+    "reference_answer": "A dataset is a collection of data organized in a structured format, often in rows and columns. It is used for analysis, modeling, and deriving insights in data science projects.",
+    "keywords": ["dataset", "data", "structured", "analysis", "modeling"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Easy",
+    "question": "What is data cleaning?",
+    "reference_answer": "Data cleaning is the process of detecting and correcting errors or inconsistencies in data to improve its quality and reliability for analysis.",
+    "keywords": ["data cleaning", "errors", "inconsistencies", "quality", "reliability"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Easy",
+    "question": "What is exploratory data analysis?",
+    "reference_answer": "Exploratory data analysis is the initial step in data analysis where data is examined using visualizations and statistics to understand its structure, trends, and patterns.",
+    "keywords": ["exploratory data analysis", "visualization", "statistics", "trends", "patterns"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Easy",
+    "question": "What is a data scientist?",
+    "reference_answer": "A data scientist is a professional who analyzes and interprets complex data to help organizations make informed decisions. They use programming, statistics, and machine learning techniques.",
+    "keywords": ["data scientist", "analyze", "interpret", "programming", "machine learning"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Easy",
+    "question": "What is a feature in data science?",
+    "reference_answer": "A feature is an individual measurable property or characteristic of data that can be used as input for analysis or modeling.",
+    "keywords": ["feature", "property", "characteristic", "data", "input"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Easy",
+    "question": "What is data visualization?",
+    "reference_answer": "Data visualization is the representation of data using charts, graphs, and plots to help understand trends, patterns, and insights.",
+    "keywords": ["data visualization", "charts", "graphs", "patterns", "insights"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Easy",
+    "question": "What is data preprocessing?",
+    "reference_answer": "Data preprocessing is the process of transforming raw data into a clean and usable format for analysis, including handling missing values and normalizing data.",
+    "keywords": ["data preprocessing", "transform", "clean", "missing values", "normalize"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Medium",
+    "question": "What is supervised learning?",
+    "reference_answer": "Supervised learning is a type of machine learning where a model is trained using labeled data to predict outcomes for new, unseen data.",
+    "keywords": ["supervised learning", "machine learning", "labeled data", "predict", "model"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Medium",
+    "question": "What is unsupervised learning?",
+    "reference_answer": "Unsupervised learning is a type of machine learning where the model finds patterns or structures in data without labeled outcomes.",
+    "keywords": ["unsupervised learning", "patterns", "structure", "machine learning", "data"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Medium",
+    "question": "What is overfitting in models?",
+    "reference_answer": "Overfitting occurs when a model learns the training data too well, including noise, and performs poorly on new, unseen data.",
+    "keywords": ["overfitting", "model", "training data", "noise", "unseen data"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Medium",
+    "question": "What is underfitting in models?",
+    "reference_answer": "Underfitting happens when a model is too simple to capture the patterns in data, resulting in poor performance on both training and test data.",
+    "keywords": ["underfitting", "model", "simple", "patterns", "performance"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Medium",
+    "question": "What is a confusion matrix?",
+    "reference_answer": "A confusion matrix is a table used to evaluate the performance of a classification model by showing the counts of true positives, true negatives, false positives, and false negatives.",
+    "keywords": ["confusion matrix", "classification", "true positive", "false positive", "performance"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Medium",
+    "question": "What is cross-validation?",
+    "reference_answer": "Cross-validation is a technique to assess how a model will generalize to an independent dataset by splitting the data into training and testing subsets multiple times.",
+    "keywords": ["cross validation", "model", "generalize", "training", "testing"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Medium",
+    "question": "What is feature selection?",
+    "reference_answer": "Feature selection is the process of selecting the most important variables in a dataset that contribute the most to predictive modeling.",
+    "keywords": ["feature selection", "variables", "dataset", "predictive", "modeling"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Medium",
+    "question": "What is normalization in data?",
+    "reference_answer": "Normalization is the process of scaling data to a standard range or distribution to improve model performance and convergence.",
+    "keywords": ["normalization", "scaling", "data", "standard", "model"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Hard",
+    "question": "What is principal component analysis?",
+    "reference_answer": "Principal component analysis is a technique to reduce the dimensionality of data by transforming it into a set of orthogonal components while retaining the most important information.",
+    "keywords": ["principal component analysis", "dimensionality", "components", "transform", "information"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Hard",
+    "question": "What is bias-variance tradeoff?",
+    "reference_answer": "The bias-variance tradeoff is the balance between a model's ability to capture patterns (low bias) and its sensitivity to training data noise (low variance) to achieve optimal generalization.",
+    "keywords": ["bias variance tradeoff", "model", "patterns", "variance", "generalization"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Hard",
+    "question": "What is clustering in data science?",
+    "reference_answer": "Clustering is an unsupervised learning technique where similar data points are grouped together based on their features or distances.",
+    "keywords": ["clustering", "unsupervised learning", "group", "features", "distances"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Hard",
+    "question": "What is a regression model?",
+    "reference_answer": "A regression model predicts a continuous outcome variable based on one or more predictor variables, identifying relationships between variables.",
+    "keywords": ["regression", "model", "continuous", "predictor", "relationship"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Hard",
+    "question": "What is a decision tree?",
+    "reference_answer": "A decision tree is a model that splits data into branches based on feature values to make predictions or classifications.",
+    "keywords": ["decision tree", "model", "split", "branches", "prediction"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Hard",
+    "question": "What is ensemble learning?",
+    "reference_answer": "Ensemble learning combines multiple models to improve predictive performance and reduce errors compared to individual models.",
+    "keywords": ["ensemble learning", "models", "combine", "predictive", "errors"]
+  },
+  {
+    "tech": "DataScience",
+    "difficulty": "Hard",
+    "question": "What is outlier detection?",
+    "reference_answer": "Outlier detection identifies unusual or extreme data points that differ significantly from the majority of the data.",
+    "keywords": ["outlier detection", "unusual", "extreme", "data points", "majority"]
+  }
+]

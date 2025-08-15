@@ -1,0 +1,170 @@
+[
+  {
+    "tech": "DSA",
+    "difficulty": "Easy",
+    "question": "What is an array?",
+    "reference_answer": "An array is a data structure that holds multiple elements of the same type in a contiguous memory location. Arrays allow accessing elements using an index.",
+    "keywords": ["array", "data structure", "elements", "index", "memory"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Easy",
+    "question": "What is a linked list?",
+    "reference_answer": "A linked list is a linear data structure where each element, called a node, contains data and a reference to the next node. It allows efficient insertion and deletion.",
+    "keywords": ["linked list", "node", "data structure", "reference", "insertion", "deletion"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Easy",
+    "question": "What is a stack?",
+    "reference_answer": "A stack is a data structure that follows the Last In First Out principle. Elements are added and removed from the top, making it suitable for undo operations.",
+    "keywords": ["stack", "data structure", "last in first out", "top", "undo"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Easy",
+    "question": "What is a queue?",
+    "reference_answer": "A queue is a data structure that follows the First In First Out principle. Elements are added at the rear and removed from the front, useful for scheduling tasks.",
+    "keywords": ["queue", "data structure", "first in first out", "rear", "front", "scheduling"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Easy",
+    "question": "What is a binary search?",
+    "reference_answer": "Binary search is an efficient algorithm to find an element in a sorted array by repeatedly dividing the search interval in half until the element is found or the interval is empty.",
+    "keywords": ["binary search", "algorithm", "sorted array", "search", "efficient"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Easy",
+    "question": "What is a hash table?",
+    "reference_answer": "A hash table is a data structure that stores key value pairs. It uses a hash function to compute an index for each key, allowing fast access to data.",
+    "keywords": ["hash table", "key value", "hash function", "index", "fast access"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Easy",
+    "question": "What is a tree in data structures?",
+    "reference_answer": "A tree is a hierarchical data structure consisting of nodes with a parent child relationship. It is used to represent hierarchical information and support efficient searching.",
+    "keywords": ["tree", "data structure", "node", "hierarchical", "parent", "child", "searching"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Easy",
+    "question": "What is a graph?",
+    "reference_answer": "A graph is a data structure consisting of nodes called vertices and connections called edges. Graphs are used to represent networks and relationships between elements.",
+    "keywords": ["graph", "data structure", "vertices", "edges", "networks", "relationships"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Medium",
+    "question": "What is a binary tree?",
+    "reference_answer": "A binary tree is a tree data structure where each node has at most two children, known as left and right. It is commonly used in searching and sorting algorithms.",
+    "keywords": ["binary tree", "node", "left", "right", "tree", "searching", "sorting"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Medium",
+    "question": "What is recursion?",
+    "reference_answer": "Recursion is a programming technique where a function calls itself to solve smaller instances of a problem until a base condition is reached. It is widely used in algorithm design.",
+    "keywords": ["recursion", "function", "calls itself", "problem", "base condition", "algorithm"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Medium",
+    "question": "What is a priority queue?",
+    "reference_answer": "A priority queue is a data structure where each element has a priority. Elements with higher priority are dequeued before elements with lower priority, useful in scheduling and graph algorithms.",
+    "keywords": ["priority queue", "data structure", "priority", "dequeue", "scheduling", "graph algorithms"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Medium",
+    "question": "What is a heap?",
+    "reference_answer": "A heap is a specialized tree based data structure that satisfies the heap property. In a max heap, parent nodes are greater than children, while in a min heap, parent nodes are smaller.",
+    "keywords": ["heap", "tree", "data structure", "max heap", "min heap", "parent", "children"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Medium",
+    "question": "What is a depth first search?",
+    "reference_answer": "Depth First Search is an algorithm used to traverse or search graph structures. It starts from a root node and explores as far as possible along each branch before backtracking.",
+    "keywords": ["depth first search", "algorithm", "traverse", "graph", "root node", "backtracking"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Medium",
+    "question": "What is a breadth first search?",
+    "reference_answer": "Breadth First Search is a graph traversal algorithm that explores all nodes at the present depth before moving to nodes at the next level. It uses a queue to track nodes to visit.",
+    "keywords": ["breadth first search", "algorithm", "graph", "traversal", "queue", "nodes"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Medium",
+    "question": "What is dynamic programming?",
+    "reference_answer": "Dynamic programming is an algorithmic technique for solving complex problems by breaking them down into simpler subproblems and storing the results to avoid redundant computations.",
+    "keywords": ["dynamic programming", "algorithm", "subproblems", "store results", "optimization", "redundant computations"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Medium",
+    "question": "What is a graph adjacency matrix?",
+    "reference_answer": "An adjacency matrix is a 2D array used to represent a graph, where each cell indicates whether a pair of vertices is connected. It allows efficient edge existence checking.",
+    "keywords": ["adjacency matrix", "graph", "2D array", "vertices", "edge", "connected"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Hard",
+    "question": "What is a red black tree?",
+    "reference_answer": "A red black tree is a self balancing binary search tree with nodes colored red or black. It maintains balance using rotation rules, ensuring logarithmic time complexity for operations.",
+    "keywords": ["red black tree", "self balancing", "binary search tree", "rotation", "logarithmic", "nodes"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Hard",
+    "question": "What is a trie?",
+    "reference_answer": "A trie is a tree like data structure used to store associative data such as strings. Each node represents a character, and it allows fast search, insertion, and prefix based queries.",
+    "keywords": ["trie", "tree", "data structure", "strings", "search", "insertion", "prefix"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Hard",
+    "question": "What is a segment tree?",
+    "reference_answer": "A segment tree is a binary tree used for storing intervals or segments. It allows querying which segments contain a given point efficiently, often used in range query problems.",
+    "keywords": ["segment tree", "binary tree", "intervals", "segments", "range query", "efficient"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Hard",
+    "question": "What is a disjoint set?",
+    "reference_answer": "A disjoint set is a data structure that keeps track of elements partitioned into non overlapping subsets. It supports union and find operations efficiently for dynamic connectivity.",
+    "keywords": ["disjoint set", "data structure", "subsets", "union", "find", "dynamic connectivity"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Hard",
+    "question": "What is a topological sort?",
+    "reference_answer": "Topological sort is an ordering of nodes in a directed acyclic graph where for every directed edge from node A to node B, A appears before B. It is used in scheduling tasks.",
+    "keywords": ["topological sort", "directed acyclic graph", "ordering", "nodes", "scheduling", "tasks"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Hard",
+    "question": "What is a bellman ford algorithm?",
+    "reference_answer": "Bellman Ford algorithm is used to compute shortest paths from a single source in a weighted graph. It can handle negative weights and detects negative weight cycles efficiently.",
+    "keywords": ["bellman ford", "algorithm", "shortest paths", "weighted graph", "negative weights", "cycles"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Hard",
+    "question": "What is a kruskal algorithm?",
+    "reference_answer": "Kruskal algorithm is used to find the minimum spanning tree of a connected weighted graph. It selects edges in increasing order of weight while avoiding cycles.",
+    "keywords": ["kruskal algorithm", "minimum spanning tree", "graph", "weighted", "edges", "cycles"]
+  },
+  {
+    "tech": "DSA",
+    "difficulty": "Hard",
+    "question": "What is a floyd warshall algorithm?",
+    "reference_answer": "Floyd Warshall algorithm is used to find shortest paths between all pairs of vertices in a weighted graph. It uses dynamic programming to update distances iteratively.",
+    "keywords": ["floyd warshall", "algorithm", "shortest paths", "all pairs", "graph", "dynamic programming"]
+  }
+]
