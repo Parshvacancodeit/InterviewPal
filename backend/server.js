@@ -134,16 +134,13 @@ app.post("/logout", (req, res) => {
       console.error("❌ Logout error:", err);
       return res.status(500).json({ msg: "Logout failed" });
     }
-
-    // Clear cookie with the same settings used in session()
     res.clearCookie("connect.sid", {
       path: "/",
       httpOnly: true,
       sameSite: "strict",
-      secure: process.env.NODE_ENV === "production", 
+      secure: process.env.NODE_ENV === "production",
     });
-
-    console.log("👋 Logged out user, session destroyed");
+    console.log("👋 Logged out user");
     res.json({ msg: "Logged out" });
   });
 });
@@ -224,3 +221,7 @@ app.use((req, res) => {
   res.status(404).json({ msg: "❌ Route not found" });
 });
 
+// 🚀 Start
+app.listen(PORT, () => {
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
+});
