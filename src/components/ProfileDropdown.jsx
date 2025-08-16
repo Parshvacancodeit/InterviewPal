@@ -34,9 +34,20 @@ const ProfileDropdown = ({ onLogout }) => {
         <FaFileAlt /> My Reports
       </button>
 
-      <button className="logout-btn" onClick={onLogout}>
-        <FaSignOutAlt /> Logout
-      </button>
+      <button
+  className="logout-btn"
+  onClick={async () => {
+    try {
+      await axios.post("/logout", {}, { withCredentials: true });
+      if (onLogout) onLogout(); // update parent state
+    } catch (err) {
+      console.error("Logout failed", err);
+    }
+  }}
+>
+  <FaSignOutAlt /> Logout
+</button>
+
     </div>
   );
 };

@@ -4,27 +4,23 @@ const session = require("express-session");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
-const path = require("path");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
 const dotenv = require("dotenv");
-const fs = require("fs");
-const Interview = require("./models/Interview");
-const Question = require("./models/Question");
-
-
+const helmet = require("helmet");
+const rateLimit = require("express-rate-limit");
 
 dotenv.config();
 const app = express();
-const PORT = 5050;
+const PORT = process.env.PORT || 5050;
 
-// Load models
+// ✅ Load models
 const User = require("./models/Users");
+const Interview = require("./models/Interview");
+const Question = require("./models/Question");
 
-
-
-// ✅ Connect to MongoDB
+// ✅ MongoDB Connection
 if (!process.env.MONGO_URI) {
   console.error("❌ MONGO_URI not found in .env!");
   process.exit(1);
@@ -38,19 +34,34 @@ mongoose.connect(process.env.MONGO_URI, {
 });
 
 // ✅ Middleware
+app.use(helmet()); // security headers
+
+// Allow localhost (dev) + production frontend
+const allowedOrigins = [
+  "http://localhost:5173",
+  process.env.CLIENT_URL, // e.g., https://yourfrontend.com
+].filter(Boolean);
+
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: allowedOrigins,
   credentials: true,
 }));
+
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+// ✅ Secure Session Config
 app.use(session({
-  secret: "mysecretkey",
+  secret: process.env.SESSION_SECRET || "fallbacksecret",
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
-  cookie: { secure: false },
+  cookie: {
+    secure: process.env.NODE_ENV === "production", // HTTPS only in prod
+    httpOnly: true,       // not accessible via JS
+    sameSite: "strict",   // prevents CSRF
+    maxAge: 1000 * 60 * 60 * 24, // 1 day
+  },
 }));
 
 app.use((req, res, next) => {
@@ -58,7 +69,17 @@ app.use((req, res, next) => {
   next();
 });
 
-// ✅ Auth: Register
+// ✅ Rate limiting on login/register
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10, // max 10 attempts in 15 mins
+  message: "Too many attempts, please try again later",
+});
+app.use(["/login", "/register"], authLimiter);
+
+// ==================== AUTH ====================
+
+// Register
 app.post("/register", async (req, res) => {
   const { username, password, fullName } = req.body;
   if (!username || !password || !fullName)
@@ -80,7 +101,7 @@ app.post("/register", async (req, res) => {
   }
 });
 
-// ✅ Auth: Login
+// Login
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
   console.log("📥 Login attempt:", { username });
@@ -106,15 +127,28 @@ app.post("/login", async (req, res) => {
   }
 });
 
-// ✅ Auth: Logout
+// Logout (✅ Fixed)
 app.post("/logout", (req, res) => {
-  req.session.destroy(() => {
-    console.log("👋 Logged out user");
+  req.session.destroy(err => {
+    if (err) {
+      console.error("❌ Logout error:", err);
+      return res.status(500).json({ msg: "Logout failed" });
+    }
+
+    // Clear cookie with the same settings used in session()
+    res.clearCookie("connect.sid", {
+      path: "/",
+      httpOnly: true,
+      sameSite: "strict",
+      secure: process.env.NODE_ENV === "production", 
+    });
+
+    console.log("👋 Logged out user, session destroyed");
     res.json({ msg: "Logged out" });
   });
 });
 
-// ✅ Auth: Session Check
+// Session Check
 app.get("/session", (req, res) => {
   console.log("🔍 Checking session:", req.session.user);
   if (req.session.user) {
@@ -124,8 +158,8 @@ app.get("/session", (req, res) => {
   }
 });
 
-// ✅ Interview Start Logic (temporary, random)
-// ✅ Interview Start Logic (MongoDB version)
+// ================= INTERVIEW =================
+
 app.post("/start", async (req, res) => {
   const { name, tech, difficulty } = req.body;
 
@@ -134,73 +168,55 @@ app.post("/start", async (req, res) => {
   }
 
   try {
-    // Fetch questions from MongoDB
-    const questions = await Question.find({ 
-      tech: tech, 
-      difficulty: difficulty 
-    });
-
+    const questions = await Question.find({ tech, difficulty });
     if (!questions || questions.length === 0) {
-      return res.status(404).json({ msg: "No questions found for selected tech and difficulty." });
+      return res.status(404).json({ msg: "No questions found" });
     }
 
-    // Pick one random question
-    const randomIndex = Math.floor(Math.random() * questions.length);
-    const selectedQuestion = questions[randomIndex];
+    const selectedQuestion = questions[Math.floor(Math.random() * questions.length)];
 
-    // Save new interview
     const newInterview = new Interview({
       interviewTitle: name,
       userId: req.session.user.id,
       name: req.session.user.fullName,
       skill: tech,
-      difficulty: difficulty,
-      questions: [], // will be filled during the interview
+      difficulty,
+      questions: [],
     });
 
     const savedInterview = await newInterview.save();
 
-    res.json({
-      question: selectedQuestion,
-      interviewId: savedInterview._id,
-    });
+    res.json({ question: selectedQuestion, interviewId: savedInterview._id });
   } catch (error) {
     console.error("❌ Error during /start:", error);
     return res.status(500).json({ msg: "Failed to start interview." });
   }
 });
 
-// ✅ API Routes
+// ================= ROUTES =================
 const interviewDataRoutes = require("./routes/interviewData");
-
 const transcribeRoutes = require("./routes/transcribe");
 const evaluateRoute = require("./routes/evaluate");
 const interviewFetchRoutes = require("./routes/interviewFetch");
-const introRoutes = require('./routes/intro');
-const reportFetch=require('./routes/reportFetch');
+const introRoutes = require("./routes/intro");
+const reportFetch = require("./routes/reportFetch");
 const evaluateAndSaveRoute = require("./routes/evaluate-and-save");
-// In app.js or server.js
-const reportRoutes = require('./routes/report');
-app.use('/api', reportRoutes);  // Or any base path like /api/report
+const reportRoutes = require("./routes/report");
+const { getReportById } = require("./controllers/reportController");
 
+app.use("/api", reportRoutes);
 app.use("/api/evaluate-and-save", evaluateAndSaveRoute);
-const {getReportById}  = require('./controllers/reportController');
-
-app.get('/report/:id', getReportById);
-app.use("/api/report-fetch",reportFetch);
-
-
-
+app.get("/report/:id", getReportById);
+app.use("/api/report-fetch", reportFetch);
 app.use("/api", transcribeRoutes);
 app.use("/api/evaluate", evaluateRoute);
 app.use("/api/interview-data", interviewDataRoutes);
 app.use("/api/interview-fetch", interviewFetchRoutes);
-app.use('/api/intro',introRoutes); 
-
+app.use("/api/intro", introRoutes);
 
 // ✅ Root
 app.get("/", (req, res) => {
-  res.send("✅ Backend is running");
+  res.send("✅ Backend is running securely");
 });
 
 // ❌ 404

@@ -65,11 +65,12 @@ function Navbar() {
               </button>
               {showDropdown && (
                 <ProfileDropdown
-                  onLogout={() => {
-                    setIsLoggedIn(false);
-                    setShowDropdown(false);
-                  }}
-                />
+  onLogout={() => {
+    setIsLoggedIn(false);
+    setShowDropdown(false);
+  }}
+/>
+
               )}
             </div>
           ) : (
