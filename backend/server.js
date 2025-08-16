@@ -1,4 +1,6 @@
 // server.js
+app.set('trust proxy', 1); // Tell Express it is behind one proxy
+
 const express = require("express");
 const session = require("express-session");
 const cors = require("cors");
@@ -41,17 +43,16 @@ app.use(cookieParser());
 
 // ✅ Session config
 app.use(session({
-  secret: process.env.SESSION_SECRET || "fallbacksecret",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
   cookie: {
-    secure: process.env.NODE_ENV === "production",
-    httpOnly: true,
-    sameSite: "strict",
+    secure: process.env.NODE_ENV === 'production', // only true on HTTPS
     maxAge: 24 * 60 * 60 * 1000, // 1 day
-  },
+    sameSite: 'lax',
+  }
 }));
+
 
 // Debug session
 app.use((req, res, next) => {
