@@ -172,7 +172,7 @@ app.post("/start", async (req, res) => {
 
 // ✅ API Routes
 const interviewDataRoutes = require("./routes/interviewData");
-const interviewRoutes = require("./routes/interviewroutes");
+
 const transcribeRoutes = require("./routes/transcribe");
 const evaluateRoute = require("./routes/evaluate");
 const interviewFetchRoutes = require("./routes/interviewFetch");
@@ -190,7 +190,7 @@ app.get('/report/:id', getReportById);
 app.use("/api/report-fetch",reportFetch);
 
 
-app.use("/api/interviews", interviewRoutes);
+
 app.use("/api", transcribeRoutes);
 app.use("/api/evaluate", evaluateRoute);
 app.use("/api/interview-data", interviewDataRoutes);

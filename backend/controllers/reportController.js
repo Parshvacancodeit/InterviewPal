@@ -44,9 +44,38 @@ exports.generateReport = async (req, res) => {
       if (a.scores.overall < worst.scores.overall) worst = a;
     }
 
-    let feedback = "Great work!";
-    if (averageScore < 6) feedback = "Needs improvement.";
-    else if (averageScore < 8) feedback = "Good job, but there’s room to improve.";
+    let feedback = "";
+
+// Strong areas
+const strongAreas = answers.filter(a => a.scores.overall >= 7);
+if (strongAreas.length > 0) {
+  feedback += `You performed very well in ${strongAreas.map(a => `"${a.question}"`).join(", ")}. `;
+}
+
+// Areas to improve
+const weakAreas = answers.filter(a => a.scores.overall < 4);
+if (weakAreas.length > 0) {
+  feedback += `Consider revising and practicing ${weakAreas.map(a => `"${a.question}"`).join(", ")}. `;
+}
+
+// Moderate areas
+const moderateAreas = answers.filter(a => a.scores.overall >= 5 && a.scores.overall < 7);
+if (moderateAreas.length > 0) {
+  feedback += `You did okay in ${moderateAreas.map(a => `"${a.question}"`).join(", ")}, but there's room for improvement. `;
+}
+
+// Overall suggestion based on average
+if (averageScore >= 7) {
+  feedback += "Overall, excellent performance! Keep up the good work and continue to strengthen your knowledge.";
+} else if (averageScore >= 5) {
+  feedback += "Overall, decent performance. Focus on your weaker areas to improve further.";
+} else {
+  feedback += "Overall, needs improvement. Consider revisiting fundamental concepts and practicing more.";
+}
+
+// Optional: Personalized tip based on best/worst question
+feedback += ` Your strongest answer was "${best.question}" and you should review "${worst.question}" for better results.`;
+
 
     const newReport = await Report.create({
       interviewId,
