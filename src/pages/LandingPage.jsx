@@ -6,19 +6,21 @@ import 'aos/dist/aos.css';
 import { useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
 import heroAnimation from "../assets/Businessman flies up with rocket.json";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { FaBrain, FaChartBar, FaComments, FaClipboardList, FaStar, FaHistory } from "react-icons/fa";
 
 
 import {
   FaChevronDown,
-  FaBrain,
-  FaChartBar,
-  FaComments,
   FaBullseye,
   FaUserGraduate,
   FaMicrophoneAlt,
   FaRobot,
   FaPlayCircle,
-  FaClipboardList,
   FaChartPie,
   FaCogs,
   FaCheckCircle,
@@ -55,6 +57,14 @@ function useCountUp(end) {
 }
 
 function LandingPage() {
+  const features = [
+    { icon: <FaBrain />, title: "Personalized Interview Analyzer", desc: "AI-powered insights on your interview performance." },
+    { icon: <FaChartBar />, title: "Track Progress", desc: "Monitor your growth with clean, visual reports." },
+    { icon: <FaComments />, title: "Real Question Bank", desc: "Practice with curated behavioral & technical questions." },
+    { icon: <FaClipboardList />, title: "Reference Answers", desc: "Compare responses with expert-crafted answers." },
+    { icon: <FaStar />, title: "Skill Ratings", desc: "Get scored across 18+ critical interview skills." },
+    { icon: <FaHistory />, title: "Past Reports", desc: "Revisit and analyze your previous interviews." }
+  ];
   useEffect(() => {
     AOS.init({ duration: 800 });
   }, []);
@@ -110,26 +120,32 @@ function LandingPage() {
       </section>
 
       {/* FEATURES */}
-      <section className="features" data-aos="fade-up">
-  <h2>Why Choose InterviewPal?</h2>
-  <div className="features-list">
-    <div className="feature-item">
-      <div className="icon"><FaBrain /></div>
-      <h3>Smart Feedback</h3>
-      <p>Receive detailed, AI-generated analysis on your communication and content.</p>
-    </div>
-    <div className="feature-item">
-      <div className="icon"><FaChartBar /></div>
-      <h3>Track Growth</h3>
-      <p>Use our visual dashboard to monitor your improvement daily.</p>
-    </div>
-    <div className="feature-item">
-      <div className="icon"><FaComments /></div>
-      <h3>Real Questions</h3>
-      <p>Practice with handpicked behavioral and technical interview questions.</p>
-    </div>
-  </div>
-</section>
+<section className="features-carousel" data-aos="fade-up">
+      <h2>Why Choose Lexara?</h2>
+      <Swiper
+        modules={[Pagination, Autoplay]}
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 2500 }}
+        loop={true}
+        spaceBetween={24}
+        slidesPerView={1}
+        grabCursor={true}   // 👈 enables hand cursor & drag/swipe
+        breakpoints={{
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 }
+        }}
+      >
+        {features.map((f, index) => (
+          <SwiperSlide key={index}>
+            <div className="feature-card">
+              <div className="feature-icon">{f.icon}</div>
+              <h3>{f.title}</h3>
+              <p>{f.desc}</p>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </section>
 
 
 
@@ -166,57 +182,79 @@ function LandingPage() {
 
       {/* FEEDBACK DEMO */}
       {/* HOW IT WORKS */}
-<section className="how-it-works" data-aos="fade-up">
-  <h2 className="section-title">How It Works</h2>
-  <div className="steps-container">
-    <div className="how-step" data-aos="fade-right" data-aos-delay="100">
-      <div className="step-icon"><FaUserGraduate /></div>
-      <div className="step-number">1</div>
-      <h3>Create Your Account</h3>
-      <p>Sign up, set your career goal, and let us tailor your interview plan.</p>
-    </div>
+{/* HOW IT WORKS */}
+<section className="how-it-works-bg">
+  <div className="how-it-works" data-aos="fade-up">
+    <h2 className="section-title">How It Works</h2>
 
-    <div className="how-step" data-aos="fade-up" data-aos-delay="200">
-      <div className="step-icon"><FaMicrophoneAlt /></div>
-      <div className="step-number">2</div>
-      <h3>Take AI-Powered Interviews</h3>
-      <p>Answer real questions with our AI interviewer — anytime, anywhere.</p>
-    </div>
+    <div className="timeline">
+      <div className="timeline-step left" data-aos="fade-right">
+        <span className="timeline-number">1</span>
+        <div className="timeline-content">
+          <FaUserGraduate className="timeline-icon" />
+          <h3>Create Your Account</h3>
+          <p>Sign up, set your career goal, and let us tailor your interview plan.</p>
+        </div>
+      </div>
 
-    <div className="how-step" data-aos="fade-left" data-aos-delay="300">
-      <div className="step-icon"><FaRegLightbulb /></div>
-      <div className="step-number">3</div>
-      <h3>Get Actionable Feedback</h3>
-      <p>Receive detailed insights and tips to improve with every session.</p>
+      <div className="timeline-step right" data-aos="fade-left">
+        <span className="timeline-number">2</span>
+        <div className="timeline-content">
+          <FaMicrophoneAlt className="timeline-icon" />
+          <h3>Take AI-Powered Interviews</h3>
+          <p>Answer real questions with our AI interviewer — anytime, anywhere.</p>
+        </div>
+      </div>
+
+      <div className="timeline-step left" data-aos="fade-right">
+        <span className="timeline-number">3</span>
+        <div className="timeline-content">
+          <FaRegLightbulb className="timeline-icon" />
+          <h3>Get Actionable Feedback</h3>
+          <p>Receive detailed insights and tips to improve with every session.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 
 
+
 {/* FAQ */}
 <section className="faq-section" data-aos="fade-up">
-  <h2 className="section-title">FAQs</h2>
+  <h2 className="section-title">Frequently Asked Questions</h2>
+
   <details>
     <summary>
-      Is this free to use?
+      Is Lexara free to use?
       <span className="faq-icon"><FaChevronDown /></span>
     </summary>
-    <p>Yes! InterviewPal is free for individual learners.</p>
+    <p>Yes, Lexara is free for individual learners. We also provide advanced features under premium plans for teams and institutions.</p>
   </details>
+
   <details>
     <summary>
-      Can I track my progress?
+      Can I track my progress with Lexara?
       <span className="faq-icon"><FaChevronDown /></span>
     </summary>
-    <p>Absolutely. Our dashboard keeps you updated on your growth.</p>
+    <p>Definitely. Your personalized dashboard shows clear insights about your performance, growth trends, and areas to improve.</p>
   </details>
+
   <details>
     <summary>
-      What kind of questions are asked?
+      What kind of questions does Lexara provide?
       <span className="faq-icon"><FaChevronDown /></span>
     </summary>
-    <p>Both behavioral and technical questions tailored to your profile.</p>
+    <p>Lexara includes both behavioral and technical interview questions, designed to match your skills and career goals.</p>
+  </details>
+
+  <details>
+    <summary>
+      Do I need to install anything?
+      <span className="faq-icon"><FaChevronDown /></span>
+    </summary>
+    <p>No installation is required — Lexara works seamlessly in your browser with a clean and responsive experience.</p>
   </details>
 </section>
 
@@ -224,29 +262,30 @@ function LandingPage() {
 
 
       {/* COMPARISON */}
-      <section className="comparison" data-aos="fade-up">
-        <h2>How We Compare</h2>
-        <table>
-  <tbody>
-    <tr>
-      <td>Instant AI Feedback</td>
-      <td><FaCheckCircle color="green" /></td>
-      <td><FaTimesCircle color="red" /></td>
-    </tr>
-    <tr>
-      <td>Progress Dashboard</td>
-      <td><FaCheckCircle color="green" /></td>
-      <td><FaTimesCircle color="red" /></td>
-    </tr>
-    <tr>
-      <td>24/7 Access</td>
-      <td><FaCheckCircle color="green" /></td>
-      <td><FaTimesCircle color="red" /></td>
-    </tr>
-  </tbody>
-</table>
+<section className="comparison" data-aos="fade-up">
+  <h2 className="section-title">How We Compare</h2>
 
-      </section>
+  <table>
+    <tbody>
+      <tr>
+        <td>Instant AI Feedback</td>
+        <td><FaCheckCircle className="icon-check" /></td>
+        <td><FaTimesCircle className="icon-times" /></td>
+      </tr>
+      <tr>
+        <td>Progress Dashboard</td>
+        <td><FaCheckCircle className="icon-check" /></td>
+        <td><FaTimesCircle className="icon-times" /></td>
+      </tr>
+      <tr>
+        <td>24/7 Access</td>
+        <td><FaCheckCircle className="icon-check" /></td>
+        <td><FaTimesCircle className="icon-times" /></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
 
       {/* NEWSLETTER */}
       <section className="newsletter" data-aos="fade-up">
