@@ -37,15 +37,12 @@ mongoose.connect(process.env.MONGO_URI, {
 app.use(helmet()); // security headers
 
 // Allow localhost (dev) + production frontend
-const allowedOrigins = [
-  "http://localhost:5173",
-  process.env.CLIENT_URL, // e.g., https://yourfrontend.com
-].filter(Boolean);
 
 app.use(cors({
-  origin: allowedOrigins,
+  origin: ['http://localhost:5173', process.env.CLIENT_URL],
   credentials: true,
 }));
+
 
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -57,11 +54,10 @@ app.use(session({
   saveUninitialized: false,
   store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
   cookie: {
-    secure: process.env.NODE_ENV === "production", // HTTPS only in prod
-    httpOnly: true,       // not accessible via JS
-    sameSite: "strict",   // prevents CSRF
-    maxAge: 1000 * 60 * 60 * 24, // 1 day
-  },
+  httpOnly: true,
+  secure: true, // works with HTTPS
+  sameSite: 'none', // mandatory for cross-origin
+}
 }));
 
 app.use((req, res, next) => {
