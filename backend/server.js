@@ -10,6 +10,7 @@ const MongoStore = require("connect-mongo");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
+const isProduction = process.env.NODE_ENV === "production";
 
 dotenv.config();
 const app = express();
@@ -54,10 +55,10 @@ app.use(session({
   saveUninitialized: false,
   store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
   cookie: {
-  httpOnly: true,
-  secure: true, // works with HTTPS
-  sameSite: 'none', // mandatory for cross-origin
-}
+    httpOnly: true,
+    secure: isProduction,          // ✅ only true in production (HTTPS)
+    sameSite: isProduction ? 'none' : 'lax', // ✅ lax for localhost
+  }
 }));
 
 app.use((req, res, next) => {
