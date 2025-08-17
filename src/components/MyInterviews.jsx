@@ -12,12 +12,13 @@ const MyInterviews = () => {
       try {
         const res = await axios.get("/api/interview-fetch", { withCredentials: true });
         const valid = res.data.filter(
-          (interview) =>
-            interview.completed &&
-            interview.questions &&
-            interview.questions.length > 0 &&
-            interview.questions.some((q) => q.question?.trim() !== "")
-        );
+  (interview) =>
+    interview.completed &&
+    Array.isArray(interview.questions) &&
+    interview.questions.length > 0 &&
+    interview.questions.some((q) => q && q.question && q.question.trim() !== "")
+);
+
         setInterviews(valid);
         if (valid.length > 0) setSelectedId(valid[0]._id);
       } catch (err) {
@@ -59,23 +60,24 @@ const MyInterviews = () => {
         </header>
 
         <div className="questions-section">
-          {selectedInterview.questions.map((qa, idx) => (
-            qa.question && (
-              <div key={idx} className="qa-card">
-                <div className="qa-header">
-                  <h4>Q{idx + 1}: {qa.question}</h4>
-                  {qa.scores?.overall !== undefined && (
-                    <span className="overall-score">Score: {qa.scores.overall}/10</span>
-                  )}
-                </div>
-                <div className="qa-body">
-                  <p><strong>Your Answer:</strong> {qa.userAnswer}</p>
-                  <p><strong>Reference:</strong> {qa.referenceAnswer}</p>
-                  <p><strong>Feedback:</strong> {qa.feedback}</p>
-                </div>
-              </div>
-            )
-          ))}
+          {selectedInterview.questions
+  .filter((qa) => qa && qa.question)   // ignore nulls
+  .map((qa, idx) => (
+    <div key={idx} className="qa-card">
+      <div className="qa-header">
+        <h4>Q{idx + 1}: {qa.question}</h4>
+        {qa.scores?.overall !== undefined && (
+          <span className="overall-score">Score: {qa.scores.overall}/10</span>
+        )}
+      </div>
+      <div className="qa-body">
+        <p><strong>Your Answer:</strong> {qa.userAnswer}</p>
+        <p><strong>Reference:</strong> {qa.referenceAnswer}</p>
+        <p><strong>Feedback:</strong> {qa.feedback}</p>
+      </div>
+    </div>
+))}
+
         </div>
       </main>
     </div>
