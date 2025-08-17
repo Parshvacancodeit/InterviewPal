@@ -1,0 +1,9 @@
+whisper
+torch
+spacy
+transformers
+sentence-transformers
+contractions
+numpy
+soundfile
+ffmpeg-python
