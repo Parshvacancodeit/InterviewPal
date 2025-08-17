@@ -10,11 +10,14 @@ const MongoStore = require("connect-mongo");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
-const isProduction = process.env.NODE_ENV === "production";
+
+const isProduction = process.env.NODE_ENV === "production";// trust first proxy
+
 
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5050;
+app.set('trust proxy', 1); 
 
 // ✅ Load models
 const User = require("./models/Users");
