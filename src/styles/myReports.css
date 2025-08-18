@@ -23,12 +23,15 @@ body {
 
 /* Sidebar */
 .sidebar {
-  width: 280px;
-  background: var(--white);
+  width: 260px; /* fixed width */
+  min-width: 260px;
+  max-width: 260px;
+  background: linear-gradient(180deg, #fff, #fff8f2);
   border-right: 1px solid var(--accent);
-  padding: 20px;
-  overflow-y: auto;
-  box-shadow: var(--shadow);
+  padding: 24px 16px;
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 .sidebar-title {

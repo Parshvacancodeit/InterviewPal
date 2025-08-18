@@ -20,13 +20,45 @@ body {
 }
 
 /* Sidebar */
+/* Sidebar */
 .sidebar {
-  width: 260px;
+  width: 260px; /* fixed width */
+  min-width: 260px;
+  max-width: 260px;
   background: linear-gradient(180deg, #fff, #fff8f2);
   border-right: 1px solid var(--accent);
   padding: 24px 16px;
   box-shadow: 3px 0 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
+
+.my-interviews-wrapper.collapsed .sidebar {
+  width: 60px; /* collapsed width */
+  padding: 24px 8px;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-sidebar {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 6px;
+}
+
+/* Hide tab titles when collapsed */
+.my-interviews-wrapper.collapsed .tab {
+  display: none;
+}
+
 
 .sidebar-title {
   margin-bottom: 25px;
@@ -148,4 +180,41 @@ body {
   padding: 100px;
   font-size: 20px;
   color: var(--text);
+}
+
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -260px; /* hide offscreen by default */
+    height: 100%;
+    z-index: 999;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.open {
+    left: 0; /* slide in */
+  }
+
+  .my-interviews-wrapper {
+    flex-direction: column;
+  }
+
+  .interview-content {
+    padding: 20px;
+  }
 }

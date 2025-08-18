@@ -336,3 +336,109 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+
+
+/* =====================
+   MOBILE RESPONSIVENESS
+   ===================== */
+@media (max-width: 1024px) {
+  .chat-box {
+    height: 50vh;
+    padding: 1.5rem;
+  }
+  .video-frame {
+    gap: 1rem;
+  }
+  .video-box {
+    width: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .interview-split-container {
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+  }
+
+  .interview-left,
+  .interview-right {
+    flex: none;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .chat-box {
+    max-width: 100%;
+    height: 45vh;
+    padding: 1rem;
+  }
+
+  .voice-input-box {
+    max-width: 100%;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .video-frame {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .video-box {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .controls-box {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .controls-box button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .chat-bubble {
+    max-width: 95%;
+    font-size: 0.9rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .chat-box {
+    height: 40vh;
+    padding: 0.8rem;
+    gap: 0.8rem;
+  }
+
+  .voice-input-box input {
+    font-size: 0.9rem;
+  }
+
+  .voice-input-box button {
+    padding: 0.5rem;
+  }
+
+  .video-feed {
+    height: 160px;
+  }
+
+  .qa-card {
+    padding: 0.8rem 1rem;
+  }
+
+  .controls-box button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}
