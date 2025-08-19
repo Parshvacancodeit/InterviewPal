@@ -7,11 +7,13 @@ import { useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
 import heroAnimation from "../assets/Businessman flies up with rocket.json";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay, EffectCoverflow } from "swiper/modules"; // ✅ Correct
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css/effect-coverflow";
 import { FaBrain, FaChartBar, FaComments, FaClipboardList, FaStar, FaHistory } from "react-icons/fa";
+import { FiArrowUpRight } from "react-icons/fi"; // slanted arrow
+import api from "../api/axios"
 
 
 import {
@@ -119,6 +121,7 @@ function LandingPage() {
         </div>
       </section>
 
+
       {/* FEATURES */}
 <section className="features-carousel" data-aos="fade-up">
       <h2>Why Choose Lexara?</h2>
@@ -216,6 +219,82 @@ function LandingPage() {
       </div>
     </div>
   </div>
+</section>
+
+
+
+
+
+<section className="trending-carousel" data-aos="fade-up">
+  <h2>🔥 Trending Interviews</h2>
+  <Swiper
+  modules={[Pagination, Autoplay, EffectCoverflow]}
+  effect="coverflow"
+  centeredSlides
+  centeredSlidesBounds
+  slidesPerView="auto"
+  spaceBetween={18}
+  coverflowEffect={{ rotate: 8, stretch: 0, depth: 120, modifier: 1.2, slideShadows: false }}
+  pagination={{ clickable: true }}
+  autoplay={{ delay: 3000, disableOnInteraction: false }}
+  loop
+  watchSlidesProgress
+  slideToClickedSlide
+  speed={550}
+>
+
+    {[
+      { label: "React Interview", tech: "React", difficulty: "Medium", desc: "Test your frontend React.js skills with real-world questions." },
+      { label: "Python Interview", tech: "Python", difficulty: "Easy", desc: "Sharpen your Python coding and logic-building skills." },
+      { label: "DSA Interview", tech: "DSA", difficulty: "Hard", desc: "Ace Data Structures & Algorithms with complex challenges." },
+      { label: "SQL Interview", tech: "MySQL", difficulty: "Medium", desc: "Prepare for common database and query-based interview questions." },
+      { label: "Machine Learning Interview", tech: "MachineLearning", difficulty: "Hard", desc: "Get ready for ML fundamentals and scenario-based questions." },
+    ].map((item) => (
+      <SwiperSlide key={item.tech}>
+        <div className="trending-card">
+          <div className="trending-header">
+            <h3>{item.label}</h3>
+            <FaPlayCircle
+              className="start-logo"
+              onClick={async () => {
+                try {
+                  const randomNum = Math.floor(1000 + Math.random() * 9000);
+                  const name = `${item.tech}-Interview-${randomNum}`;
+                  const { data } = await api.post("/start", {
+                    tech: item.tech,
+                    difficulty: item.difficulty,
+                    name,
+                  });
+                  const { question, interviewId } = data;
+                  if (!interviewId || !question) {
+                    alert("Interview could not be started.");
+                    return;
+                  }
+                  navigate("/interview", {
+                    state: {
+                      name,
+                      skill: item.tech,
+                      difficulty: item.difficulty,
+                      question,
+                      interviewId,
+                    },
+                  });
+                } catch (err) {
+                  console.error("Failed to start trending interview:", err);
+                  alert("Something went wrong. Try again.");
+                }
+              }}
+            />
+          </div>
+          <p className="difficulty">Difficulty: {item.difficulty}</p>
+          <p className="desc">{item.desc}</p>
+
+          {/* Slanted Arrow (visible on hover) */}
+          <FiArrowUpRight className="hover-arrow" />
+        </div>
+      </SwiperSlide>
+    ))}
+  </Swiper>
 </section>
 
 
