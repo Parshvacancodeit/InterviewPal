@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, forwardRef, useImperativeHandle } from "react";
 import "../styles/VideoSplit.css";
 
-const VideoSplit = ({ aiVideoSrc, isSpeaking }) => {
+const VideoSplit = forwardRef(({ aiVideoSrc, isSpeaking }, ref) => {
   const webcamRef = useRef(null);
   const aiVideoRef = useRef(null);
+  const streamRef = useRef(null);
 
+  // Start webcam
   useEffect(() => {
     async function startWebcam() {
       try {
@@ -12,6 +14,7 @@ const VideoSplit = ({ aiVideoSrc, isSpeaking }) => {
           video: true,
           audio: false,
         });
+        streamRef.current = stream;
         if (webcamRef.current) {
           webcamRef.current.srcObject = stream;
           webcamRef.current.play();
@@ -23,12 +26,11 @@ const VideoSplit = ({ aiVideoSrc, isSpeaking }) => {
     startWebcam();
 
     return () => {
-      if (webcamRef.current && webcamRef.current.srcObject) {
-        webcamRef.current.srcObject.getTracks().forEach((track) => track.stop());
-      }
+      stopWebcam();
     };
   }, []);
 
+  // Pause/play AI video
   useEffect(() => {
     if (aiVideoRef.current) {
       if (isSpeaking) {
@@ -39,14 +41,24 @@ const VideoSplit = ({ aiVideoSrc, isSpeaking }) => {
     }
   }, [isSpeaking]);
 
+  // 👉 Expose stopWebcam method to parent
+  useImperativeHandle(ref, () => ({
+    stopWebcam,
+  }));
+
+  const stopWebcam = () => {
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach((track) => track.stop());
+      streamRef.current = null;
+    }
+    if (webcamRef.current) {
+      webcamRef.current.srcObject = null;
+    }
+  };
+
   return (
     <div className="video-split-container">
-      <video
-        ref={webcamRef}
-        muted
-        playsInline
-        className="video-split-webcam"
-      />
+      <video ref={webcamRef} muted playsInline className="video-split-webcam" />
       <video
         ref={aiVideoRef}
         src={aiVideoSrc}
@@ -57,6 +69,6 @@ const VideoSplit = ({ aiVideoSrc, isSpeaking }) => {
       />
     </div>
   );
-};
+});
 
 export default VideoSplit;

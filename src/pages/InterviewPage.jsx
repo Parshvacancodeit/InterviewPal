@@ -20,6 +20,7 @@ function InterviewPage() {
   const [user, setUser] = useState(null);
   const qaHistoryRef = useRef(null);
 
+  const videoSplitRef = useRef(null);
   useEffect(() => {
     api.get("/session", { withCredentials: true })
       .then((res) => {
@@ -320,6 +321,18 @@ useEffect(() => {
                 setLoading(false);
                 setShowWaitingAnimation(true);
 
+                try {
+    if (videoSplitRef.current) {
+      videoSplitRef.current.stopWebcam();
+    }
+  } catch (err) {
+    console.error("Error stopping webcam:", err);
+  }
+  mediaRecorderRef.current.stop();
+      setRecording(false);
+      setPaused(false);
+
+
     setTimeout(async () => {
       try {
         // Call your report generation endpoint here
@@ -467,7 +480,7 @@ return (
 
     {/* Right half: AI video + animation */}
     <div className="interview-right">
-      <VideoSplit aiVideoSrc={aiVideoRef} isSpeaking={isSpeaking} />
+      <VideoSplit ref={videoSplitRef} aiVideoSrc={aiVideoRef} isSpeaking={isSpeaking} />
     </div>
   </div>
 
