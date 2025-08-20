@@ -157,6 +157,7 @@ app.get("/session", (req, res) => {
 
 // ================= INTERVIEW =================
 
+// ✅ /start -> create new interview
 app.post("/start", async (req, res) => {
   const { name, tech, difficulty } = req.body;
 
@@ -170,7 +171,8 @@ app.post("/start", async (req, res) => {
       return res.status(404).json({ msg: "No questions found" });
     }
 
-    const selectedQuestion = questions[Math.floor(Math.random() * questions.length)];
+    // Pick first random question
+    const firstQuestion = questions[Math.floor(Math.random() * questions.length)];
 
     const newInterview = new Interview({
       interviewTitle: name,
@@ -178,17 +180,59 @@ app.post("/start", async (req, res) => {
       name: req.session.user.fullName,
       skill: tech,
       difficulty,
-      questions: [],
+      askedQuestions: [firstQuestion._id.toString()], // ✅ store as string
     });
 
     const savedInterview = await newInterview.save();
 
-    res.json({ question: selectedQuestion, interviewId: savedInterview._id });
+    res.json({ question: firstQuestion, interviewId: savedInterview._id });
   } catch (error) {
     console.error("❌ Error during /start:", error);
     return res.status(500).json({ msg: "Failed to start interview." });
   }
 });
+
+// ✅ /next-question -> continue interview
+app.post("/next-question", async (req, res) => {
+  const { interviewId } = req.body;
+
+  try {
+    const interview = await Interview.findById(interviewId);
+    if (!interview) return res.status(404).json({ msg: "Interview not found" });
+
+    const questions = await Question.find({ 
+      tech: interview.skill, 
+      difficulty: interview.difficulty 
+    });
+
+    // fallback: if askedQuestions is undefined, use empty array
+    const askedIds = (interview.askedQuestions || []).map(id => id.toString());
+
+    // filter out already asked questions
+    const remaining = questions.filter(
+      q => !askedIds.includes(q._id.toString())
+    );
+
+    if (remaining.length === 0) {
+      return res.json({ question: null, msg: "No more questions left" });
+    }
+
+    const nextQuestion = remaining[Math.floor(Math.random() * remaining.length)];
+
+    // ensure askedQuestions is always an array
+    if (!interview.askedQuestions) {
+      interview.askedQuestions = [];
+    }
+    interview.askedQuestions.push(nextQuestion._id.toString());
+    await interview.save();
+
+    res.json({ question: nextQuestion });
+  } catch (error) {
+    console.error("❌ Error during /next-question:", error);
+    res.status(500).json({ msg: "Failed to fetch next question." });
+  }
+});
+
 
 // ================= ROUTES =================
 const interviewDataRoutes = require("./routes/interviewData");

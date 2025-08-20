@@ -225,11 +225,9 @@ useEffect(() => {
               setHasIntroduced(true);
 
               try {
-                const nextQRes = await api.post("/start", {
-                  name,
-                  tech: skill,
-                  difficulty
-                });
+                
+                const nextQRes = await api.post("/next-question", { interviewId });
+
 
                 const nextQuestion = nextQRes.data.question;
                 currentQuestionRef.current = nextQuestion;
@@ -304,11 +302,8 @@ useEffect(() => {
 
           setTimeout(async () => {
             try {
-              const nextQRes = await api.post("/start", {
-                name,
-                tech: skill,
-                difficulty
-              });
+              const nextQRes = await api.post("/next-question", { interviewId });
+
 
               const nextQuestion = nextQRes.data.question;
 
