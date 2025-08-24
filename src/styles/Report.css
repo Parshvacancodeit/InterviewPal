@@ -1,82 +1,75 @@
+/* Wrapper */
 .report-wrapper {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 2.5rem;
   background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
   font-family: 'Inter', sans-serif;
   color: #1f2937;
 }
 
-/* Fade In Animation */
-.fade-in {
-  animation: fadeInUp 0.6s ease both;
-}
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 /* Header */
 .report-header h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 0.5rem;
 }
 .report-subheader {
   display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #6b7280;
-  margin-bottom: 1.5rem;
-}
-.report-subheader svg {
-  margin-right: 0.4rem;
+  margin-bottom: 2rem;
 }
 
 /* Stats Row */
 .stats-row {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
 }
 .report-card {
-  flex: 1;
+  flex: 1 1 30%;
+  min-height: 180px;
   background: #f9fafb;
-  padding: 1.25rem;
-  border-radius: 12px;
+  padding: 1.5rem;
+  border-radius: 16px;
   text-align: center;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
 }
 .report-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 }
 .stat-number {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #4f46e5;
 }
 
 /* Chart */
 .report-chart {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   background: #f3f4f6;
-  padding: 1rem;
-  border-radius: 12px;
+  padding: 1.5rem;
+  border-radius: 16px;
+  height: 350px; /* Increased for better visibility */
 }
 
 /* Flip Cards */
 .qa-grid {
   display: flex;
   gap: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
 }
 .flip-card {
-  background: transparent;
-  width: 50%;
-  height: 230px;
-  perspective: 1000px;
+  flex: 1 1 48%;
+  min-height: 300px;
+  perspective: 1200px;
 }
 .flip-card-inner {
   position: relative;
@@ -94,8 +87,8 @@
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  border-radius: 12px;
-  padding: 1rem;
+  border-radius: 16px;
+  padding: 1.5rem;
   color: #fff;
 }
 .flip-card-front.best {
@@ -115,8 +108,8 @@
   margin-top: 1rem;
   font-weight: bold;
   background: rgba(255,255,255,0.2);
-  padding: 0.25rem 0.5rem;
-  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  border-radius: 10px;
 }
 
 /* Feedback */
@@ -125,42 +118,36 @@
   align-items: center;
   gap: 1rem;
   background: #e0e7ff;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
+  padding: 1.25rem 1.75rem;
+  border-radius: 16px;
   font-weight: 500;
   font-size: 1rem;
 }
 .feedback-icon {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   color: #4f46e5;
 }
 
-
-/* Small chart container */
-.small-chart {
-  height: 200px; /* Much smaller now */
-}
-
-/* Bigger, rounded stars */
+/* Stars */
 .stars-container {
   display: flex;
   justify-content: center;
-  gap: 0.4rem;
-  margin-top: 0.5rem;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
 }
 .star-icon {
-  font-size: 2rem;
+  font-size: 2.2rem;
   border-radius: 50%;
-  padding: 4px;
+  padding: 5px;
   background: #f3f4f6;
 }
 .star-icon.full { color: #ffd700; }
-.star-icon.half { color: linear-gradient(to right, #ffd700 50%, #d1d5db 50%); }
+.star-icon.half { color: #ffd700; } /* simpler, linear-gradient not supported in font color */
 .star-icon.empty { color: #d1d5db; }
 
-/* Flip card extra details */
+/* Extra Detail */
 .extra-detail {
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
   font-size: 0.9rem;
   color: #cbd5e1;
 }
