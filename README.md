@@ -1,95 +1,90 @@
-# Lexara.ai  
-*AI-powered interview assistant with real-time transcription, intelligent evaluation, and upcoming cheat-detection features.*
+# Lexara
 
-![Lexara Logo](./public/lex.png)
+An AI-powered interview assistant with real-time transcription, intelligent evaluation, and upcoming cheat-detection features.  
 
----
-
-## 🚀 Overview  
-Lexara.ai is an **AI-driven interview prototype** designed to simulate a real interview experience while providing structured evaluation. The system integrates **speech-to-text, text-to-speech, NLP pipelines, and custom evaluation logic** to assess candidate responses dynamically.  
-
-Unlike typical chatbot-style solutions, Lexara.ai focuses on **accuracy, explainability, and human-like assessment**, making it suitable for interview training, evaluation platforms, and adaptive learning systems.
+[🔗 GitHub Repository](https://github.com/Parshvacancodeit/InterviewPal)  
+[🔗 Demo Video (LinkedIn)](https://www.linkedin.com/feed/update/urn:li:activity:7364659164251328512/)  
 
 ---
 
-## 🎯 Key Features  
-- **AI Core**
-  - Speech-to-Text (STT) using **Whisper** for robust transcription.
-  - Text-to-Speech (TTS) for natural, interactive responses.
-  - **Sentence Transformers** for semantic similarity scoring.
-  - Custom NLP preprocessing:
-    - **Negation handling** (distinguishing "I don’t know" vs "I know").
-    - **Contradiction & contradiction resolution**.
-    - **Context-aware text cleaning & tokenization**.
-  - Multiple transformer models tested (different results across BERT, RoBERTa, and MiniLM families).
-  - **Custom evaluation logic** instead of relying on black-box LLMs → transparent and adaptable scoring system.
+## Overview  
+**Lexara** is an AI-driven prototype designed to simulate real interview experiences while providing structured and explainable evaluation.  
+It integrates **speech-to-text, text-to-speech, semantic analysis, and custom scoring logic** to evaluate candidate responses in real time.  
 
-- **Frontend (React + Vite)**
-  - Webcam integration for face-to-face interview simulation.
-  - Smooth UI for candidate interaction.
-  - Modular design to integrate **cheat-detection add-ons** soon (eye-tracking, tab-switch detection, etc.).
-
-- **Backend (Flask)**
-  - Handles AI model inference.
-  - Provides APIs for transcription, evaluation, and data persistence.
-  - Optimized pipeline for low-latency response.
-
-- **Demo Video**
-  - A working demo showcasing the prototype in action.  
-  - *(I will publish the demo very shortly.)*
+This is not just a chatbot-based system — it emphasizes **accuracy, transparency, and adaptability**, making it valuable for:  
+- Interview preparation and mock sessions.  
+- Recruiter/candidate evaluation.  
+- Adaptive learning platforms.  
 
 ---
 
-## 🛠️ Tech Stack  
+## Features  
 
-**AI / ML**  
-- [OpenAI Whisper](https://github.com/openai/whisper) – Speech-to-Text  
-- [HuggingFace Transformers](https://huggingface.co/transformers/) – Sentence Transformers (BERT, RoBERTa, MiniLM)  
-- Custom preprocessing pipeline (negation, contradiction, text normalization)  
-- NLTK / spaCy for auxiliary text processing  
+### AI & Evaluation  
+- **Speech-to-Text (STT)** for live transcription.  
+- **Text-to-Speech (TTS)** for natural interaction.  
+- **Sentence Transformers** for semantic similarity scoring.  
+- **Custom NLP preprocessing pipeline**:  
+  - Negation handling (e.g., “I don’t know” vs. “I know”).  
+  - Contradiction checks.  
+  - Text normalization for consistency.  
+- Experimented with multiple transformer models (BERT, RoBERTa, MiniLM) to compare performance.  
+- **Custom evaluation logic** instead of relying on black-box LLMs.  
+
+### Frontend (React + Vite)  
+- Webcam integration for realistic interview simulation.  
+- Clean, modular React components.  
+- Modern UI with fast rendering.  
+
+### Backend (Node.js + Express)  
+- REST APIs for handling transcription, evaluation, and session management.  
+- Efficient middleware for processing audio, text, and scoring.  
+- Scalable structure to integrate more AI features later.  
+
+---
+
+## Tech Stack  
+
+**AI / NLP**  
+- Sentence Transformers (HuggingFace)  
+- NLP preprocessing (negation, contradiction, semantic similarity)  
 
 **Frontend**  
 - React (Vite)  
-- Tailwind CSS (with plans to polish UI further)  
-- Webcam & Media APIs  
+- Tailwind CSS  
+- Media APIs (Webcam, Microphone)  
 
 **Backend**  
-- Flask (Python)  
-- REST APIs for transcription, evaluation, and logging  
+- Node.js  
+- Express.js  
+- REST APIs  
 
-**Infra / Deployment**  
-- Currently running locally due to model hosting limitations.  
-- Cloud deployment is pending (Render server struggles with model load).  
-- Full deployment coming soon with mobile integration planned.  
-
----
-
-## 🧪 Challenges & Learnings  
-- **Latency in transcription & evaluation** → solved via preprocessing and caching strategies.  
-- **Model selection** → tried multiple transformer architectures, observed trade-offs in accuracy vs speed.  
-- **Evaluation** → LLM-based approaches were inconsistent; built my **own custom scoring system**.  
-- **Deployment issues** → Render servers struggled with transformer weights; working on alternatives for smooth hosting.  
+**Deployment**  
+- Currently running locally due to server constraints on model hosting.  
+- Deployment is in progress (Render limitations).  
+- Code is ready — cloud deployment and mobile integration will be available very soon.  
 
 ---
 
-## 📍 Roadmap  
-- ✅ Working prototype with STT, TTS, evaluation.  
-- 🔄 Upcoming:  
-  - Eye tracking for candidate attentiveness.  
-  - Cheat detection (tab-switch, background monitoring).  
-  - Mobile-first experience.  
-  - Production-ready deployment (cloud-hosted models).  
+## Roadmap  
+
+- [ ] Deploy Lexara online (optimize model hosting).  
+- [ ] Add **cheat detection** (eye tracking, suspicious behavior detection).  
+- [ ] Expand evaluation pipeline with advanced interview metrics.  
+- [ ] Mobile support for interviews on the go.  
 
 ---
 
-## 📽️ Demo  
-I will publish the demo video very shortly. Stay tuned!  
+## Demo  
+
+📺 Watch the working demo here:  
+[Lexara Demo on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7364659164251328512/)  
 
 ---
 
-## 🛠️ Installation & Setup  
+## Repository  
 
-Clone the repo:
-```bash
-git clone https://github.com/yourusername/lexara-ai.git
-cd lexara-ai
+Source code is available here:  
+[Lexara Repository (GitHub)](https://github.com/Parshvacancodeit/InterviewPal)  
+
+---
